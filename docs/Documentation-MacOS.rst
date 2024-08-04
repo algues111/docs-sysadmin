@@ -46,3 +46,4 @@ Etape 2 : Formatage et création de la clé USB bootable
 
 Remplacez "*MyVolume*" par le nom de votre clé USB
 
+test test
