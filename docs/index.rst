@@ -12,6 +12,8 @@ Documentation Administration Système
 
    Documentation-ESXi.rst
    Documentation-MSCerts.rst
+   Documentation-Docker.rst
+   Documentation-MacOS.rst
    
 
   
