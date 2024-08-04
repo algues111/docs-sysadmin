@@ -40,3 +40,9 @@ Etape 2 : Formatage et création de la clé USB bootable
 .. danger::
     Veillez à sauvegarder toute donnée qui vous est utile sur votre clé USB, car à la suite des prochaines étapes, elles seront **définitivement perdues**.
 
+
+
+:command:`sudo /Applications/Install\ macOS\ Ventura.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume`
+
+Remplacez "*MyVolume*" par le nom de votre clé USB
+
