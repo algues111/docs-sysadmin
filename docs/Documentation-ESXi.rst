@@ -99,13 +99,13 @@ Interface ESXi 8.0 :
     https://williamlam.com/2022/10/quick-tip-accessing-new-custom-theme-editor-for-esxi-8-0-host-client.html
 
 
+
 Simple updates on legacy ESXi hosts
 ======================================
 
 Si votre ESXi est hébergé sur un hôte avec des caractéristiques hardwares non officiellement supportées par VMWare, notamment pour le CPU, il faudra effectuer quelques manipulations pour remédier à la problématique.
 
 https://williamlam.com/2022/10/using-vsphere-lifecycle-manager-vlcm-to-remediate-nested-esxi-host-with-cpu-on-the-host-is-not-supported.html
-
 
 VEEAM BACKUP & REPLICATION
 ==============================
@@ -201,12 +201,3 @@ Afin de pouvoir créer des backups et les restaurer, il est nécessaire de confi
 
 
 Tout d'abord, lorsque Veeam est lancé, cliquez sur **Backup Infrastructure** en bas à gauche de la page.
-
-
-
-Simple updates on legacy ESXi hosts
-======================================
-
-Si votre ESXi est hébergé sur un hôte avec des caractéristiques hardwares non officiellement supportées par VMWare, notamment pour le CPU, il faudra effectuer quelques manipulations pour remédier à la problématique.
-
-https://williamlam.com/2022/10/using-vsphere-lifecycle-manager-vlcm-to-remediate-nested-esxi-host-with-cpu-on-the-host-is-not-supported.html

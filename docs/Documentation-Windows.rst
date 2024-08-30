@@ -142,7 +142,6 @@ Ce qui veut dire que n'importe quel utilisateur authentifié auprès du domaine 
 Pour changer cet attribut : Utilisateurs et Ordinateurs Active Directory --> Affichage : Fonctionnalités Avancées --> Propriétés du domaine en question --> Éditeur d'attributs --> Cherhcer ms-DS-MachineAccountQuota et remplacer "10" par "0"
 
 
-
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/msdsmachine.png
 
 
