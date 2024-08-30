@@ -112,7 +112,7 @@ VEEAM BACKUP & REPLICATION
 
 Veeam Backup & Replication est une solution de sauvegardes / backups
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam.website.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-website.png
 
 
 
