@@ -98,3 +98,101 @@ Interface ESXi 8.0 :
     Si vous voulez personnaliser l'interface ESXi, je vous invite à vous rediriger vers cette page :
     https://williamlam.com/2022/10/quick-tip-accessing-new-custom-theme-editor-for-esxi-8-0-host-client.html
 
+
+
+
+VEEAM BACKUP & REPLICATION
+==============================
+
+Veeam Backup & Replication est une solution de sauvegardes / backups
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam.website.png
+
+
+
+Sauvegardes
+--------------
+
+Mais tout d'abord, regardons les différents types de sauvegardes.
+
+
+Sauvegarde complète
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+La sauvegarde complète consiste à copier l'intégralité des données d'un système, incluant le système d'exploitation, les applications, les paramètres et les données utilisateur. 
+
+Avantages :
+~~~~~~~~~~~~~~~~
+- Toutes les données sont sauvegardées
+- Restauration facile et rapide
+
+Inconvénients :
+~~~~~~~~~~~~~~~~
+- Prend beaucoup de temps à réaliser
+- Utilise beaucoup d'espace de stockage
+
+Elle est généralement effectuée de façon périodique, par exemple hebdomadairement, et sert souvent de base pour d'autres types de sauvegardes.
+
+Sauvegarde incrémentielle
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+La sauvegarde incrémentielle ne sauvegarde que les données qui ont été modifiées depuis la dernière sauvegarde, qu'elle soit complète ou incrémentielle.
+
+Avantages :
+~~~~~~~~~~~~~~~~
+- Rapide à effectuer
+- Utilise peu d'espace de stockage
+
+Inconvénients :
+~~~~~~~~~~~~~~~~
+- La restauration peut être complexe, nécessitant la dernière sauvegarde complète et toutes les sauvegardes incrémentielles suivantes
+
+Sauvegarde différentielle
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+La sauvegarde différentielle copie tous les fichiers modifiés depuis la dernière sauvegarde complète.
+
+Avantages :
+~~~~~~~~~~~~~~~~
+- Plus rapide qu'une sauvegarde complète
+- Restauration plus simple que la sauvegarde incrémentielle
+
+Inconvénients :
+~~~~~~~~~~~~~~~~
+- Utilise plus d'espace que la sauvegarde incrémentielle
+- Moins rapide que la sauvegarde incrémentielle
+
+Sauvegarde miroir
+^^^^^^^^^^^^^^^^^^^^^^
+
+La sauvegarde miroir crée une copie exacte des données source. Elle est souvent utilisée dans des environnements nécessitant une disponibilité élevée des données.
+
+Choix du type de sauvegarde
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Le choix du type de sauvegarde dépend de plusieurs facteurs, notamment :
+- Le volume de données à sauvegarder
+- La fréquence de modification des données
+- Le temps disponible pour effectuer les sauvegardes
+- L'espace de stockage disponible
+- Les besoins en termes de rapidité de restauration
+
+Une stratégie courante consiste à combiner plusieurs types de sauvegardes, par exemple en effectuant une sauvegarde complète hebdomadaire, complétée par des sauvegardes incrémentielles ou différentielles quotidiennes.
+
+
+
+.. tip::
+    https://www.veeam.com/fr/products/free/backup-recovery.html?wvideo=z5ezmykjpu
+
+Vous pouvez installer Veeam Backup Recovery And Replication gratuitement avec la community edition.
+
+
+Configuration
+--------------------------
+
+
+Afin de pouvoir créer des backups et les restaurer, il est nécessaire de configurer quelques paramètres.
+
+
+Tout d'abord, lorsque Veeam est lancé, cliquez sur **Backup Infrastructure** en bas à gauche de la page.
+
