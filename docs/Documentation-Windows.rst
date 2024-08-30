@@ -121,14 +121,18 @@ PingCastle
 
 PingCastle est un outil d'audit de sécurité pour domaine Active Directory.
 
-Il permet de générer un rapport sur lequel se baser pour améliorer et optimser la sécurité du domaine.
+Il permet de générer un rapport html sur lequel se baser pour améliorer et optimser la sécurité du domaine.
+
+:download:`exemple de rapport HTML pour AD fraîchement créé <source/other/ad_hc_srvds.lab.html>`
+
+
 
 
 Autoriser seulement NTLMv2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/ntlmv2-only.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/ntlm2-only.png
 
 
 
@@ -139,14 +143,76 @@ Par défault, le paramètre ms-DS-MachineAccountQuota a une valeur de 10.
 
 Ce qui veut dire que n'importe quel utilisateur authentifié auprès du domaine peut ajouter jusqu'à 10 clients sur le domaine.
 
-Pour changer cet attribut : Utilisateurs et Ordinateurs Active Directory --> Affichage : Fonctionnalités Avancées --> Propriétés du domaine en question --> Éditeur d'attributs --> Cherhcer ms-DS-MachineAccountQuota et remplacer "10" par "0"
+Pour changer cet attribut : **Utilisateurs et Ordinateurs Active Directory --> Affichage : Fonctionnalités Avancées --> Propriétés du domaine en question --> Éditeur d'attributs --> Cherhcer ms-DS-MachineAccountQuota et remplacer "10" par "0"**
 
 
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/msdsmachine.png
 
 
+.. seealso::
+    https://sid-500.com/2017/09/09/securing-active-directory-who-can-add-computers-to-the-domain-only-the-domain-admin-are-you-sure/
 
 
 
+Avoid unexpected schema modifications which could result in domain rebuild
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Ce renforcement permet d'éviter des risques de modifications de schémas impromptues.
+
+Il consiste à retirer tous les utilisateurs du groupe "Administrateurs du schéma".
+
+Cela est réversible.
 
 
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/schema-admins.png
+
+
+
+Check if the LAPS tool to handle the native local admnistrator passwords is installed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Le but est d'être certain qu'une politique de mots de passe est définie pour le compte administrateur local. 
+
+Il est donc nécessaire d'installer ce package depuis le `site officiel de Microsoft.<https://www.it-connect.fr/chapitres/installation-de-laps-sur-un-controleur-de-domaine/>`_ 
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/laps-install.png
+
+
+Lancez l'installateur .msi, et sélectionner les packages comme suit :
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/laps-packages.png
+
+
+.. note::
+    AdmPwd GPO Extension n'est pas nécessaire sur un contrôleur de domaine.
+    En fait, le composant "AdmPwd GPO Extension" doit être déployé sur l'ensemble des machines à gérer via LAPS
+
+
+Voici l'utilité des différents outils de gestion :
+
+- Fat client UI : outil graphique pour la gestion de LAPS
+- PowerShell module : commandes PowerShell pour LAPS
+- GPO Editor templates : modèle ADMX de LAPS
+
+Après avoir terminé l'installation graphique de LAPS, il est nécessaire d'importer ses modules et de modifier le schéma de l'Active Directory.
+
+Pour savoir quel poste est maître du schéma, exécutez en Powershell
+
+.. code-block:: console
+    Get-ADForest | Select-Object Name, SchemaMaster
+
+Pour importer les modules, exécutez toujours en Powershell :
+
+.. code-block:: console
+    Import-Module AdmPwd.PS
+    Update-AdmPwdADSchema
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/laps-modules.png
+
+
+J'en suis à B. Attribuer les droits d'écriture aux machines dans l'article
+
+
+.. seealso::
+    `L'article d'IT-Connect.fr sur LAPS.<https://www.it-connect.fr/chapitres/installation-de-laps-sur-un-controleur-de-domaine/>`_

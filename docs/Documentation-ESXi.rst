@@ -107,6 +107,9 @@ Si votre ESXi est hébergé sur un hôte avec des caractéristiques hardwares no
 
 https://williamlam.com/2022/10/using-vsphere-lifecycle-manager-vlcm-to-remediate-nested-esxi-host-with-cpu-on-the-host-is-not-supported.html
 
+
+
+
 VEEAM BACKUP & REPLICATION
 ==============================
 
@@ -200,4 +203,45 @@ Configuration
 Afin de pouvoir créer des backups et les restaurer, il est nécessaire de configurer quelques paramètres.
 
 
-Tout d'abord, lorsque Veeam est lancé, cliquez sur **Backup Infrastructure** en bas à gauche de la page.
+Tout d'abord, lorsque Veeam est lancé, cliquez sur **Backup Infrastructure** en bas à gauche de la page, cliquez sur **Managed Servers** puis sur **Add Server** en haut à gauche de la page.
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-backup-infr.png
+
+
+A la suite de ces étapes, le logiciel vous demandera de choisir le serveur que vous souhaitez joindre à votre infrastructure de backup.
+
+Ici, nous choisissons VMWare vSphere, puis vSphere.
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver.png
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-vsphere.png
+
+
+.. note::
+    Comme il est précisé dans le menu d'ajout de serveur, il est préférable d'ajouter vCenter Server si votre ESXi est géré via cette instance.
+    Cela facilitera notamment la gestion des permissions de VEEAM sur les VMs de l'ESXi.
+
+
+Rentrer l'IP ou le nom DNS du serveur vCenter.
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-vsphere-ip.png
+
+
+Rentrer les credentials de votre SSO vSphere.
+
+.. important::
+    Il est important de renseigner les login de la manière suivante :
+
+    **<vsphere-sso.domain>\<username>**¨
+
+
+.. note::
+    Si le port https n'est pas le 443 sur votre serveur, il est nécessaire de le renseigner dans la fenêtre.
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-vsphere-id.png
+
+
+
+
+
