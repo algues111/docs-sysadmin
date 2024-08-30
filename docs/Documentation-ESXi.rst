@@ -106,3 +106,49 @@ Simple updates on legacy ESXi hosts
 Si votre ESXi est hébergé sur un hôte avec des caractéristiques hardwares non officiellement supportées par VMWare, notamment pour le CPU, il faudra effectuer quelques manipulations pour remédier à la problématique.
 
 https://williamlam.com/2022/10/using-vsphere-lifecycle-manager-vlcm-to-remediate-nested-esxi-host-with-cpu-on-the-host-is-not-supported.html
+
+
+Tout d'adbord, il est impératif de sauvegarder toute donnée sensible et essentielle à votre organisation.
+Pour cela, vous pouvez exporter les VM, les sauvegarder avec VEEAM Backups etc...
+
+Prérequis :
+
+- Connexion Internet pour télécharger le bundle offline
+- Compte Broadcom pour accéder aux ressources
+
+
+Custom ISO download
+---------------------
+
+Si vous possédez un serveur HPE, DELL, ou provenant de tout autre fabricant disposant d'iso ESXi personnalisé, vous ne les trouverez plus sur leurs propres sites, mais sur celui de Broadcom, étant donné que les licences gratuites de VMWare ESXi ont été abandonnées par ces derniers.
+
+
+.. note::
+    
+    Vous trouverez les ISO VMWare seulement depuis le lien ci-dessous.
+    
+    https://support.broadcom.com/group/ecx/downloads
+
+
+My Downloads --> VMWare VSphere --> VMware vSphere - Standard 8.0 --> Custom ISOs
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/broadcom-dl.png
+
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl.png
+
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl1.png
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl2.png
+
+
+
+
+https://pio.nz/2023/01/05/keeping-esxi-up-to-date-on-obsolete-hw/
+https://infra.engineer/miscellaneous/71-vmware-upgrade-esxi-host-with-esxcli
+https://www.vinchin.com/vm-tips/best-practice-to-backup-and-restore-vmware-vcenter.html
