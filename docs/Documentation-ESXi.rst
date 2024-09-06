@@ -146,11 +146,10 @@ My Downloads --> VMWare VSphere --> VMware vSphere - Standard 8.0 --> Custom ISO
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl2.png
 
 
-
-
-https://pio.nz/2023/01/05/keeping-esxi-up-to-date-on-obsolete-hw/
-https://infra.engineer/miscellaneous/71-vmware-upgrade-esxi-host-with-esxcli
-https://www.vinchin.com/vm-tips/best-practice-to-backup-and-restore-vmware-vcenter.html
+.. seealso::
+    https://pio.nz/2023/01/05/keeping-esxi-up-to-date-on-obsolete-hw/
+    https://infra.engineer/miscellaneous/71-vmware-upgrade-esxi-host-with-esxcli
+    https://www.vinchin.com/vm-tips/best-practice-to-backup-and-restore-vmware-vcenter.html
 
 
 
