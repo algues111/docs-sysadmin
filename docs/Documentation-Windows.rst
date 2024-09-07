@@ -216,13 +216,17 @@ Après avoir terminé l'installation graphique de LAPS, il est nécessaire d'imp
 Pour savoir quel poste est maître du schéma, exécutez en Powershell
 
 .. code-block:: console
+
     Get-ADForest | Select-Object Name, SchemaMaster
 
 Pour importer les modules, exécutez toujours en Powershell :
 
 .. code-block:: console
+
     Import-Module AdmPwd.PS
     Update-AdmPwdADSchema
+
+
 
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/laps-modules.png
 
