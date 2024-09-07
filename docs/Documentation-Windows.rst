@@ -32,6 +32,22 @@ Rentrez le nom de domaine voulu, et identifiez-vous avec un compte administrateu
 Windows Server 2022
 =========================
 
+
+Installer fonctionnalités 
+----------------------------
+
+Active Directory
+^^^^^^^^^^^^^^^^^^^^
+
+
+
+.. danger::
+
+    Du moment que votre domaine Active Directory est créé, vous ne pouvez plus changer le nom de votre DC (domain controller).
+    
+
+
+
 Déplacer partition de récupération
 -----------------------------------
 
@@ -216,3 +232,26 @@ J'en suis à B. Attribuer les droits d'écriture aux machines dans l'article
 
 .. seealso::
     `L'article d'IT-Connect.fr sur LAPS.<https://www.it-connect.fr/chapitres/installation-de-laps-sur-un-controleur-de-domaine/>`_
+
+
+
+Disable IPv6 on Windows
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Depuis la faille de sécurité de Windows liée à IPv6 (CVE-2024-38063), il est conseillé de désactiver ce protocole s'il n'est pas utilisé dans l'organisation.
+
+Nativement, il n'y pas de GPO pour gérer l'intégration d'IPv6 à Windows, mais la communauté a créé un fichier .amdx paliant à cela.
+
+
+.. note::
+    Téléchargez-le :download:`ici <source/other/IPv6Configuration.zip>`
+
+
+
+
+
+Check disabled accounts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+

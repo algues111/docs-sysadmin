@@ -267,7 +267,7 @@ Ici, nous choisissons VMWare vSphere, puis vSphere.
 
 Rentrer l'IP ou le nom DNS du serveur vCenter.
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-vsphere-ip.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-ip.png
 
 
 Rentrer les credentials de votre SSO vSphere.
@@ -275,14 +275,14 @@ Rentrer les credentials de votre SSO vSphere.
 .. important::
     Il est important de renseigner les login de la manière suivante :
 
-    **<vsphere-sso.domain>\<username>**¨
+    **<vsphere-sso.domain> \ <username>**
 
 
 .. note::
     Si le port https n'est pas le 443 sur votre serveur, il est nécessaire de le renseigner dans la fenêtre.
 
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-vsphere-id.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-id.png
 
 
 
