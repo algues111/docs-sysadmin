@@ -239,6 +239,42 @@ Une stratégie courante consiste à combiner plusieurs types de sauvegardes, par
 Vous pouvez installer Veeam Backup Recovery And Replication gratuitement avec la community edition.
 
 
+
+Installation
+------------------
+
+Pour installer Veeam Backup & Replication, il est tout d'abord nécessaire d'installer le l'image du logiciel sur le `site officiel.<https://www.veeam.com/fr/products/free/backup-recovery.html?wvideo=z5ezmykjpu>`_
+
+.. tip::
+    Cliquer sur "Testez gratuitement" vous demandera de remplir un formulaire nécessaire au téléchargement du soft.
+
+    Des vidéos explicatives sont aussi disponibles en bas de la page.
+
+
+Après avoir téléchargé l'iso de 11Go environ, vous pourrez l'ouvrir et cliquer sur "setup".
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/iso-veeam.png
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/setupexeveeam.png
+   
+
+Après l'éxecution du setup, vous aurez plusieurs options d'installation.
+
+Dans notre cas, nous installons Veeam Backup and Replication.
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-install-options.png
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-installationpng
+
+
+Après que l'installation soit terminée, vous pourrez lancer la console Veeam qui affichera une fenêtre de connexion.
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-connection.png
+
+
+
+
 Configuration
 --------------------------
 
