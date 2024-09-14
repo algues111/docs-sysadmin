@@ -93,5 +93,10 @@ Choisissez les options correspondant à vos besoins et feel free !
  Lier MacOS à un annuaire LDAP
 ===============================
 
+Sur MacOS, un utilitaire très utile est disponible pour enregistrer votre Mac sur un simple domaine LDAP ou Active Directory.
 
 
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/utilitaire-annuaire.png
+
+
+Afin de modifier ces paramètres, une autorisation administrateur supplémentaire vous sera demandée lorsque vous cliquerez sur le cadenas.
