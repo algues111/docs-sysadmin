@@ -259,3 +259,70 @@ Check disabled accounts
 
 
 
+
+Microsoft Entra Connect
+=====================================
+
+Si vous souhaitez joindre votre domaine AD à votre tenant MS365, il faudra installer un agent de synchronisation directement sur un contrôleur de domaine.
+
+
+.. note::
+    Si vous avez créer un domaine AD avec un DNS de type non routable (extensions en .lan, .local etc...), il faudrait rajouter un UPN alternatif (lui étant routable) pour votre AD.
+
+
+
+Ajouter un UPN Alternatif
+----------------------------
+
+Pour ajouter un suffixe UPN, vous pouvez le faire de 2 manières différentes :
+
+- Via Powershell
+- Via la console Active Directory Domains and Trusts
+
+Powershell
+^^^^^^^^^^^^
+
+Lister les UPN :
+
+.. code-block:: console
+
+    Get-ADForest | Format-List UPNSuffixes 
+
+
+Ajouter un UPN :
+
+.. code-block:: console
+
+    Get-ADForest | Set-ADForest -UPNSuffixes @{add="mydomain.com"}
+
+
+Relistez les UPN pour vérifier le succès de l'ajout.
+
+
+
+Console Active Directory Domains and Trusts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/upn-add.png
+
+
+
+Après avoir rajouter notre nouveau domaine routable (utilisé pour le tenant MS365), nous pouvons désormais lancer l'agent.
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/accueil-ec.png
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/azure-connect-ec.png
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/login-ec.png
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/ad-connect-ec.png 
+
+
+
+
+Si vous rencontrez une erreur contenant "Creation of connector ********.onmicrosoft.com - AAD failed. This may be due to replication delay", il sera nécessaire de renforcer l'utilisation de TLS1.2 sur votre contrôleur de domaine.
+
+https://answers.microsoft.com/en-us/msoffice/forum/all/creation-of-connector-onmicrosoftcom-aad-failed/0c1aaba0-a034-4e96-bd68-de602a39a5b5
+
+https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/reference-connect-tls-enforcement

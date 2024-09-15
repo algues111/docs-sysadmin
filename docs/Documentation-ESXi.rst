@@ -323,4 +323,25 @@ Rentrer les credentials de votre SSO vSphere.
 
 
 
+Tools
+==============
 
+Copy/Paste to VM
+---------------------
+
+Si vous souhaitez pouvoir utiliser le copier-coller entre votre machine et une VM, vous devez ajouter des arguements à la configuration avancée de votre VM.
+
+Dans ESXi v8.0, voici les éléments à ajouter :
+
+ isolation.tools.setGUIOptions.enable
+TRUE
+
+ isolation.tools.paste.disable
+FALSE
+
+ isolation.tools.copy.disable
+FALSE
+
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/cp.png
