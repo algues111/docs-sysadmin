@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Documentation Administration Système
-================================
+Documentation Administration Système & Cybersécurité
+==============================================================
 
 .. toctree::
    :maxdepth: 2
@@ -15,6 +15,7 @@ Documentation Administration Système
    Documentation-Docker.rst
    Documentation-MacOS.rst
    Documentation-Windows.rst
+   Documentation-SOC.rst
 
   
 

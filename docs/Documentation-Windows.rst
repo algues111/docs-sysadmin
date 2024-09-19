@@ -216,3 +216,18 @@ J'en suis à B. Attribuer les droits d'écriture aux machines dans l'article
 
 .. seealso::
     `L'article d'IT-Connect.fr sur LAPS.<https://www.it-connect.fr/chapitres/installation-de-laps-sur-un-controleur-de-domaine/>`_
+
+
+Empêcher la délégation de compte pour les utilisateurs admin
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Afin d'éviter des élévations de privilèges non souhaitées et limiter les risques, il est préférable de marquer les utilisateurs ayant des privilièges importants comme "sensibles".
+
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/account-protected.png
+
+
+.. warning::
+    Si vous marquez un compte comme protégé dans l'AD, cela empechêra sa connexion sur une session hors-ligne (hors-réseau du DC)
+
