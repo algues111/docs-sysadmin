@@ -107,6 +107,49 @@ Si votre ESXi est hébergé sur un hôte avec des caractéristiques hardwares no
 
 https://williamlam.com/2022/10/using-vsphere-lifecycle-manager-vlcm-to-remediate-nested-esxi-host-with-cpu-on-the-host-is-not-supported.html
 
+Tout d'adbord, il est impératif de sauvegarder toute donnée sensible et essentielle à votre organisation.
+Pour cela, vous pouvez exporter les VM, les sauvegarder avec VEEAM Backups etc...
+
+Prérequis :
+
+- Connexion Internet pour télécharger le bundle offline
+- Compte Broadcom pour accéder aux ressources
+
+
+Custom ISO download
+---------------------
+
+Si vous possédez un serveur HPE, DELL, ou provenant de tout autre fabricant disposant d'iso ESXi personnalisé, vous ne les trouverez plus sur leurs propres sites, mais sur celui de Broadcom, étant donné que les licences gratuites de VMWare ESXi ont été abandonnées par ces derniers.
+
+
+.. note::
+    
+    Vous trouverez les ISO VMWare seulement depuis le lien ci-dessous.
+    
+    https://support.broadcom.com/group/ecx/downloads
+
+
+My Downloads --> VMWare VSphere --> VMware vSphere - Standard 8.0 --> Custom ISOs
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/broadcom-dl.png
+
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl.png
+
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl1.png
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl2.png
+
+
+.. seealso::
+    https://pio.nz/2023/01/05/keeping-esxi-up-to-date-on-obsolete-hw/
+    https://infra.engineer/miscellaneous/71-vmware-upgrade-esxi-host-with-esxcli
+    https://www.vinchin.com/vm-tips/best-practice-to-backup-and-restore-vmware-vcenter.html
 
 
 
@@ -196,6 +239,42 @@ Une stratégie courante consiste à combiner plusieurs types de sauvegardes, par
 Vous pouvez installer Veeam Backup Recovery And Replication gratuitement avec la community edition.
 
 
+
+Installation
+------------------
+
+Pour installer Veeam Backup & Replication, il est tout d'abord nécessaire d'installer le l'image du logiciel sur le `site officiel.<https://www.veeam.com/fr/products/free/backup-recovery.html?wvideo=z5ezmykjpu>`_
+
+.. tip::
+    Cliquer sur "Testez gratuitement" vous demandera de remplir un formulaire nécessaire au téléchargement du soft.
+
+    Des vidéos explicatives sont aussi disponibles en bas de la page.
+
+
+Après avoir téléchargé l'iso de 11Go environ, vous pourrez l'ouvrir et cliquer sur "setup".
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/iso-veeam.png
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/setupexeveeam.png
+   
+
+Après l'éxecution du setup, vous aurez plusieurs options d'installation.
+
+Dans notre cas, nous installons Veeam Backup and Replication.
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-install-options.png
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-installationpng
+
+
+Après que l'installation soit terminée, vous pourrez lancer la console Veeam qui affichera une fenêtre de connexion.
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-connection.png
+
+
+
+
 Configuration
 --------------------------
 
@@ -224,7 +303,7 @@ Ici, nous choisissons VMWare vSphere, puis vSphere.
 
 Rentrer l'IP ou le nom DNS du serveur vCenter.
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-vsphere-ip.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-ip.png
 
 
 Rentrer les credentials de votre SSO vSphere.
@@ -232,16 +311,37 @@ Rentrer les credentials de votre SSO vSphere.
 .. important::
     Il est important de renseigner les login de la manière suivante :
 
-    **<vsphere-sso.domain>\<username>**¨
+    **<vsphere-sso.domain> \ <username>**
 
 
 .. note::
     Si le port https n'est pas le 443 sur votre serveur, il est nécessaire de le renseigner dans la fenêtre.
 
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-vsphere-id.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-id.png
 
 
 
 
+Tools
+==============
 
+Copy/Paste to VM
+---------------------
+
+Si vous souhaitez pouvoir utiliser le copier-coller entre votre machine et une VM, vous devez ajouter des arguements à la configuration avancée de votre VM.
+
+Dans ESXi v8.0, voici les éléments à ajouter :
+
+ isolation.tools.setGUIOptions.enable
+TRUE
+
+ isolation.tools.paste.disable
+FALSE
+
+ isolation.tools.copy.disable
+FALSE
+
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/cp.png

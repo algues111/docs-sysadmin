@@ -16,6 +16,7 @@ Documentation Administration Système & Cybersécurité
    Documentation-MacOS.rst
    Documentation-Windows.rst
    Documentation-SOC.rst
+   Documentation-Linux.rst
 
   
 
