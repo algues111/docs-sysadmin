@@ -146,10 +146,52 @@ My Downloads --> VMWare VSphere --> VMware vSphere - Standard 8.0 --> Custom ISO
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl2.png
 
 
+
+Après avoir téléchargé le bundle custom .zip, transférez le dans le datastore de votre hôte ou dans un volume connecté à ce dernier.
+
+Activez SSH et connectez-vous.
+
+
+.. code-block:: console
+
+    [root@esx2:/vmfs/volumes/62c80b1d-db652382-0617-000af7389070/downloads] esxcli software vib update --depot=/vmfs/volumes/62c80b1d-db652382-0617-000af7389070/downloads/VMware-ESXi-8.02b-20842708-depot.zip
+
+
+L'installation des vib peut prendre du temps. Si cette dernière a été effectuée avec succès, vous aurez cette output dans la CLI :
+
+
+.. code-block:: console
+
+   Installation Result
+   Message: The update completed successfully, but the system needs to be rebooted for the changes to be effective.
+   Reboot Required: true
+   VIBs Installed: VMW_bootbank_ntg3_4.1.8.0-4vmw.703.0.65.20842708, VMware_bootbank_bmcal_7.0.3-0.65.20842708, VMware_bootbank_cpu-microcode_7.0.3-0.65.20842708, VMware_bootbank_crx_7.0.3-0.65.20842708, VMware_bootbank_esx-base_7.0.3-0.65.20842708, VMware_bootbank_esx-dvfilter-generic-fastpath_7.0.3-0.65.20842708, VMware_bootbank_esx-ui_2.1.1-20188605, VMware_bootbank_esx-update_7.0.3-0.65.20842708, VMware_bootbank_esx-xserver_7.0.3-0.65.20842708, VMware_bootbank_esxio-combiner_7.0.3-0.65.20842708, VMware_bootbank_gc_7.0.3-0.65.20842708, VMware_bootbank_loadesx_7.0.3-0.65.20842708, VMware_bootbank_native-misc-drivers_7.0.3-0.65.20842708, VMware_bootbank_trx_7.0.3-0.65.20842708, VMware_bootbank_vdfs_7.0.3-0.65.20842708, VMware_bootbank_vsan_7.0.3-0.65.20842708, VMware_bootbank_vsanhealth_7.0.3-0.65.20842708, VMware_locker_tools-light_12.1.0.20219665-20841705
+   VIBs Removed: VMW_bootbank_ntg3_4.1.7.0-0vmw.703.0.20.19193900, VMware_bootbank_bmcal_7.0.3-0.55.20328353, VMware_bootbank_cpu-microcode_7.0.3-0.55.20328353, VMware_bootbank_crx_7.0.3-0.55.20328353, VMware_bootbank_esx-base_7.0.3-0.55.20328353, VMware_bootbank_esx-dvfilter-generic-fastpath_7.0.3-0.55.20328353, VMware_bootbank_esx-ui_1.43.8-19798623, VMware_bootbank_esx-update_7.0.3-0.55.20328353, VMware_bootbank_esx-xserver_7.0.3-0.55.20328353, VMware_bootbank_esxio-combiner_7.0.3-0.55.20328353, VMware_bootbank_gc_7.0.3-0.55.20328353, VMware_bootbank_loadesx_7.0.3-0.55.20328353, VMware_bootbank_native-misc-drivers_7.0.3-0.55.20328353, VMware_bootbank_trx_7.0.3-0.55.20328353, VMware_bootbank_vdfs_7.0.3-0.55.20328353, VMware_bootbank_vsan_7.0.3-0.55.20328353, VMware_bootbank_vsanhealth_7.0.3-0.55.20328353, VMware_locker_tools-light_12.0.0.19345655-20036586
+   VIBs Skipped: VMW_bootbank_atlantic_1.0.3.0-8vmw.703.0.20.19193900, VMW_bootbank_bnxtnet_216.0.50.0-44vmw.703.0.50.20036589, VMW_bootbank_bnxtroce_216.0.58.0-23vmw.703.0.50.20036589, VMW_bootbank_brcmfcoe_12.0.1500.2-3vmw.703.0.20.19193900, VMW_bootbank_elxiscsi_12.0.1200.0-9vmw.703.0.20.19193900, VMW_bootbank_elxnet_12.0.1250.0-5vmw.703.0.20.19193900, VMW_bootbank_i40en_1.11.1.31-1vmw.703.0.20.19193900, VMW_bootbank_iavmd_2.7.0.1157-2vmw.703.0.20.19193900, VMW_bootbank_icen_1.4.1.20-1vmw.703.0.50.20036589, VMW_bootbank_igbn_1.4.11.2-1vmw.703.0.20.19193900, VMW_bootbank_ionic-en_16.0.0-16vmw.703.0.20.19193900, VMW_bootbank_irdman_1.3.1.22-1vmw.703.0.50.20036589, VMW_bootbank_iser_1.1.0.1-1vmw.703.0.50.20036589, VMW_bootbank_ixgben_1.7.1.35-1vmw.703.0.20.19193900, VMW_bootbank_lpfc_14.0.169.26-5vmw.703.0.50.20036589, VMW_bootbank_lpnic_11.4.62.0-1vmw.703.0.20.19193900, VMW_bootbank_lsi-mr3_7.718.02.00-1vmw.703.0.20.19193900, VMW_bootbank_lsi-msgpt2_20.00.06.00-4vmw.703.0.20.19193900, VMW_bootbank_lsi-msgpt35_19.00.02.00-1vmw.703.0.20.19193900, VMW_bootbank_lsi-msgpt3_17.00.12.00-1vmw.703.0.20.19193900, VMW_bootbank_mtip32xx-native_3.9.8-1vmw.703.0.20.19193900, VMW_bootbank_ne1000_0.9.0-1vmw.703.0.50.20036589, VMW_bootbank_nenic_1.0.33.0-1vmw.703.0.20.19193900, VMW_bootbank_nfnic_4.0.0.70-1vmw.703.0.20.19193900, VMW_bootbank_nhpsa_70.0051.0.100-4vmw.703.0.20.19193900, VMW_bootbank_nmlx4-core_3.19.16.8-2vmw.703.0.20.19193900, VMW_bootbank_nmlx4-en_3.19.16.8-2vmw.703.0.20.19193900, VMW_bootbank_nmlx4-rdma_3.19.16.8-2vmw.703.0.20.19193900, VMW_bootbank_nmlx5-core_4.19.16.11-1vmw.703.0.20.19193900, VMW_bootbank_nmlx5-rdma_4.19.16.11-1vmw.703.0.20.19193900, VMW_bootbank_nvme-pcie_1.2.3.16-1vmw.703.0.20.19193900, VMW_bootbank_nvmerdma_1.0.3.5-1vmw.703.0.20.19193900, VMW_bootbank_nvmetcp_1.0.0.1-1vmw.703.0.35.19482537, VMW_bootbank_nvmxnet3-ens_2.0.0.22-1vmw.703.0.20.19193900, VMW_bootbank_nvmxnet3_2.0.0.30-1vmw.703.0.20.19193900, VMW_bootbank_pvscsi_0.1-4vmw.703.0.20.19193900, VMW_bootbank_qcnic_1.0.15.0-14vmw.703.0.20.19193900, VMW_bootbank_qedentv_3.40.5.53-22vmw.703.0.20.19193900, VMW_bootbank_qedrntv_3.40.5.53-18vmw.703.0.20.19193900, VMW_bootbank_qfle3_1.0.67.0-22vmw.703.0.20.19193900, VMW_bootbank_qfle3f_1.0.51.0-22vmw.703.0.20.19193900, VMW_bootbank_qfle3i_1.0.15.0-15vmw.703.0.20.19193900, VMW_bootbank_qflge_1.1.0.11-1vmw.703.0.20.19193900, VMW_bootbank_rste_2.0.2.0088-7vmw.703.0.20.19193900, VMW_bootbank_sfvmk_2.4.0.2010-6vmw.703.0.20.19193900, VMW_bootbank_smartpqi_70.4149.0.5000-1vmw.703.0.20.19193900, VMW_bootbank_vmkata_0.1-1vmw.703.0.20.19193900, VMW_bootbank_vmkfcoe_1.0.0.2-1vmw.703.0.20.19193900, VMW_bootbank_vmkusb_0.1-7vmw.703.0.50.20036589, VMW_bootbank_vmw-ahci_2.0.11-1vmw.703.0.20.19193900, VMware_bootbank_elx-esx-libelxima.so_12.0.1200.0-4vmw.703.0.20.19193900, VMware_bootbank_lsuv2-hpv2-hpsa-plugin_1.0.0-3vmw.703.0.20.19193900, VMware_bootbank_lsuv2-intelv2-nvme-vmd-plugin_2.7.2173-1vmw.703.0.20.19193900, VMware_bootbank_lsuv2-lsiv2-drivers-plugin_1.0.0-12vmw.703.0.50.20036589, VMware_bootbank_lsuv2-nvme-pcie-plugin_1.0.0-1vmw.703.0.20.19193900, VMware_bootbank_lsuv2-oem-dell-plugin_1.0.0-1vmw.703.0.20.19193900, VMware_bootbank_lsuv2-oem-hp-plugin_1.0.0-1vmw.703.0.20.19193900, VMware_bootbank_lsuv2-oem-lenovo-plugin_1.0.0-1vmw.703.0.20.19193900, VMware_bootbank_lsuv2-smartpqiv2-plugin_1.0.0-8vmw.703.0.20.19193900, VMware_bootbank_qlnativefc_4.1.14.0-26vmw.703.0.20.19193900, VMware_bootbank_vmware-esx-esxcli-nvme-plugin_1.2.0.44-1vmw.703.0.20.19193900
+
+
+
+Pour vérifier que l'ESXi a bien été mis à jour, vous pouvez vérifier sa version grâce à cette commande :
+
+.. code-block:: console
+
+    vmware -v
+
+
+
+
+Lorsque toutes ces étapes ont été effectuées une fois, les prochaines alertes de legacy CPU pourront être remédiées directement depuis l'interface vSphere.
+
+
+
+
+
+
 .. seealso::
     https://pio.nz/2023/01/05/keeping-esxi-up-to-date-on-obsolete-hw/
     https://infra.engineer/miscellaneous/71-vmware-upgrade-esxi-host-with-esxcli
     https://www.vinchin.com/vm-tips/best-practice-to-backup-and-restore-vmware-vcenter.html
+    https://williamlam.com/2020/04/quick-tip-allow-unsupported-cpus-when-upgrading-to-esxi-7-0.html
 
 
 
@@ -218,6 +260,13 @@ Sauvegarde miroir
 ^^^^^^^^^^^^^^^^^^^^^^
 
 La sauvegarde miroir crée une copie exacte des données source. Elle est souvent utilisée dans des environnements nécessitant une disponibilité élevée des données.
+
+
+Snapshots
+^^^^^^^^^^^^^^
+
+Les snapshots sont des "photos" de l'état d'un volume à un instant "t".
+
 
 Choix du type de sauvegarde
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -345,3 +394,80 @@ FALSE
 
 
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/cp.png
+
+
+
+
+HPE iLO
+====================
+
+L'iLO HPE offre une interface de gestion pour votre serveur HPE, accessible hors-ligne ou en-ligne.
+
+
+Vous pouvez y gérer les disques, les volumes logiques, exécuter des diagnostics...
+
+Elle peut s'avérer très utile pour de la maintenance ou du dépannage.
+
+
+
+L'iLO peut être atteint en réseau via l'interface RJ45 "iLO", vous pouvez y attribuer une adresse IP fixe ou bien par DHCP.
+
+
+iSCSI
+==========================================
+
+Ajouter un adaptateur iSCSI dans vSphere 8.0
+--------------------------------------------------
+
+Dans vSphere 8.0, vous pouvez ajouter un adaptateur virtuel iSCSI depuis le menu de configuration de l'hôte (ici dl380).
+
+
+Ajouter un LUN à un datastore
+---------------------------------
+
+
+
+.. warning::
+
+    N'ajoutez un LUN que si vous êtes certain de le garder. Le démonter du datastore demande un temps de maintenance important !
+
+
+.. warning::
+
+    Ne pas ajouter plus d'1 seul LUN sur un datastore. Cela peut causer des problèmes de performance.
+
+
+
+
+Détacher un LUN d'un datastore
+-------------------------------------
+
+
+Détacher un LUN d'un datastore est une procédure compliquée qui nécessite d'être effectuée minutieusement pour ne pas perdre ou corrompre quelconque donnée / VM.
+
+
+
+Démonter le datastore
+^^^^^^^^^^^^^^^^^^^^^^
+
+La première étape à effectuer est de démonter le datastore.
+Pour cela, migrez toutes les VM stockées sur le datastore en question ainsi que les dossiers, fichiers présents dessus.
+
+Démontez désormais le datastore.
+
+
+Détacher le LUN
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Dans les Storage Devices, vous pouvez maintenant détacher le LUN du datastore. 
+
+
+Supprimer le LUN
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+Vous pouvez désromais supprimer le LUN que vous avez créé sur le périphérique distant (NAS etc...).
+
+
+
