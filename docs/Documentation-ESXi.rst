@@ -425,6 +425,9 @@ Dans vSphere 8.0, vous pouvez ajouter un adaptateur virtuel iSCSI depuis le menu
 Ajouter un LUN à un datastore
 ---------------------------------
 
+Un LUN (Logical Unit Number).
+
+Afin de ne pas perdre de performances, le LUN devrait être lié à l'hôte ESXi via une connexion 10Gbit/s voire 25Gbit/s.
 
 
 .. warning::
@@ -470,4 +473,37 @@ Supprimer le LUN
 Vous pouvez désromais supprimer le LUN que vous avez créé sur le périphérique distant (NAS etc...).
 
 
+Nerworking
+==============
 
+
+vSwitch
+----------
+
+
+Le vSwitch agit tel un switch virtuel.
+Il peut être attribué à un ou plusieurs groupes de ports ("groupes de NIC") dans l'interface de configuration ESXi web ou vSphere client.
+
+Plusieurs paramètres sont disponibles dans le menu de paramétrage
+
+
+Paramètres de sécurité
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Vous povuez activer ou désactiver plusieurs modes :
+
+.. tabs::
+
+   .. tab:: Promiscuous mode
+
+        Activer cela permettra à chaque port (interface) des VM connectées au vSwitch de voir tout le trafic passant sur ce dernier.
+        C'est une sorte de mode "hub".
+
+
+        .. warning::
+            
+            Si vous comptez paramétrer un cluster de pares-feu PFSense, il est nécessaire d'activer le Promiscuous mode sur chaque vSwitch où une VIP CARP est configurée.
+
+
+Groupe de ports
+--------------------
