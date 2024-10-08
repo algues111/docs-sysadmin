@@ -16,8 +16,13 @@ release = '0.1'
 
 extensions = [
     'myst_parser',
+    'sphinx_tabs.tabs',
+    'sphinx_togglebutton',
     
 ]
+
+sphinx_tabs_valid_builders = ['linkcheck']
+
 myst_enable_extensions = [
     "amsmath",
     "attrs_inline",
