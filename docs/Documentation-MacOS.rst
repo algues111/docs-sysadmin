@@ -88,9 +88,78 @@ Après cela, un assistant d'installation vous guidera jusqu'à la fin du process
 Choisissez les options correspondant à vos besoins et feel free !
 
 
+Best tools after fresh install
+-------------------------------------
 
 
- Lier MacOS à un annuaire LDAP
+Après une fresh install, il est nécessaire de configurer et d'adapter MacOS à nos besoins et habitudes.
+Pour cela, une liste personnelle d'outils et de paramètres est disponible ci-dessous
+
+
+.. tabs::
+
+    .. tab:: Keyboard Settings
+
+        Augmentation de la vitesse de répétition des touches et diminution de la pause avant répétition.
+
+        .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/keyboard-settings.png
+
+
+    .. tab:: Dock settings
+        
+        Par défaut, la vitesse d'affichage du dock a une latence lorsque nous glissons le curseur dessus. Cette commande raccourcit cet effet :
+
+        .. code-block:: console
+
+            defaults write com.apple.dock autohide-time-modifier -float 0.4; killall Dock
+
+        Nous pouvons aussi faire en sorte que le dock s'affiche à gauche de l'écran et seulement lorsque le curseur est dessus. 
+        Voici mes réglages personnels :
+
+        .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/dock-settings.png
+
+    .. tab:: Stats
+
+        En tant qu'admin système et réseau, j'aime bien avoir les informations esentielles de mon OS à portée de main (utilisation CPU, RAM, SSD, Network...).
+
+        Pour cela, `Stats <https://github.com/exelban/stats>`_ est particulièrement efficace en affichant ces infos dans la barre des menus supérieure.
+
+        
+        .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/menu-bar.png
+
+
+
+        Vous pouvez modifier les réglages de l'application depuis l'interface ci-dessous :
+
+        .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/stats-settings.png
+
+
+    .. tab:: Updates and Upgrades
+
+        Par défaut, MacOS active les mises à jour et mises à niveau automatiques, ce qui peut poser de gros problèmes pour la compatibilité de certaines applications voire pour les performances de votre ordinateur.
+
+        Pour éviter cela, vous pouvez vous rendre dans le menu Général -> Mise à jour de logiciels -> Mises à jour automatiques
+
+        Voici les paramètres que j'utilise personnellement :
+
+        .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/updates.png
+         
+
+    .. tab:: Application Updates and Upgrades
+
+        Souvent, nous téléchargeons nos applications depuis différentes sources. Mais cela peut s'avérer fatiguant de vérifier constamment si une MàJ est disponible, surtout si l'app ne le fait pas d'elle même.
+
+        Une solution payante mais efficace existe : `MacUpdater 3 <https://www.corecode.io/index.html>`
+
+        .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/mac-updater.png
+
+        Ci-dessus nous voyons que j'ai quelques mise à jour à effectuer, et nous pouvons cliquer sur le bouton icône "Infos" pour voir le détail des MàJ que MacUpdater va chercher.
+
+        .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/mac-updater1.png
+
+
+
+Lier MacOS à un annuaire LDAP
 ===============================
 
 Sur MacOS, un utilitaire très utile est disponible pour enregistrer votre Mac sur un simple domaine LDAP ou Active Directory.
@@ -100,3 +169,5 @@ Sur MacOS, un utilitaire très utile est disponible pour enregistrer votre Mac s
 
 
 Afin de modifier ces paramètres, une autorisation administrateur supplémentaire vous sera demandée lorsque vous cliquerez sur le cadenas.
+
+
