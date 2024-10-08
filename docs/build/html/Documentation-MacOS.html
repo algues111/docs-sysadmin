@@ -1,0 +1,535 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documentation MacOS &#8212; Documentation Notes personnelles Administration Système 0.1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=0dc8974b"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/tabs.js?v=3030b3cb"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/translations.js?v=041d0952"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Documentation-MacOS';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Documentation Windows" href="Documentation-Windows.html" />
+    <link rel="prev" title="Documentation Docker" href="Documentation-Docker.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Documentation Notes personnelles Administration Système 0.1</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Documentation-ESXi.html">Documentation ESXi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation-MSCerts.html">Documentation Certifications Microsoft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation-Docker.html">Documentation Docker</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Documentation MacOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation-Windows.html">Documentation Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation-SOC.html">Documentation Certifications SOC HackTheBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation-Linux.html">Documentation Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation-RedTeam.html">Documentation Red Team</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Documentation-MacOS.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Documentation MacOS</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fresh-install-ventura">Fresh Install Ventura</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequis">Prérequis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#etape-1-telechargement-de-l-image">Etape 1 : Téléchargement de l’image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#etape-2-formatage-et-creation-de-la-cle-usb-bootable">Etape 2 : Formatage et création de la clé USB bootable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#etape-3-boot-sur-la-cle-usb">Etape 3 : Boot sur la clé USB</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#best-tools-after-fresh-install">Best tools after fresh install</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lier-macos-a-un-annuaire-ldap">Lier MacOS à un annuaire LDAP</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="documentation-macos">
+<h1>Documentation MacOS<a class="headerlink" href="#documentation-macos" title="Lien vers cette rubrique">#</a></h1>
+<section id="fresh-install-ventura">
+<h2>Fresh Install Ventura<a class="headerlink" href="#fresh-install-ventura" title="Lien vers cette rubrique">#</a></h2>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/ventura.jpg" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/ventura.jpg" />
+<p>L’installation de MacOS, que ce soit Big Sur, Monterey, Ventura ou même Sonoma, n’est pas bien compliquée.</p>
+<p>Cela se fait en quelques étapes si vous n’avez rien à sauvegarder au préalable !</p>
+<section id="prerequis">
+<h3>Prérequis<a class="headerlink" href="#prerequis" title="Lien vers cette rubrique">#</a></h3>
+<ul class="simple">
+<li><p>Connexion Internet, pour télécharger l’image</p></li>
+<li><p>Clé USB de min. 16Gio</p></li>
+<li><p>Un ordinateur sous MacOS (de préférence, sinon il y a des workarounds)</p></li>
+</ul>
+</section>
+<section id="etape-1-telechargement-de-l-image">
+<h3>Etape 1 : Téléchargement de l’image<a class="headerlink" href="#etape-1-telechargement-de-l-image" title="Lien vers cette rubrique">#</a></h3>
+<p>Si vous utilisez un Mac pour suivre ce tuto, vous pouvez vous rendre dans l’App Store et télécharger MacOS Ventura.</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/ventura-appstore.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/ventura-appstore.png" />
+<p>Lorsque ce dernier est terminé, l’assistant d’installation se lancera automatiquement, et vous n’aurez qu’à le fermer.</p>
+</section>
+<section id="etape-2-formatage-et-creation-de-la-cle-usb-bootable">
+<h3>Etape 2 : Formatage et création de la clé USB bootable<a class="headerlink" href="#etape-2-formatage-et-creation-de-la-cle-usb-bootable" title="Lien vers cette rubrique">#</a></h3>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Veillez à sauvegarder toute donnée qui vous est utile sur votre clé USB, car à la suite des prochaines étapes, elles seront <strong>définitivement perdues</strong>.</p>
+</div>
+<p>Premièrement, je vous invite à brancher votre clé USB sur votre Mac afin de pouvoir procéder à son formatage.</p>
+<p>Vous devriez maintenant la voir sur votre bureau et dans <strong>l’Utilitaire de disque</strong>.</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/disk-utility.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/disk-utility.png" />
+<p>Ici, ma clé est déjà préparée, mais elle a au préalable été renommée « Install macOS Ventura » afin qu’elle soit reconnaissable au maximum !</p>
+<p>Si vous le souhaitez, vous pouvez la formater avant la commande ci-dessous, mais cela n’est pas vraiment nécessaire étant donné que la commande le fait d’elle même.</p>
+<p><strong class="command">sudo /Applications/InstallmacOSVentura.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume</strong></p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/terminal.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/terminal.png" />
+<p>Remplacez « <em>MyVolume</em> » par le nom de votre clé USB (ici SANDISK-ALGUES111).</p>
+</section>
+<section id="etape-3-boot-sur-la-cle-usb">
+<h3>Etape 3 : Boot sur la clé USB<a class="headerlink" href="#etape-3-boot-sur-la-cle-usb" title="Lien vers cette rubrique">#</a></h3>
+<p>Après avoir effectué les étapes précédentes, il est désormais temps d’installer MacOS Ventura sur votre Mac !</p>
+<p>Nous avons donc besoin d’accéder au boot menu du mac.</p>
+<div class="admonition tip">
+<p class="admonition-title">Astuce</p>
+<p>Pour ce faire, sur les Mac Intel, il faut enfoncer la touche option (⌥) et démarrer l’ordinateur.</p>
+</div>
+<p>Cela aura pour effet de vous amener au menu de démarrage dans lequel vous pourrez choisir la clé USB bootable qui s’affichera avec le logo de Ventura.</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/macos-bootmenu.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/macos-bootmenu.png" />
+<p>Après cela, un assistant d’installation vous guidera jusqu’à la fin du processus d’installation de MacOS Ventura.</p>
+<p>Choisissez les options correspondant à vos besoins et feel free !</p>
+</section>
+<section id="best-tools-after-fresh-install">
+<h3>Best tools after fresh install<a class="headerlink" href="#best-tools-after-fresh-install" title="Lien vers cette rubrique">#</a></h3>
+<p>Après une fresh install, il est nécessaire de configurer et d’adapter MacOS à nos besoins et habitudes.
+Pour cela, une liste personnelle d’outils et de paramètres est disponible ci-dessous</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Keyboard Settings</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Dock settings</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Stats</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">Updates and Upgrades</button><button aria-controls="panel-0-0-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-4" name="0-4" role="tab" tabindex="-1">Application Updates and Upgrades</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>Augmentation de la vitesse de répétition des touches et diminution de la pause avant répétition.</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/keyboard-settings.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/keyboard-settings.png" />
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>Par défaut, la vitesse d’affichage du dock a une latence lorsque nous glissons le curseur dessus. Cette commande raccourcit cet effet :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">defaults write com.apple.dock autohide-time-modifier -float 0.4; killall Dock</span>
+</pre></div>
+</div>
+<p>Nous pouvons aussi faire en sorte que le dock s’affiche à gauche de l’écran et seulement lorsque le curseur est dessus.
+Voici mes réglages personnels :</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/dock-settings.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/dock-settings.png" />
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>En tant qu’admin système et réseau, j’aime bien avoir les informations esentielles de mon OS à portée de main (utilisation CPU, RAM, SSD, Network…).</p>
+<p>Pour cela, <a class="reference external" href="https://github.com/exelban/stats">Stats</a> est particulièrement efficace en affichant ces infos dans la barre des menus supérieure.</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/menu-bar.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/menu-bar.png" />
+<p>Vous pouvez modifier les réglages de l’application depuis l’interface ci-dessous :</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/stats-settings.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/stats-settings.png" />
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><p>Par défaut, MacOS active les mises à jour et mises à niveau automatiques, ce qui peut poser de gros problèmes pour la compatibilité de certaines applications voire pour les performances de votre ordinateur.</p>
+<p>Pour éviter cela, vous pouvez vous rendre dans le menu Général -&gt; Mise à jour de logiciels -&gt; Mises à jour automatiques</p>
+<p>Voici les paramètres que j’utilise personnellement :</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/updates.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/updates.png" />
+</div><div aria-labelledby="tab-0-0-4" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-4" name="0-4" role="tabpanel" tabindex="0"><p>Souvent, nous téléchargeons nos applications depuis différentes sources. Mais cela peut s’avérer fatiguant de vérifier constamment si une MàJ est disponible, surtout si l’app ne le fait pas d’elle même.</p>
+<p>Une solution payante mais efficace existe : <cite>MacUpdater 3 &lt;https://www.corecode.io/index.html&gt;</cite></p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/mac-updater.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/mac-updater.png" />
+<p>Ci-dessus nous voyons que j’ai quelques mise à jour à effectuer, et nous pouvons cliquer sur le bouton icône « Infos » pour voir le détail des MàJ que MacUpdater va chercher.</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/mac-updater1.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/mac-updater1.png" />
+</div></div>
+</section>
+</section>
+<section id="lier-macos-a-un-annuaire-ldap">
+<h2>Lier MacOS à un annuaire LDAP<a class="headerlink" href="#lier-macos-a-un-annuaire-ldap" title="Lien vers cette rubrique">#</a></h2>
+<p>Sur MacOS, un utilitaire très utile est disponible pour enregistrer votre Mac sur un simple domaine LDAP ou Active Directory.</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/utilitaire-annuaire.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MacOS/utilitaire-annuaire.png" />
+<p>Afin de modifier ces paramètres, une autorisation administrateur supplémentaire vous sera demandée lorsque vous cliquerez sur le cadenas.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Documentation-Docker.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Documentation Docker</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Documentation-Windows.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Documentation Windows</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fresh-install-ventura">Fresh Install Ventura</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequis">Prérequis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#etape-1-telechargement-de-l-image">Etape 1 : Téléchargement de l’image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#etape-2-formatage-et-creation-de-la-cle-usb-bootable">Etape 2 : Formatage et création de la clé USB bootable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#etape-3-boot-sur-la-cle-usb">Etape 3 : Boot sur la clé USB</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#best-tools-after-fresh-install">Best tools after fresh install</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lier-macos-a-un-annuaire-ldap">Lier MacOS à un annuaire LDAP</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Arthur LE GUENNEC
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Arthur LE GUENNEC.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
