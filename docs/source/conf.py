@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Modules CFC IBM'
+project = 'Documentation Admin Système et Réseau'
 copyright = '2024, Arthur LE GUENNEC'
 author = 'Arthur LE GUENNEC'
 release = '0.1'
@@ -14,7 +14,15 @@ release = '0.1'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['myst_parser']
+extensions = [
+    'myst_parser',
+    'sphinx_tabs.tabs',
+    'sphinx_togglebutton',
+    
+]
+
+sphinx_tabs_valid_builders = ['linkcheck']
+
 myst_enable_extensions = [
     "amsmath",
     "attrs_inline",
