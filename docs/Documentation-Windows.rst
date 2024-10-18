@@ -90,8 +90,8 @@ For MBR disks, run set id=27
 
 Re-enable the recovery partition by running reagentc /enable
 
-Tools Windows
-===============
+Tools & Composants Windows
+============================
 
 Console MMC
 -------------
@@ -118,6 +118,31 @@ Pour avoir accès aux outils dont vous nécessitez, il faudra cliquer sur "Fichi
 Avec l'interface ci-dessous, vous serez en mesure d'intégrer les outils désirés à la console mmc.
 
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/mmc-tool.png
+
+
+
+Windows Defender
+---------------------
+
+
+Windows Defender est un composant fondamental de Windows afin de garantir l'intégrité et la sécurité de l'OS ainsi que de l'utilisateur.
+
+Cependant il peut s'avérer qu'il bloque des logiciels, téléchargements de pilotes etc... qui nous sont utiles en tant qu'admin ou simplement en tant qu'utilisateur final.
+
+
+Si Windows Defender SmartScreen bloque l'éxecution d'un .exe, vous pouvez le débloquer facilement depuis "Propriétés" en faisant clique-droit sur le fichier concerné, et "Débloquer".
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/unblock.png
+
+
+
+Softwares utiles
+====================
+
+
+Voici une petite liste de logiciels plus ou moins utiles pour Windows.
+
+
 
 
 Best practices
@@ -274,6 +299,28 @@ Check disabled accounts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+
+
+Windows
+-----------------------
+
+
+Après une fresh install, il est important de vérifier un nombre relativement important de paramètres afin que l'OS soit le plus optimisé et sécurisé possible.
+
+
+
+Langues
+^^^^^^^^^^^^^^^^^^^^
+
+En Suisse, le formatage des nombres est différents de la France. Il est donc nécessaire de bien vérifier si le "." est bien le symbole décimal à la place de la ",".
+
+Sans cela, les logiciels de facturations seront soumis à des bugs et erreurs.
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/decimal.png
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/decimal1.png
 
 
 Microsoft Entra Connect
