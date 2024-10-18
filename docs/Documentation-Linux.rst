@@ -16,6 +16,31 @@ uname
 uname -a
 ~~~~~~~~~
 
+Affiche la version du kernel linux ainsi que la version ed la distribution de l'OS.
+
+.. code-block:: bash
+
+    ubuntu@ubuntu:~$ uname -a
+    Linux vps-4a827ff5 6.8.0-47-generic #47-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep 27 21:40:26 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+
+htop
+^^^^^^^^^^
+
+Permet de lister les processus en cours ainsi que les ressources utilisées sur la machine.
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Linux/htop.png
+
+
+df
+^^^^^^^^
+
+Liste l'espace utilisé et libre de chaque partition des volumes.
+
+
+df -h
+~~~~~~
+
 .. code-block:: bash
 
     ubuntu@ubuntu:~$ df -h
@@ -27,15 +52,6 @@ uname -a
     /dev/sda15      105M  6.1M   99M   6% /boot/efi
     tmpfs           382M   12K  382M   1% /run/user/1002
 
-
-htop
-^^^^^^^^^^
-
-df
-^^^^^^^^
-
-df -h
-~~~~~~
 
 ps
 ^^^^^^
