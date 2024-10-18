@@ -16,7 +16,7 @@ uname
 uname -a
 ~~~~~~~~~
 
-.. code-block:: console
+.. code-block:: bash
 
     ubuntu@ubuntu:~$ df -h
     Filesystem      Size  Used Avail Use% Mounted on
