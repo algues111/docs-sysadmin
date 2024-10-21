@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Arthur LE GUENNEC
+# This file is distributed under the same license as the Notes personnelles
+# Administration Système package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Notes personnelles Administration Système \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-21 12:05+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr_FR\n"
+"Language-Team: fr_FR <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../Documentation-RedTeam.rst:3
+msgid "Documentation Red Team"
+msgstr ""
+
+#: ../../Documentation-RedTeam.rst:8
+msgid "Enumeration"
+msgstr ""
+
+#: ../../Documentation-RedTeam.rst:11
+msgid "Microsoft AD"
+msgstr ""
+
+#: ../../Documentation-RedTeam.rst:14
+msgid "Reconnaissance"
+msgstr ""
+
+#: ../../Documentation-RedTeam.rst:18
+msgid "External"
+msgstr ""
+
+#: ../../Documentation-RedTeam.rst:20
+msgid ""
+"IP Space : Valid ASN for our target, netblocks in use for the "
+"organization's public-facing infrastructure, cloud presence and the "
+"hosting providers, DNS record entries, etc."
+msgstr ""
+
+#: ../../Documentation-RedTeam.rst:22
+msgid ""
+"Domain Info : Based on IP data, DNS, and site registrations. Who "
+"administers the domain? Are there any subdomains tied to our target? Are "
+"there any publicly accessible domain services present? (Mailservers, DNS,"
+" Websites, VPN portals, etc.) Can we determine what kind of defenses are "
+"in place? (SIEM, AV, IPS/IDS in use, etc.)"
+msgstr ""
+
+#: ../../Documentation-RedTeam.rst:24
+msgid ""
+"Schema Format :  Format       Can we discover the organization's email "
+"accounts, AD usernames, and even password policies? Anything that will "
+"give us information we can use to build a valid username list to test "
+"external-facing services for password spraying, credential stuffing, "
+"brute forcing, etc."
+msgstr ""
+
+#: ../../Documentation-RedTeam.rst:26
+msgid ""
+"Data Disclosures : For data disclosures we will be looking for publicly "
+"accessible files ( .pdf, .ppt, .docx, .xlsx, etc. ) for any information "
+"that helps shed light on the target. For example, any published files "
+"that contain intranet site listings, user metadata, shares, or other "
+"critical software or hardware in the environment (credentials pushed to a"
+" public GitHub repo, the internal AD username format in the metadata of a"
+" PDF, for example.)"
+msgstr ""
+
+#: ../../Documentation-RedTeam.rst:28
+msgid ""
+"Breach Data :         Any publicly released usernames, passwords, or "
+"other critical information that can help an attacker gain a foothold."
+msgstr ""
+

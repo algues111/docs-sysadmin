@@ -1,0 +1,594 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Arthur LE GUENNEC
+# This file is distributed under the same license as the Notes personnelles Administration Système package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Notes personnelles Administration Système \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-21 12:05+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../Documentation-ESXi.rst:3
+msgid "Documentation ESXi"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:7
+msgid "Upgrade 6.7 -> 8.0.2B (sur DL380 Gen9)"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:10
+msgid "Phase 1 : Préparation"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:12
+msgid "https://www.stephenwagner.com/2023/07/24/esxi-8-0-hpe-proliant-dl360p-gen8/"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:14
+msgid "Préparer des backups des différentes VMs tournant sur l'esxi au préalable. (Stockage > Datastore > Télécharger les dossiers de chaque VM ou via VEEAM)"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:17
+msgid "Accéder à l'ESXi, activer le mode maintenance et SSH"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:22
+msgid "Télécharger dans le datastore votre nouveau bundle de VIBs pour ESXi 8.0.2B (ici HPE) Telecharger l'iso complet de esxi 8.0.2 via le lien donné (soit le ALL soit custom, ici HPE)"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:26
+msgid "Phase 2 : Mise à jour"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:28
+msgid "Créer une clé bootable de l'iso Insérer la clé dans l'esxi F11 au boot Selectionner Generic USB Attendre le boot Accepter l'installation d'ESXi 8 Choisir le bon support de stockage Selectionner Upgrade OU installer ESXI8 si vous voulez réinstaller le tout"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:37
+msgid "Erreur : conflits de VIBs ou checksum invalide etc... Désinstaller les VIBs conflicutels et invalides de la manière suivante :"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:40
+msgid "rebooter l'esxi normalement"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:41
+msgid "y accéder via ssh"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:43
+msgid "Liste des commandes :"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:51
+msgid "Then install the new VIBs bundle :"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:57
+msgid "The parameter -f is not always necessary, but it does when you dont have the AcceptanceLevel \"Community\""
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:59
+msgid "https://github.com/lamw/ghettoVCB/issues/64"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:61
+msgid "esxcli software acceptance set –level=CommunitySupported"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:63
+msgid "https://www.vladan.fr/how-to-understand-vmware-acceptance-levels-for-hosts-and-vibs/"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:65
+msgid "Reessayer commande install"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:67
+msgid "Desormais, un retour de commande expliquant que les paquets VIBs ont été installé avec succès apparaitra."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:69
+msgid "Reboot la machine"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:71
+msgid "certificat openssl defaillant ;"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:73
+msgid "recréer un :"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:75
+msgid "https://blogs.vmware.com/cloud-foundation/2020/04/14/replacing-vmware-esxi-ssl-certificate-in-vmware-cloud-foundation/"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:77
+msgid "Licences :"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:79
+msgid "https://gist.github.com/ayebrian/646775424393c9a35fb8257f44df1c8b"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:81
+msgid "Installation VCenter Server"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:83
+msgid "Télécharger iso correspondant à la version de l'ESXi (ici 8)"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:87
+msgid "Vérifier le checksum. Si ce dernier n'est pas bon, votre installation plantera à 19% en indiquant une erreur de connection réseau."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:91
+msgid "Interface ESXi 8.0 :"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:94
+msgid "*Source : williamlam.com*"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:98
+msgid "Si vous voulez personnaliser l'interface ESXi, je vous invite à vous rediriger vers cette page : https://williamlam.com/2022/10/quick-tip-accessing-new-custom-theme-editor-for-esxi-8-0-host-client.html"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:104
+msgid "Simple updates on legacy ESXi hosts"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:106
+msgid "Si votre ESXi est hébergé sur un hôte avec des caractéristiques hardwares non officiellement supportées par VMWare, notamment pour le CPU, il faudra effectuer quelques manipulations pour remédier à la problématique."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:108
+msgid "https://williamlam.com/2022/10/using-vsphere-lifecycle-manager-vlcm-to-remediate-nested-esxi-host-with-cpu-on-the-host-is-not-supported.html"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:110
+msgid "Tout d'adbord, il est impératif de sauvegarder toute donnée sensible et essentielle à votre organisation. Pour cela, vous pouvez exporter les VM, les sauvegarder avec VEEAM Backups etc..."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:113
+msgid "Prérequis :"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:115
+msgid "Connexion Internet pour télécharger le bundle offline"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:116
+msgid "Compte Broadcom pour accéder aux ressources"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:120
+msgid "Custom ISO download"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:122
+msgid "Si vous possédez un serveur HPE, DELL, ou provenant de tout autre fabricant disposant d'iso ESXi personnalisé, vous ne les trouverez plus sur leurs propres sites, mais sur celui de Broadcom, étant donné que les licences gratuites de VMWare ESXi ont été abandonnées par ces derniers."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:127
+msgid "Vous trouverez les ISO VMWare seulement depuis le lien ci-dessous."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:129
+msgid "https://support.broadcom.com/group/ecx/downloads"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:132
+msgid "My Downloads --> VMWare VSphere --> VMware vSphere - Standard 8.0 --> Custom ISOs"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:150
+msgid "Après avoir téléchargé le bundle custom .zip, transférez le dans le datastore de votre hôte ou dans un volume connecté à ce dernier."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:152
+msgid "Activez SSH et connectez-vous."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:160
+msgid "L'installation des vib peut prendre du temps. Si cette dernière a été effectuée avec succès, vous aurez cette output dans la CLI :"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:174
+msgid "Pour vérifier que l'ESXi a bien été mis à jour, vous pouvez vérifier sa version grâce à cette commande :"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:183
+msgid "Lorsque toutes ces étapes ont été effectuées une fois, les prochaines alertes de legacy CPU pourront être remédiées directement depuis l'interface vSphere."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:191
+msgid "https://pio.nz/2023/01/05/keeping-esxi-up-to-date-on-obsolete-hw/ https://infra.engineer/miscellaneous/71-vmware-upgrade-esxi-host-with-esxcli https://www.vinchin.com/vm-tips/best-practice-to-backup-and-restore-vmware-vcenter.html https://williamlam.com/2020/04/quick-tip-allow-unsupported-cpus-when-upgrading-to-esxi-7-0.html"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:199
+msgid "VEEAM BACKUP & REPLICATION"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:201
+msgid "Veeam Backup & Replication est une solution de sauvegardes / backups"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:208
+msgid "Sauvegardes"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:210
+msgid "Mais tout d'abord, regardons les différents types de sauvegardes."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:214
+msgid "Sauvegarde complète"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:216
+msgid "La sauvegarde complète consiste à copier l'intégralité des données d'un système, incluant le système d'exploitation, les applications, les paramètres et les données utilisateur."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:219
+#: ../../Documentation-ESXi.rst:236
+#: ../../Documentation-ESXi.rst:250
+msgid "Avantages :"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:220
+msgid "Toutes les données sont sauvegardées"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:221
+msgid "Restauration facile et rapide"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:224
+#: ../../Documentation-ESXi.rst:241
+#: ../../Documentation-ESXi.rst:255
+msgid "Inconvénients :"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:225
+msgid "Prend beaucoup de temps à réaliser"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:226
+msgid "Utilise beaucoup d'espace de stockage"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:228
+msgid "Elle est généralement effectuée de façon périodique, par exemple hebdomadairement, et sert souvent de base pour d'autres types de sauvegardes."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:231
+msgid "Sauvegarde incrémentielle"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:233
+msgid "La sauvegarde incrémentielle ne sauvegarde que les données qui ont été modifiées depuis la dernière sauvegarde, qu'elle soit complète ou incrémentielle."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:237
+msgid "Rapide à effectuer"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:238
+msgid "Utilise peu d'espace de stockage"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:242
+msgid "La restauration peut être complexe, nécessitant la dernière sauvegarde complète et toutes les sauvegardes incrémentielles suivantes"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:245
+msgid "Sauvegarde différentielle"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:247
+msgid "La sauvegarde différentielle copie tous les fichiers modifiés depuis la dernière sauvegarde complète."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:251
+msgid "Plus rapide qu'une sauvegarde complète"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:252
+msgid "Restauration plus simple que la sauvegarde incrémentielle"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:256
+msgid "Utilise plus d'espace que la sauvegarde incrémentielle"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:257
+msgid "Moins rapide que la sauvegarde incrémentielle"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:260
+msgid "Sauvegarde miroir"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:262
+msgid "La sauvegarde miroir crée une copie exacte des données source. Elle est souvent utilisée dans des environnements nécessitant une disponibilité élevée des données."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:266
+msgid "Snapshots"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:268
+msgid "Les snapshots sont des \"photos\" de l'état d'un volume à un instant \"t\"."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:272
+msgid "Choix du type de sauvegarde"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:274
+msgid "Le choix du type de sauvegarde dépend de plusieurs facteurs, notamment : - Le volume de données à sauvegarder - La fréquence de modification des données - Le temps disponible pour effectuer les sauvegardes - L'espace de stockage disponible - Les besoins en termes de rapidité de restauration"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:281
+msgid "Une stratégie courante consiste à combiner plusieurs types de sauvegardes, par exemple en effectuant une sauvegarde complète hebdomadaire, complétée par des sauvegardes incrémentielles ou différentielles quotidiennes."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:286
+msgid "https://www.veeam.com/fr/products/free/backup-recovery.html?wvideo=z5ezmykjpu"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:288
+msgid "Vous pouvez installer Veeam Backup Recovery And Replication gratuitement avec la community edition."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:293
+msgid "Installation"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:295
+msgid "Pour installer Veeam Backup & Replication, il est tout d'abord nécessaire d'installer le l'image du logiciel sur le `site officiel.<https://www.veeam.com/fr/products/free/backup-recovery.html?wvideo=z5ezmykjpu>`_"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:298
+msgid "Cliquer sur \"Testez gratuitement\" vous demandera de remplir un formulaire nécessaire au téléchargement du soft."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:300
+msgid "Des vidéos explicatives sont aussi disponibles en bas de la page."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:303
+msgid "Après avoir téléchargé l'iso de 11Go environ, vous pourrez l'ouvrir et cliquer sur \"setup\"."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:310
+msgid "Après l'éxecution du setup, vous aurez plusieurs options d'installation."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:312
+msgid "Dans notre cas, nous installons Veeam Backup and Replication."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:319
+msgid "Après que l'installation soit terminée, vous pourrez lancer la console Veeam qui affichera une fenêtre de connexion."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:328
+msgid "Configuration"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:331
+msgid "Afin de pouvoir créer des backups et les restaurer, il est nécessaire de configurer quelques paramètres."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:334
+msgid "Tout d'abord, lorsque Veeam est lancé, cliquez sur **Backup Infrastructure** en bas à gauche de la page, cliquez sur **Managed Servers** puis sur **Add Server** en haut à gauche de la page."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:339
+msgid "A la suite de ces étapes, le logiciel vous demandera de choisir le serveur que vous souhaitez joindre à votre infrastructure de backup."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:341
+msgid "Ici, nous choisissons VMWare vSphere, puis vSphere."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:349
+msgid "Comme il est précisé dans le menu d'ajout de serveur, il est préférable d'ajouter vCenter Server si votre ESXi est géré via cette instance. Cela facilitera notamment la gestion des permissions de VEEAM sur les VMs de l'ESXi."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:353
+msgid "Rentrer l'IP ou le nom DNS du serveur vCenter."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:358
+msgid "Rentrer les credentials de votre SSO vSphere."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:361
+msgid "Il est important de renseigner les login de la manière suivante :"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:363
+msgid "**<vsphere-sso.domain> \\ <username>**"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:367
+msgid "Si le port https n'est pas le 443 sur votre serveur, il est nécessaire de le renseigner dans la fenêtre."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:376
+msgid "Tools"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:379
+msgid "Copy/Paste to VM"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:381
+msgid "Si vous souhaitez pouvoir utiliser le copier-coller entre votre machine et une VM, vous devez ajouter des arguements à la configuration avancée de votre VM."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:383
+msgid "Dans ESXi v8.0, voici les éléments à ajouter :"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:385
+msgid "isolation.tools.setGUIOptions.enable"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:386
+msgid "TRUE"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:388
+msgid "isolation.tools.paste.disable"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:389
+#: ../../Documentation-ESXi.rst:392
+msgid "FALSE"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:391
+msgid "isolation.tools.copy.disable"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:402
+msgid "HPE iLO"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:404
+msgid "L'iLO HPE offre une interface de gestion pour votre serveur HPE, accessible hors-ligne ou en-ligne."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:407
+msgid "Vous pouvez y gérer les disques, les volumes logiques, exécuter des diagnostics..."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:409
+msgid "Elle peut s'avérer très utile pour de la maintenance ou du dépannage."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:413
+msgid "L'iLO peut être atteint en réseau via l'interface RJ45 \"iLO\", vous pouvez y attribuer une adresse IP fixe ou bien par DHCP."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:417
+msgid "iSCSI"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:420
+msgid "Ajouter un adaptateur iSCSI dans vSphere 8.0"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:422
+msgid "Dans vSphere 8.0, vous pouvez ajouter un adaptateur virtuel iSCSI depuis le menu de configuration de l'hôte (ici dl380)."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:426
+msgid "Ajouter un LUN à un datastore"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:428
+msgid "Un LUN (Logical Unit Number) est une tranche ou une partie d'un ensemble configuré de disques qui est présentable à un hôte et monté en tant que volume dans le système d'exploitation."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:430
+msgid "Afin de ne pas perdre de performances, le LUN devrait être lié à l'hôte ESXi via une connexion 10Gbit/s voire 25Gbit/s."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:435
+msgid "N'ajoutez un LUN que si vous êtes certain de le garder. Le démonter du datastore demande un temps de maintenance important !"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:440
+msgid "Ne pas ajouter plus d'1 seul LUN sur un datastore. Cela peut causer des problèmes de performance."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:446
+msgid "Détacher un LUN d'un datastore"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:449
+msgid "Détacher un LUN d'un datastore est une procédure compliquée qui nécessite d'être effectuée minutieusement pour ne pas perdre ou corrompre quelconque donnée / VM."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:454
+msgid "Démonter le datastore"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:456
+msgid "La première étape à effectuer est de démonter le datastore. Pour cela, migrez toutes les VM stockées sur le datastore en question ainsi que les dossiers, fichiers présents dessus."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:459
+msgid "Démontez désormais le datastore."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:463
+msgid "Détacher le LUN"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:466
+msgid "Dans les Storage Devices, vous pouvez maintenant détacher le LUN du datastore."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:470
+msgid "Supprimer le LUN"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:473
+msgid "Vous pouvez désromais supprimer le LUN que vous avez créé sur le périphérique distant (NAS etc...)."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:477
+msgid "Nerworking"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:481
+msgid "vSwitch"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:484
+msgid "Le vSwitch agit tel un switch virtuel. Il peut être attribué à un ou plusieurs groupes de ports (\"groupes de NIC\") dans l'interface de configuration ESXi web ou vSphere client."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:487
+msgid "Plusieurs paramètres sont disponibles dans le menu de paramétrage"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:491
+msgid "Paramètres de sécurité"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:493
+msgid "Vous povuez activer ou désactiver plusieurs modes :"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:497
+msgid "Promiscuous mode"
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:499
+msgid "Activer cela permettra à chaque port (interface) des VM connectées au vSwitch de voir tout le trafic passant sur ce dernier. C'est une sorte de mode \"hub\"."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:505
+msgid "Si vous comptez paramétrer un cluster de pares-feu PFSense, il est nécessaire d'activer le Promiscuous mode sur chaque vSwitch où une VIP CARP est configurée."
+msgstr ""
+
+#: ../../Documentation-ESXi.rst:509
+msgid "Groupe de ports"
+msgstr ""

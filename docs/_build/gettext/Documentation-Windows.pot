@@ -1,0 +1,434 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Arthur LE GUENNEC
+# This file is distributed under the same license as the Notes personnelles Administration Système package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Notes personnelles Administration Système \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-21 12:05+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../Documentation-Windows.rst:3
+msgid "Documentation Windows"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:6
+msgid "Joindre le PC à un domaine LDAP (AD)"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:9
+msgid "Prérequis"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:11
+msgid "Nom du domaine"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:12
+msgid "Accès administrateur au domaine"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:15
+msgid "Sous Windows 11, afin de joindre un PC à un domaine Active Directory, il faut se rendre dans les \"Paramètres\" -> Système -> Informations Système"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:22
+msgid "Ici, vous trouverez une section \"Liens connexes\" dans laquelle se situe \"Domaine et groupe de travail\"."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:24
+msgid "La fenêtre ci-dessous s'ouvre, dans laquelle il faut cliquer sur \"Modifier...\""
+msgstr ""
+
+#: ../../Documentation-Windows.rst:30
+msgid "Rentrez le nom de domaine voulu, et identifiez-vous avec un compte administrateur du domaine."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:33
+msgid "Windows Server 2022"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:37
+msgid "Installer fonctionnalités"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:40
+msgid "Active Directory"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:46
+msgid "Du moment que votre domaine Active Directory est créé, vous ne pouvez plus changer le nom de votre DC (domain controller)."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:52
+msgid "Déplacer partition de récupération"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:57
+msgid "I just had this problem, and I followed this guide to resize the drive:"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:59
+msgid "https://thedxt.ca/2023/06/moving-windows-recovery-partition-correctly/"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:61
+msgid "Basically, here are the steps:"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:63
+msgid "Disable the existing Windows Recovery Partition by running reagentc /disable"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:65
+msgid "Use diskpart to remove the recovery partition"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:67
+msgid "list disk"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:69
+msgid "select disk # where # is the disk needing the recovery partition removed"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:71
+#: ../../Documentation-Windows.rst:83
+msgid "list partition"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:73
+msgid "select partition # where # is the recovery partition"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:75
+msgid "delete partition override to force deletion of the recovery partition"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:77
+msgid "Expand the disk using Disk Management, leaving ~1024 MB at the end of the drive for recreating the recovery partition"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:79
+msgid "Create New Simple Volume for Recovery, NTFS, no drive letter"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:81
+msgid "use diskpart to set the recovery partition attributes"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:85
+msgid "select partition # where # is the new recovery partition"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:87
+msgid "For GPT disks run set id=de94bba4-06d1-4d40-a16a-bfd50179d6ac & gpt attributes=0x8000000000000001"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:89
+msgid "For MBR disks, run set id=27"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:91
+msgid "Re-enable the recovery partition by running reagentc /enable"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:94
+msgid "Tools & Composants Windows"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:97
+msgid "Console MMC"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:99
+msgid "La console MMC est une console graphique regroupant tous les outils, gestionnaire, services présents sur Windows."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:101
+msgid "Elle est donc un must-have pour les administrateurs systèmes Windows."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:103
+msgid "Vous pouvez l'ouvrir en tapant \"mmc\" dans le menu \"Démarrer\" ou en rentrant \"mmc.exe\" dans l'explorateur de fichiers."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:109
+msgid "Lorsque nous débarquons la 1ère fois sur notre console, seul un dossier nommé \"Racine de la console\" est présent."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:111
+msgid "Pour avoir accès aux outils dont vous nécessitez, il faudra cliquer sur \"Fichier\" et ensuite \"Ajouter/Supprimer un composant logiciel enfichable\"."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:118
+msgid "Avec l'interface ci-dessous, vous serez en mesure d'intégrer les outils désirés à la console mmc."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:125
+msgid "Windows Defender"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:128
+msgid "Windows Defender est un composant fondamental de Windows afin de garantir l'intégrité et la sécurité de l'OS ainsi que de l'utilisateur."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:130
+msgid "Cependant il peut s'avérer qu'il bloque des logiciels, téléchargements de pilotes etc... qui nous sont utiles en tant qu'admin ou simplement en tant qu'utilisateur final."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:133
+msgid "Si Windows Defender SmartScreen bloque l'éxecution d'un .exe, vous pouvez le débloquer facilement depuis \"Propriétés\" en faisant clique-droit sur le fichier concerné, et \"Débloquer\"."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:140
+msgid "Softwares utiles"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:143
+msgid "Voici une petite liste de logiciels plus ou moins utiles pour Windows."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:149
+msgid "Best practices"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:153
+msgid "Active Directory Directory Services (AD DS)"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:157
+msgid "PingCastle"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:163
+msgid "PingCastle est un outil d'audit de sécurité pour domaine Active Directory."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:165
+msgid "Il permet de générer un rapport html sur lequel se baser pour améliorer et optimser la sécurité du domaine."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:167
+msgid ":download:`exemple de rapport HTML pour AD fraîchement créé <source/other/ad_hc_srvds.lab.html>`"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:173
+msgid "Autoriser seulement NTLMv2"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:181
+msgid "ms-DS-MachineAccountQuota set to 0"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:183
+msgid "Par défault, le paramètre ms-DS-MachineAccountQuota a une valeur de 10."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:185
+msgid "Ce qui veut dire que n'importe quel utilisateur authentifié auprès du domaine peut ajouter jusqu'à 10 clients sur le domaine."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:187
+msgid "Pour changer cet attribut : **Utilisateurs et Ordinateurs Active Directory --> Affichage : Fonctionnalités Avancées --> Propriétés du domaine en question --> Éditeur d'attributs --> Cherhcer ms-DS-MachineAccountQuota et remplacer \"10\" par \"0\"**"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:194
+msgid "https://sid-500.com/2017/09/09/securing-active-directory-who-can-add-computers-to-the-domain-only-the-domain-admin-are-you-sure/"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:199
+msgid "Avoid unexpected schema modifications which could result in domain rebuild"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:201
+msgid "Ce renforcement permet d'éviter des risques de modifications de schémas impromptues."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:203
+msgid "Il consiste à retirer tous les utilisateurs du groupe \"Administrateurs du schéma\"."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:205
+msgid "Cela est réversible."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:213
+msgid "Check if the LAPS tool to handle the native local admnistrator passwords is installed"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:215
+msgid "Le but est d'être certain qu'une politique de mots de passe est définie pour le compte administrateur local."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:217
+msgid "Il est donc nécessaire d'installer ce package depuis le `site officiel de Microsoft.<https://www.it-connect.fr/chapitres/installation-de-laps-sur-un-controleur-de-domaine/>`_"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:223
+msgid "Lancez l'installateur .msi, et sélectionner les packages comme suit :"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:229
+msgid "AdmPwd GPO Extension n'est pas nécessaire sur un contrôleur de domaine. En fait, le composant \"AdmPwd GPO Extension\" doit être déployé sur l'ensemble des machines à gérer via LAPS"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:233
+msgid "Voici l'utilité des différents outils de gestion :"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:235
+msgid "Fat client UI : outil graphique pour la gestion de LAPS"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:236
+msgid "PowerShell module : commandes PowerShell pour LAPS"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:237
+msgid "GPO Editor templates : modèle ADMX de LAPS"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:239
+msgid "Après avoir terminé l'installation graphique de LAPS, il est nécessaire d'importer ses modules et de modifier le schéma de l'Active Directory."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:241
+msgid "Pour savoir quel poste est maître du schéma, exécutez en Powershell"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:247
+msgid "Pour importer les modules, exécutez toujours en Powershell :"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:259
+msgid "J'en suis à B. Attribuer les droits d'écriture aux machines dans l'article"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:263
+msgid "`L'article d'IT-Connect.fr sur LAPS.<https://www.it-connect.fr/chapitres/installation-de-laps-sur-un-controleur-de-domaine/>`_"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:267
+msgid "Empêcher la délégation de compte pour les utilisateurs admin"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:269
+msgid "Afin d'éviter des élévations de privilèges non souhaitées et limiter les risques, il est préférable de marquer les utilisateurs ayant des privilièges importants comme \"sensibles\"."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:277
+msgid "Si vous marquez un compte comme protégé dans l'AD, cela empechêra sa connexion sur une session hors-ligne (hors-réseau du DC)"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:284
+msgid "Disable IPv6 on Windows"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:286
+msgid "Depuis la faille de sécurité de Windows liée à IPv6 (CVE-2024-38063), il est conseillé de désactiver ce protocole s'il n'est pas utilisé dans l'organisation."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:288
+msgid "Nativement, il n'y pas de GPO pour gérer l'intégration d'IPv6 à Windows, mais la communauté a créé un fichier .amdx paliant à cela."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:292
+msgid "Téléchargez-le :download:`ici <source/other/IPv6Configuration.zip>`"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:299
+msgid "Check disabled accounts"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:305
+msgid "Windows"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:308
+msgid "Après une fresh install, il est important de vérifier un nombre relativement important de paramètres afin que l'OS soit le plus optimisé et sécurisé possible."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:313
+msgid "Langues"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:315
+msgid "En Suisse, le formatage des nombres est différents de la France. Il est donc nécessaire de bien vérifier si le \".\" est bien le symbole décimal à la place de la \",\"."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:317
+msgid "Sans cela, les logiciels de facturations seront soumis à des bugs et erreurs."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:327
+msgid "Microsoft Entra Connect"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:329
+msgid "Si vous souhaitez joindre votre domaine AD à votre tenant MS365, il faudra installer un agent de synchronisation directement sur un contrôleur de domaine."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:333
+msgid "Si vous avez créer un domaine AD avec un DNS de type non routable (extensions en .lan, .local etc...), il faudrait rajouter un UPN alternatif (lui étant routable) pour votre AD."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:338
+msgid "Ajouter un UPN Alternatif"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:340
+msgid "Pour ajouter un suffixe UPN, vous pouvez le faire de 2 manières différentes :"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:342
+msgid "Via Powershell"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:343
+msgid "Via la console Active Directory Domains and Trusts"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:346
+msgid "Powershell"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:348
+msgid "Lister les UPN :"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:355
+msgid "Ajouter un UPN :"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:362
+msgid "Relistez les UPN pour vérifier le succès de l'ajout."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:367
+msgid "Console Active Directory Domains and Trusts"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:374
+msgid "Après avoir rajouter notre nouveau domaine routable (utilisé pour le tenant MS365), nous pouvons désormais lancer l'agent."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:387
+msgid "Si vous rencontrez une erreur contenant \"Creation of connector ********.onmicrosoft.com - AAD failed. This may be due to replication delay\", il sera nécessaire de renforcer l'utilisation de TLS1.2 sur votre contrôleur de domaine."
+msgstr ""
+
+#: ../../Documentation-Windows.rst:389
+msgid "https://answers.microsoft.com/en-us/msoffice/forum/all/creation-of-connector-onmicrosoftcom-aad-failed/0c1aaba0-a034-4e96-bd68-de602a39a5b5"
+msgstr ""
+
+#: ../../Documentation-Windows.rst:391
+msgid "https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/reference-connect-tls-enforcement"
+msgstr ""

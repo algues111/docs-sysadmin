@@ -1,0 +1,282 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Arthur LE GUENNEC
+# This file is distributed under the same license as the Notes personnelles
+# Administration Système package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Notes personnelles Administration Système \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-21 12:05+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en_EN\n"
+"Language-Team: en_EN <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../Documentation-MacOS.rst:3
+msgid "Documentation MacOS"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:7
+msgid "Fresh Install Ventura"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:14
+msgid ""
+"L'installation de MacOS, que ce soit Big Sur, Monterey, Ventura ou même "
+"Sonoma, n'est pas bien compliquée."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:16
+msgid ""
+"Cela se fait en quelques étapes si vous n'avez rien à sauvegarder au "
+"préalable !"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:19
+msgid "Prérequis"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:21
+msgid "Connexion Internet, pour télécharger l'image"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:22
+msgid "Clé USB de min. 16Gio"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:23
+msgid "Un ordinateur sous MacOS (de préférence, sinon il y a des workarounds)"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:29
+msgid "Etape 1 : Téléchargement de l'image"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:31
+msgid ""
+"Si vous utilisez un Mac pour suivre ce tuto, vous pouvez vous rendre dans"
+" l'App Store et télécharger MacOS Ventura."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:38
+msgid ""
+"Lorsque ce dernier est terminé, l'assistant d'installation se lancera "
+"automatiquement, et vous n'aurez qu'à le fermer."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:43
+msgid "Etape 2 : Formatage et création de la clé USB bootable"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:46
+msgid ""
+"Veillez à sauvegarder toute donnée qui vous est utile sur votre clé USB, "
+"car à la suite des prochaines étapes, elles seront **définitivement "
+"perdues**."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:48
+msgid ""
+"Premièrement, je vous invite à brancher votre clé USB sur votre Mac afin "
+"de pouvoir procéder à son formatage."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:50
+msgid ""
+"Vous devriez maintenant la voir sur votre bureau et dans **l'Utilitaire "
+"de disque**."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:54
+msgid ""
+"Ici, ma clé est déjà préparée, mais elle a au préalable été renommée "
+"\"Install macOS Ventura\" afin qu'elle soit reconnaissable au maximum !"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:57
+msgid ""
+"Si vous le souhaitez, vous pouvez la formater avant la commande ci-"
+"dessous, mais cela n'est pas vraiment nécessaire étant donné que la "
+"commande le fait d'elle même."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:60
+msgid ""
+":command:`sudo /Applications/Install\\ macOS\\ "
+"Ventura.app/Contents/Resources/createinstallmedia --volume "
+"/Volumes/MyVolume`"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:65
+msgid ""
+"Remplacez \"*MyVolume*\" par le nom de votre clé USB (ici SANDISK-"
+"ALGUES111)."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:70
+msgid "Etape 3 : Boot sur la clé USB"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:72
+msgid ""
+"Après avoir effectué les étapes précédentes, il est désormais temps "
+"d'installer MacOS Ventura sur votre Mac !"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:74
+msgid "Nous avons donc besoin d'accéder au boot menu du mac."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:77
+msgid ""
+"Pour ce faire, sur les Mac Intel, il faut enfoncer la touche option (⌥) "
+"et démarrer l'ordinateur."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:80
+msgid ""
+"Cela aura pour effet de vous amener au menu de démarrage dans lequel vous"
+" pourrez choisir la clé USB bootable qui s'affichera avec le logo de "
+"Ventura."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:86
+msgid ""
+"Après cela, un assistant d'installation vous guidera jusqu'à la fin du "
+"processus d'installation de MacOS Ventura."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:88
+msgid "Choisissez les options correspondant à vos besoins et feel free !"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:92
+msgid "Best tools after fresh install"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:95
+msgid ""
+"Après une fresh install, il est nécessaire de configurer et d'adapter "
+"MacOS à nos besoins et habitudes. Pour cela, une liste personnelle "
+"d'outils et de paramètres est disponible ci-dessous"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:101
+msgid "Keyboard Settings"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:103
+msgid ""
+"Augmentation de la vitesse de répétition des touches et diminution de la "
+"pause avant répétition."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:108
+msgid "Dock settings"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:110
+msgid ""
+"Par défaut, la vitesse d'affichage du dock a une latence lorsque nous "
+"glissons le curseur dessus. Cette commande raccourcit cet effet :"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:116
+msgid ""
+"Nous pouvons aussi faire en sorte que le dock s'affiche à gauche de "
+"l'écran et seulement lorsque le curseur est dessus. Voici mes réglages "
+"personnels :"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:121
+msgid "Stats"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:123
+msgid ""
+"En tant qu'admin système et réseau, j'aime bien avoir les informations "
+"esentielles de mon OS à portée de main (utilisation CPU, RAM, SSD, "
+"Network...)."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:125
+msgid ""
+"Pour cela, `Stats <https://github.com/exelban/stats>`_ est "
+"particulièrement efficace en affichant ces infos dans la barre des menus "
+"supérieure."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:132
+msgid ""
+"Vous pouvez modifier les réglages de l'application depuis l'interface ci-"
+"dessous :"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:137
+msgid "Updates and Upgrades"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:139
+msgid ""
+"Par défaut, MacOS active les mises à jour et mises à niveau automatiques,"
+" ce qui peut poser de gros problèmes pour la compatibilité de certaines "
+"applications voire pour les performances de votre ordinateur."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:141
+msgid ""
+"Pour éviter cela, vous pouvez vous rendre dans le menu Général -> Mise à "
+"jour de logiciels -> Mises à jour automatiques"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:143
+msgid "Voici les paramètres que j'utilise personnellement :"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:148
+msgid "Application Updates and Upgrades"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:150
+msgid ""
+"Souvent, nous téléchargeons nos applications depuis différentes sources. "
+"Mais cela peut s'avérer fatiguant de vérifier constamment si une MàJ est "
+"disponible, surtout si l'app ne le fait pas d'elle même."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:152
+msgid ""
+"Une solution payante mais efficace existe : `MacUpdater 3 "
+"<https://www.corecode.io/index.html>`"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:156
+msgid ""
+"Ci-dessus nous voyons que j'ai quelques mise à jour à effectuer, et nous "
+"pouvons cliquer sur le bouton icône \"Infos\" pour voir le détail des MàJ"
+" que MacUpdater va chercher."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:163
+msgid "Lier MacOS à un annuaire LDAP"
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:165
+msgid ""
+"Sur MacOS, un utilitaire très utile est disponible pour enregistrer votre"
+" Mac sur un simple domaine LDAP ou Active Directory."
+msgstr ""
+
+#: ../../Documentation-MacOS.rst:171
+msgid ""
+"Afin de modifier ces paramètres, une autorisation administrateur "
+"supplémentaire vous sera demandée lorsque vous cliquerez sur le cadenas."
+msgstr ""
+

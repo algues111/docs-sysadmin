@@ -1,0 +1,169 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Arthur LE GUENNEC
+# This file is distributed under the same license as the Notes personnelles
+# Administration Système package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Notes personnelles Administration Système \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-21 12:05+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr_FR\n"
+"Language-Team: fr_FR <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../Documentation-SOC.rst:3
+msgid "Documentation Certifications SOC HackTheBox"
+msgstr ""
+
+#: ../../Documentation-SOC.rst:6
+msgid "Concepts"
+msgstr ""
+
+#: ../../Documentation-SOC.rst:9
+msgid "SIEM"
+msgstr ""
+
+#: ../../Documentation-SOC.rst:12
+msgid "Fundamentals and basic terms"
+msgstr ""
+
+#: ../../Documentation-SOC.rst:14
+msgid ""
+"\"Security Information and Event Management (SIEM) encompasses the "
+"utilization of software offerings and solutions that merge the management"
+" of security data with the supervision of security events. These "
+"instruments facilitate real-time evaluations of alerts related to "
+"security, which are produced by network hardware and applications.\""
+msgstr ""
+
+#: ../../Documentation-SOC.rst:17
+msgid ""
+"En d'autres termes, un SIEM est une solution permettant d'aggréger des "
+"logs de différents terminaux, périphériques et du réseau, de les traiter,"
+" les analyser et les traiter en conséquence. Ce qui permet de faciliter "
+"la supervision de la sécurité d'une infrastructure informatique"
+msgstr ""
+
+#: ../../Documentation-SOC.rst:23
+msgid "Elastic Stack"
+msgstr ""
+
+#: ../../Documentation-SOC.rst:28
+msgid "SOC"
+msgstr ""
+
+#: ../../Documentation-SOC.rst:31
+msgid ""
+"\"A Security Operations Center (SOC) is an essential facility that houses"
+" a team of information security experts responsible for continuously "
+"monitoring and evaluating an organization's security status. The main "
+"objective of a SOC team is to identify, examine, and address "
+"cybersecurity incidents by employing a mix of technology solutions and a "
+"comprehensive set of procedures."
+msgstr ""
+
+#: ../../Documentation-SOC.rst:34
+msgid ""
+"Various technology solutions, such as Security Information and Event "
+"Management (SIEM) systems, Intrusion Detection and Prevention Systems "
+"(IDS/IPS), and Endpoint Detection and Response (EDR) tools, are utilized "
+"by the SOC team to monitor and identify security threats. They also make "
+"use of threat intelligence and engage in threat hunting initiatives to "
+"proactively detect potential threats and vulnerabilities.\""
+msgstr ""
+
+#: ../../Documentation-SOC.rst:40
+msgid "Roles"
+msgstr ""
+
+#: ../../Documentation-SOC.rst:42
+msgid ""
+"SOC Director: Responsible for overall management and strategic planning "
+"of the SOC, including budgeting, staffing, and alignment with "
+"organizational security objectives."
+msgstr ""
+
+#: ../../Documentation-SOC.rst:44
+msgid ""
+"SOC Manager: Oversees day-to-day operations, manages the team, "
+"coordinates incident response efforts, and ensures smooth collaboration "
+"with other departments."
+msgstr ""
+
+#: ../../Documentation-SOC.rst:46
+msgid ""
+"Tier 1 Analyst: Monitors security alerts and events, triages potential "
+"incidents, and escalates them to higher tiers for further investigation."
+msgstr ""
+
+#: ../../Documentation-SOC.rst:48
+msgid ""
+"Tier 2 Analyst: Performs in-depth analysis of escalated incidents, "
+"identifies patterns and trends, and develops mitigation strategies to "
+"address security threats."
+msgstr ""
+
+#: ../../Documentation-SOC.rst:50
+msgid ""
+"Tier 3 Analyst: Provides advanced expertise in handling complex security "
+"incidents, conducts threat hunting activities, and collaborates with "
+"other teams to improve the organization's security posture."
+msgstr ""
+
+#: ../../Documentation-SOC.rst:52
+msgid ""
+"Detection Engineer: A Detection Engineer is responsible for developing, "
+"implementing, and maintaining detection rules and signatures for security"
+" monitoring tools, such as SIEM, IDS/IPS, and EDR solutions. They work "
+"closely with security analysts to identify gaps in detection coverage and"
+" continuously improve the organization's ability to detect and respond to"
+" threats."
+msgstr ""
+
+#: ../../Documentation-SOC.rst:54
+msgid ""
+"Incident Responder: Takes charge of active security incidents, carries "
+"out in-depth digital forensics and containment and remediation efforts, "
+"and collaborates with other teams to restore affected systems and prevent"
+" future occurrences."
+msgstr ""
+
+#: ../../Documentation-SOC.rst:56
+msgid ""
+"Threat Intelligence Analyst: Gathers, analyzes, and disseminates threat "
+"intelligence data to help SOC team members better understand the threat "
+"landscape and proactively defend against emerging risks."
+msgstr ""
+
+#: ../../Documentation-SOC.rst:58
+msgid ""
+"Security Engineer: Develops, deploys, and maintains security tools, "
+"technologies, and infrastructure, and provides technical expertise to the"
+" SOC team."
+msgstr ""
+
+#: ../../Documentation-SOC.rst:60
+msgid ""
+"Compliance and Governance Specialist: Ensures that the organization's "
+"security practices and processes adhere to relevant industry standards, "
+"regulations, and best practices, and assists with audit and reporting "
+"requirements."
+msgstr ""
+
+#: ../../Documentation-SOC.rst:62
+msgid ""
+"Security Awareness and Training Coordinator: Develops and implements "
+"security training and awareness programs to educate employees about "
+"cybersecurity best practices and promote a culture of security within the"
+" organization."
+msgstr ""
+

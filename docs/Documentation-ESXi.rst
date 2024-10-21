@@ -425,7 +425,7 @@ Dans vSphere 8.0, vous pouvez ajouter un adaptateur virtuel iSCSI depuis le menu
 Ajouter un LUN à un datastore
 ---------------------------------
 
-Un LUN (Logical Unit Number).
+Un LUN (Logical Unit Number) est une tranche ou une partie d'un ensemble configuré de disques qui est présentable à un hôte et monté en tant que volume dans le système d'exploitation.
 
 Afin de ne pas perdre de performances, le LUN devrait être lié à l'hôte ESXi via une connexion 10Gbit/s voire 25Gbit/s.
 
