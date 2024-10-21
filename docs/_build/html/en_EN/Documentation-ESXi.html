@@ -1,0 +1,891 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-EN" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Documentation ESXi &#8212; Notes personnelles Administration Système 0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=f0c89327" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=d227d6b5" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=0dc8974b"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/tabs.js?v=3030b3cb"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Documentation-ESXi';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Documentation Certifications Microsoft" href="Documentation-MSCerts.html" />
+    <link rel="prev" title="Documentation Administration Système &amp; Cybersécurité" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-EN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Notes personnelles Administration Système 0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Documentation ESXi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation-MSCerts.html">Documentation Certifications Microsoft</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation-Docker.html">Documentation Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation-MacOS.html">Documentation MacOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation-Windows.html">Documentation Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation-SOC.html">Documentation Certifications SOC HackTheBox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation-Linux.html">Documentation Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation-RedTeam.html">Documentation Red Team</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation-Networking.html">Documentation Networking</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Documentation-ESXi.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Documentation ESXi</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upgrade-6-7-8-0-2b-sur-dl380-gen9">Upgrade 6.7 -&gt; 8.0.2B (sur DL380 Gen9)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-preparation">Phase 1 : Préparation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-mise-a-jour">Phase 2 : Mise à jour</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-updates-on-legacy-esxi-hosts">Simple updates on legacy ESXi hosts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-iso-download">Custom ISO download</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#veeam-backup-replication">VEEAM BACKUP &amp; REPLICATION</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sauvegardes">Sauvegardes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sauvegarde-complete">Sauvegarde complète</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#avantages">Avantages :</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#inconvenients">Inconvénients :</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sauvegarde-incrementielle">Sauvegarde incrémentielle</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Avantages :</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Inconvénients :</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sauvegarde-differentielle">Sauvegarde différentielle</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Avantages :</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Inconvénients :</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sauvegarde-miroir">Sauvegarde miroir</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#snapshots">Snapshots</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#choix-du-type-de-sauvegarde">Choix du type de sauvegarde</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">Tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-paste-to-vm">Copy/Paste to VM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hpe-ilo">HPE iLO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iscsi">iSCSI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ajouter-un-adaptateur-iscsi-dans-vsphere-8-0">Ajouter un adaptateur iSCSI dans vSphere 8.0</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ajouter-un-lun-a-un-datastore">Ajouter un LUN à un datastore</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detacher-un-lun-d-un-datastore">Détacher un LUN d’un datastore</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demonter-le-datastore">Démonter le datastore</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#detacher-le-lun">Détacher le LUN</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#supprimer-le-lun">Supprimer le LUN</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nerworking">Nerworking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vswitch">vSwitch</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parametres-de-securite">Paramètres de sécurité</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupe-de-ports">Groupe de ports</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="documentation-esxi">
+<h1>Documentation ESXi<a class="headerlink" href="#documentation-esxi" title="Link to this heading">#</a></h1>
+<section id="upgrade-6-7-8-0-2b-sur-dl380-gen9">
+<h2>Upgrade 6.7 -&gt; 8.0.2B (sur DL380 Gen9)<a class="headerlink" href="#upgrade-6-7-8-0-2b-sur-dl380-gen9" title="Link to this heading">#</a></h2>
+<section id="phase-1-preparation">
+<h3>Phase 1 : Préparation<a class="headerlink" href="#phase-1-preparation" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://www.stephenwagner.com/2023/07/24/esxi-8-0-hpe-proliant-dl360p-gen8/">https://www.stephenwagner.com/2023/07/24/esxi-8-0-hpe-proliant-dl360p-gen8/</a></p>
+<p>Préparer des backups des différentes VMs tournant sur l’esxi au préalable.
+(Stockage &gt; Datastore &gt; Télécharger les dossiers de chaque VM ou via VEEAM)</p>
+<p>Accéder à l’ESXi, activer le mode maintenance et SSH</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/1-entrer-en-mode-de-maintenance.webp" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/1-entrer-en-mode-de-maintenance.webp" />
+<p>Télécharger dans le datastore votre nouveau bundle de VIBs pour ESXi 8.0.2B (ici HPE)
+Telecharger l’iso complet de esxi 8.0.2 via le lien donné (soit le ALL soit custom, ici HPE)</p>
+</section>
+<section id="phase-2-mise-a-jour">
+<h3>Phase 2 : Mise à jour<a class="headerlink" href="#phase-2-mise-a-jour" title="Link to this heading">#</a></h3>
+<p>Créer une clé bootable de l’iso
+Insérer la clé dans l’esxi
+F11 au boot
+Selectionner Generic USB
+Attendre le boot
+Accepter l’installation d’ESXi 8
+Choisir le bon support de stockage
+Selectionner Upgrade OU installer ESXI8 si vous voulez réinstaller le tout</p>
+<p>Erreur : conflits de VIBs ou checksum invalide etc…
+Désinstaller les VIBs conflicutels et invalides de la manière suivante :</p>
+<ul class="simple">
+<li><p>rebooter l’esxi normalement</p></li>
+<li><p>y accéder via ssh</p></li>
+</ul>
+<p>Liste des commandes :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">esxcli software vib list</span>
+<span class="go">esxcli software remove -n &lt;vib-name&gt;</span>
+</pre></div>
+</div>
+<p>Then install the new VIBs bundle :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">esxcli software vib install -d /vmfs/volumes/datastore-name/folder-name/HPE-801.0.0.11.3.1.1-Jun2023-Addon-depot.zip -f</span>
+</pre></div>
+</div>
+<p>The parameter -f is not always necessary, but it does when you dont have the AcceptanceLevel “Community”</p>
+<p><a class="github reference external" href="https://github.com/lamw/ghettoVCB/issues/64">lamw/ghettoVCB#64</a></p>
+<p>esxcli software acceptance set –level=CommunitySupported</p>
+<p><a class="reference external" href="https://www.vladan.fr/how-to-understand-vmware-acceptance-levels-for-hosts-and-vibs/">https://www.vladan.fr/how-to-understand-vmware-acceptance-levels-for-hosts-and-vibs/</a></p>
+<p>Reessayer commande install</p>
+<p>Desormais, un retour de commande expliquant que les paquets VIBs ont été installé avec succès apparaitra.</p>
+<p>Reboot la machine</p>
+<p>certificat openssl defaillant ;</p>
+<p>recréer un :</p>
+<p><a class="reference external" href="https://blogs.vmware.com/cloud-foundation/2020/04/14/replacing-vmware-esxi-ssl-certificate-in-vmware-cloud-foundation/">https://blogs.vmware.com/cloud-foundation/2020/04/14/replacing-vmware-esxi-ssl-certificate-in-vmware-cloud-foundation/</a></p>
+<p>Licences :</p>
+<p><a class="reference external" href="https://gist.github.com/ayebrian/646775424393c9a35fb8257f44df1c8b">https://gist.github.com/ayebrian/646775424393c9a35fb8257f44df1c8b</a></p>
+<p>Installation VCenter Server</p>
+<p>Télécharger iso correspondant à la version de l’ESXi (ici 8)</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Vérifier le checksum.
+Si ce dernier n’est pas bon, votre installation plantera à 19% en indiquant une erreur de connection réseau.</p>
+</div>
+<p>Interface ESXi 8.0 :</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/customize-esxi-host-client-theme-0.webp" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/customize-esxi-host-client-theme-0.webp" />
+<p><em>Source : williamlam.com</em></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Si vous voulez personnaliser l’interface ESXi, je vous invite à vous rediriger vers cette page :
+<a class="reference external" href="https://williamlam.com/2022/10/quick-tip-accessing-new-custom-theme-editor-for-esxi-8-0-host-client.html">https://williamlam.com/2022/10/quick-tip-accessing-new-custom-theme-editor-for-esxi-8-0-host-client.html</a></p>
+</div>
+</section>
+</section>
+<section id="simple-updates-on-legacy-esxi-hosts">
+<h2>Simple updates on legacy ESXi hosts<a class="headerlink" href="#simple-updates-on-legacy-esxi-hosts" title="Link to this heading">#</a></h2>
+<p>Si votre ESXi est hébergé sur un hôte avec des caractéristiques hardwares non officiellement supportées par VMWare, notamment pour le CPU, il faudra effectuer quelques manipulations pour remédier à la problématique.</p>
+<p><a class="reference external" href="https://williamlam.com/2022/10/using-vsphere-lifecycle-manager-vlcm-to-remediate-nested-esxi-host-with-cpu-on-the-host-is-not-supported.html">https://williamlam.com/2022/10/using-vsphere-lifecycle-manager-vlcm-to-remediate-nested-esxi-host-with-cpu-on-the-host-is-not-supported.html</a></p>
+<p>Tout d’adbord, il est impératif de sauvegarder toute donnée sensible et essentielle à votre organisation.
+Pour cela, vous pouvez exporter les VM, les sauvegarder avec VEEAM Backups etc…</p>
+<p>Prérequis :</p>
+<ul class="simple">
+<li><p>Connexion Internet pour télécharger le bundle offline</p></li>
+<li><p>Compte Broadcom pour accéder aux ressources</p></li>
+</ul>
+<section id="custom-iso-download">
+<h3>Custom ISO download<a class="headerlink" href="#custom-iso-download" title="Link to this heading">#</a></h3>
+<p>Si vous possédez un serveur HPE, DELL, ou provenant de tout autre fabricant disposant d’iso ESXi personnalisé, vous ne les trouverez plus sur leurs propres sites, mais sur celui de Broadcom, étant donné que les licences gratuites de VMWare ESXi ont été abandonnées par ces derniers.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Vous trouverez les ISO VMWare seulement depuis le lien ci-dessous.</p>
+<p><a class="reference external" href="https://support.broadcom.com/group/ecx/downloads">https://support.broadcom.com/group/ecx/downloads</a></p>
+</div>
+<p>My Downloads –&gt; VMWare VSphere –&gt; VMware vSphere - Standard 8.0 –&gt; Custom ISOs</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/broadcom-dl.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/broadcom-dl.png" />
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl.png" />
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl1.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl1.png" />
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl2.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl2.png" />
+<p>Après avoir téléchargé le bundle custom .zip, transférez le dans le datastore de votre hôte ou dans un volume connecté à ce dernier.</p>
+<p>Activez SSH et connectez-vous.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[root@esx2:/vmfs/volumes/62c80b1d-db652382-0617-000af7389070/downloads] esxcli software vib update --depot=/vmfs/volumes/62c80b1d-db652382-0617-000af7389070/downloads/VMware-ESXi-8.02b-20842708-depot.zip</span>
+</pre></div>
+</div>
+<p>L’installation des vib peut prendre du temps. Si cette dernière a été effectuée avec succès, vous aurez cette output dans la CLI :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Installation Result</span>
+<span class="go">Message: The update completed successfully, but the system needs to be rebooted for the changes to be effective.</span>
+<span class="go">Reboot Required: true</span>
+<span class="go">VIBs Installed: VMW_bootbank_ntg3_4.1.8.0-4vmw.703.0.65.20842708, VMware_bootbank_bmcal_7.0.3-0.65.20842708, VMware_bootbank_cpu-microcode_7.0.3-0.65.20842708, VMware_bootbank_crx_7.0.3-0.65.20842708, VMware_bootbank_esx-base_7.0.3-0.65.20842708, VMware_bootbank_esx-dvfilter-generic-fastpath_7.0.3-0.65.20842708, VMware_bootbank_esx-ui_2.1.1-20188605, VMware_bootbank_esx-update_7.0.3-0.65.20842708, VMware_bootbank_esx-xserver_7.0.3-0.65.20842708, VMware_bootbank_esxio-combiner_7.0.3-0.65.20842708, VMware_bootbank_gc_7.0.3-0.65.20842708, VMware_bootbank_loadesx_7.0.3-0.65.20842708, VMware_bootbank_native-misc-drivers_7.0.3-0.65.20842708, VMware_bootbank_trx_7.0.3-0.65.20842708, VMware_bootbank_vdfs_7.0.3-0.65.20842708, VMware_bootbank_vsan_7.0.3-0.65.20842708, VMware_bootbank_vsanhealth_7.0.3-0.65.20842708, VMware_locker_tools-light_12.1.0.20219665-20841705</span>
+<span class="go">VIBs Removed: VMW_bootbank_ntg3_4.1.7.0-0vmw.703.0.20.19193900, VMware_bootbank_bmcal_7.0.3-0.55.20328353, VMware_bootbank_cpu-microcode_7.0.3-0.55.20328353, VMware_bootbank_crx_7.0.3-0.55.20328353, VMware_bootbank_esx-base_7.0.3-0.55.20328353, VMware_bootbank_esx-dvfilter-generic-fastpath_7.0.3-0.55.20328353, VMware_bootbank_esx-ui_1.43.8-19798623, VMware_bootbank_esx-update_7.0.3-0.55.20328353, VMware_bootbank_esx-xserver_7.0.3-0.55.20328353, VMware_bootbank_esxio-combiner_7.0.3-0.55.20328353, VMware_bootbank_gc_7.0.3-0.55.20328353, VMware_bootbank_loadesx_7.0.3-0.55.20328353, VMware_bootbank_native-misc-drivers_7.0.3-0.55.20328353, VMware_bootbank_trx_7.0.3-0.55.20328353, VMware_bootbank_vdfs_7.0.3-0.55.20328353, VMware_bootbank_vsan_7.0.3-0.55.20328353, VMware_bootbank_vsanhealth_7.0.3-0.55.20328353, VMware_locker_tools-light_12.0.0.19345655-20036586</span>
+<span class="go">VIBs Skipped: VMW_bootbank_atlantic_1.0.3.0-8vmw.703.0.20.19193900, VMW_bootbank_bnxtnet_216.0.50.0-44vmw.703.0.50.20036589, VMW_bootbank_bnxtroce_216.0.58.0-23vmw.703.0.50.20036589, VMW_bootbank_brcmfcoe_12.0.1500.2-3vmw.703.0.20.19193900, VMW_bootbank_elxiscsi_12.0.1200.0-9vmw.703.0.20.19193900, VMW_bootbank_elxnet_12.0.1250.0-5vmw.703.0.20.19193900, VMW_bootbank_i40en_1.11.1.31-1vmw.703.0.20.19193900, VMW_bootbank_iavmd_2.7.0.1157-2vmw.703.0.20.19193900, VMW_bootbank_icen_1.4.1.20-1vmw.703.0.50.20036589, VMW_bootbank_igbn_1.4.11.2-1vmw.703.0.20.19193900, VMW_bootbank_ionic-en_16.0.0-16vmw.703.0.20.19193900, VMW_bootbank_irdman_1.3.1.22-1vmw.703.0.50.20036589, VMW_bootbank_iser_1.1.0.1-1vmw.703.0.50.20036589, VMW_bootbank_ixgben_1.7.1.35-1vmw.703.0.20.19193900, VMW_bootbank_lpfc_14.0.169.26-5vmw.703.0.50.20036589, VMW_bootbank_lpnic_11.4.62.0-1vmw.703.0.20.19193900, VMW_bootbank_lsi-mr3_7.718.02.00-1vmw.703.0.20.19193900, VMW_bootbank_lsi-msgpt2_20.00.06.00-4vmw.703.0.20.19193900, VMW_bootbank_lsi-msgpt35_19.00.02.00-1vmw.703.0.20.19193900, VMW_bootbank_lsi-msgpt3_17.00.12.00-1vmw.703.0.20.19193900, VMW_bootbank_mtip32xx-native_3.9.8-1vmw.703.0.20.19193900, VMW_bootbank_ne1000_0.9.0-1vmw.703.0.50.20036589, VMW_bootbank_nenic_1.0.33.0-1vmw.703.0.20.19193900, VMW_bootbank_nfnic_4.0.0.70-1vmw.703.0.20.19193900, VMW_bootbank_nhpsa_70.0051.0.100-4vmw.703.0.20.19193900, VMW_bootbank_nmlx4-core_3.19.16.8-2vmw.703.0.20.19193900, VMW_bootbank_nmlx4-en_3.19.16.8-2vmw.703.0.20.19193900, VMW_bootbank_nmlx4-rdma_3.19.16.8-2vmw.703.0.20.19193900, VMW_bootbank_nmlx5-core_4.19.16.11-1vmw.703.0.20.19193900, VMW_bootbank_nmlx5-rdma_4.19.16.11-1vmw.703.0.20.19193900, VMW_bootbank_nvme-pcie_1.2.3.16-1vmw.703.0.20.19193900, VMW_bootbank_nvmerdma_1.0.3.5-1vmw.703.0.20.19193900, VMW_bootbank_nvmetcp_1.0.0.1-1vmw.703.0.35.19482537, VMW_bootbank_nvmxnet3-ens_2.0.0.22-1vmw.703.0.20.19193900, VMW_bootbank_nvmxnet3_2.0.0.30-1vmw.703.0.20.19193900, VMW_bootbank_pvscsi_0.1-4vmw.703.0.20.19193900, VMW_bootbank_qcnic_1.0.15.0-14vmw.703.0.20.19193900, VMW_bootbank_qedentv_3.40.5.53-22vmw.703.0.20.19193900, VMW_bootbank_qedrntv_3.40.5.53-18vmw.703.0.20.19193900, VMW_bootbank_qfle3_1.0.67.0-22vmw.703.0.20.19193900, VMW_bootbank_qfle3f_1.0.51.0-22vmw.703.0.20.19193900, VMW_bootbank_qfle3i_1.0.15.0-15vmw.703.0.20.19193900, VMW_bootbank_qflge_1.1.0.11-1vmw.703.0.20.19193900, VMW_bootbank_rste_2.0.2.0088-7vmw.703.0.20.19193900, VMW_bootbank_sfvmk_2.4.0.2010-6vmw.703.0.20.19193900, VMW_bootbank_smartpqi_70.4149.0.5000-1vmw.703.0.20.19193900, VMW_bootbank_vmkata_0.1-1vmw.703.0.20.19193900, VMW_bootbank_vmkfcoe_1.0.0.2-1vmw.703.0.20.19193900, VMW_bootbank_vmkusb_0.1-7vmw.703.0.50.20036589, VMW_bootbank_vmw-ahci_2.0.11-1vmw.703.0.20.19193900, VMware_bootbank_elx-esx-libelxima.so_12.0.1200.0-4vmw.703.0.20.19193900, VMware_bootbank_lsuv2-hpv2-hpsa-plugin_1.0.0-3vmw.703.0.20.19193900, VMware_bootbank_lsuv2-intelv2-nvme-vmd-plugin_2.7.2173-1vmw.703.0.20.19193900, VMware_bootbank_lsuv2-lsiv2-drivers-plugin_1.0.0-12vmw.703.0.50.20036589, VMware_bootbank_lsuv2-nvme-pcie-plugin_1.0.0-1vmw.703.0.20.19193900, VMware_bootbank_lsuv2-oem-dell-plugin_1.0.0-1vmw.703.0.20.19193900, VMware_bootbank_lsuv2-oem-hp-plugin_1.0.0-1vmw.703.0.20.19193900, VMware_bootbank_lsuv2-oem-lenovo-plugin_1.0.0-1vmw.703.0.20.19193900, VMware_bootbank_lsuv2-smartpqiv2-plugin_1.0.0-8vmw.703.0.20.19193900, VMware_bootbank_qlnativefc_4.1.14.0-26vmw.703.0.20.19193900, VMware_bootbank_vmware-esx-esxcli-nvme-plugin_1.2.0.44-1vmw.703.0.20.19193900</span>
+</pre></div>
+</div>
+<p>Pour vérifier que l’ESXi a bien été mis à jour, vous pouvez vérifier sa version grâce à cette commande :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">vmware -v</span>
+</pre></div>
+</div>
+<p>Lorsque toutes ces étapes ont été effectuées une fois, les prochaines alertes de legacy CPU pourront être remédiées directement depuis l’interface vSphere.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://pio.nz/2023/01/05/keeping-esxi-up-to-date-on-obsolete-hw/">https://pio.nz/2023/01/05/keeping-esxi-up-to-date-on-obsolete-hw/</a>
+<a class="reference external" href="https://infra.engineer/miscellaneous/71-vmware-upgrade-esxi-host-with-esxcli">https://infra.engineer/miscellaneous/71-vmware-upgrade-esxi-host-with-esxcli</a>
+<a class="reference external" href="https://www.vinchin.com/vm-tips/best-practice-to-backup-and-restore-vmware-vcenter.html">https://www.vinchin.com/vm-tips/best-practice-to-backup-and-restore-vmware-vcenter.html</a>
+<a class="reference external" href="https://williamlam.com/2020/04/quick-tip-allow-unsupported-cpus-when-upgrading-to-esxi-7-0.html">https://williamlam.com/2020/04/quick-tip-allow-unsupported-cpus-when-upgrading-to-esxi-7-0.html</a></p>
+</div>
+</section>
+</section>
+<section id="veeam-backup-replication">
+<h2>VEEAM BACKUP &amp; REPLICATION<a class="headerlink" href="#veeam-backup-replication" title="Link to this heading">#</a></h2>
+<p>Veeam Backup &amp; Replication est une solution de sauvegardes / backups</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-website.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-website.png" />
+<section id="sauvegardes">
+<h3>Sauvegardes<a class="headerlink" href="#sauvegardes" title="Link to this heading">#</a></h3>
+<p>Mais tout d’abord, regardons les différents types de sauvegardes.</p>
+<section id="sauvegarde-complete">
+<h4>Sauvegarde complète<a class="headerlink" href="#sauvegarde-complete" title="Link to this heading">#</a></h4>
+<p>La sauvegarde complète consiste à copier l’intégralité des données d’un système, incluant le système d’exploitation, les applications, les paramètres et les données utilisateur.</p>
+<section id="avantages">
+<h5>Avantages :<a class="headerlink" href="#avantages" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Toutes les données sont sauvegardées</p></li>
+<li><p>Restauration facile et rapide</p></li>
+</ul>
+</section>
+<section id="inconvenients">
+<h5>Inconvénients :<a class="headerlink" href="#inconvenients" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Prend beaucoup de temps à réaliser</p></li>
+<li><p>Utilise beaucoup d’espace de stockage</p></li>
+</ul>
+<p>Elle est généralement effectuée de façon périodique, par exemple hebdomadairement, et sert souvent de base pour d’autres types de sauvegardes.</p>
+</section>
+</section>
+<section id="sauvegarde-incrementielle">
+<h4>Sauvegarde incrémentielle<a class="headerlink" href="#sauvegarde-incrementielle" title="Link to this heading">#</a></h4>
+<p>La sauvegarde incrémentielle ne sauvegarde que les données qui ont été modifiées depuis la dernière sauvegarde, qu’elle soit complète ou incrémentielle.</p>
+<section id="id1">
+<h5>Avantages :<a class="headerlink" href="#id1" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Rapide à effectuer</p></li>
+<li><p>Utilise peu d’espace de stockage</p></li>
+</ul>
+</section>
+<section id="id2">
+<h5>Inconvénients :<a class="headerlink" href="#id2" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>La restauration peut être complexe, nécessitant la dernière sauvegarde complète et toutes les sauvegardes incrémentielles suivantes</p></li>
+</ul>
+</section>
+</section>
+<section id="sauvegarde-differentielle">
+<h4>Sauvegarde différentielle<a class="headerlink" href="#sauvegarde-differentielle" title="Link to this heading">#</a></h4>
+<p>La sauvegarde différentielle copie tous les fichiers modifiés depuis la dernière sauvegarde complète.</p>
+<section id="id3">
+<h5>Avantages :<a class="headerlink" href="#id3" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Plus rapide qu’une sauvegarde complète</p></li>
+<li><p>Restauration plus simple que la sauvegarde incrémentielle</p></li>
+</ul>
+</section>
+<section id="id4">
+<h5>Inconvénients :<a class="headerlink" href="#id4" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Utilise plus d’espace que la sauvegarde incrémentielle</p></li>
+<li><p>Moins rapide que la sauvegarde incrémentielle</p></li>
+</ul>
+</section>
+</section>
+<section id="sauvegarde-miroir">
+<h4>Sauvegarde miroir<a class="headerlink" href="#sauvegarde-miroir" title="Link to this heading">#</a></h4>
+<p>La sauvegarde miroir crée une copie exacte des données source. Elle est souvent utilisée dans des environnements nécessitant une disponibilité élevée des données.</p>
+</section>
+<section id="snapshots">
+<h4>Snapshots<a class="headerlink" href="#snapshots" title="Link to this heading">#</a></h4>
+<p>Les snapshots sont des “photos” de l’état d’un volume à un instant “t”.</p>
+</section>
+<section id="choix-du-type-de-sauvegarde">
+<h4>Choix du type de sauvegarde<a class="headerlink" href="#choix-du-type-de-sauvegarde" title="Link to this heading">#</a></h4>
+<p>Le choix du type de sauvegarde dépend de plusieurs facteurs, notamment :
+- Le volume de données à sauvegarder
+- La fréquence de modification des données
+- Le temps disponible pour effectuer les sauvegardes
+- L’espace de stockage disponible
+- Les besoins en termes de rapidité de restauration</p>
+<p>Une stratégie courante consiste à combiner plusieurs types de sauvegardes, par exemple en effectuant une sauvegarde complète hebdomadaire, complétée par des sauvegardes incrémentielles ou différentielles quotidiennes.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><a class="reference external" href="https://www.veeam.com/fr/products/free/backup-recovery.html?wvideo=z5ezmykjpu">https://www.veeam.com/fr/products/free/backup-recovery.html?wvideo=z5ezmykjpu</a></p>
+</div>
+<p>Vous pouvez installer Veeam Backup Recovery And Replication gratuitement avec la community edition.</p>
+</section>
+</section>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
+<p>Pour installer Veeam Backup &amp; Replication, il est tout d’abord nécessaire d’installer le l’image du logiciel sur le <a href="#id5"><span class="problematic" id="id6">`site officiel.&lt;https://www.veeam.com/fr/products/free/backup-recovery.html?wvideo=z5ezmykjpu&gt;`_</span></a></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Cliquer sur “Testez gratuitement” vous demandera de remplir un formulaire nécessaire au téléchargement du soft.</p>
+<p>Des vidéos explicatives sont aussi disponibles en bas de la page.</p>
+</div>
+<p>Après avoir téléchargé l’iso de 11Go environ, vous pourrez l’ouvrir et cliquer sur “setup”.</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/iso-veeam.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/iso-veeam.png" />
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/setupexeveeam.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/setupexeveeam.png" />
+<p>Après l’éxecution du setup, vous aurez plusieurs options d’installation.</p>
+<p>Dans notre cas, nous installons Veeam Backup and Replication.</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-install-options.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-install-options.png" />
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-installationpng" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-installationpng" />
+<p>Après que l’installation soit terminée, vous pourrez lancer la console Veeam qui affichera une fenêtre de connexion.</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-connection.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-connection.png" />
+</section>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h3>
+<p>Afin de pouvoir créer des backups et les restaurer, il est nécessaire de configurer quelques paramètres.</p>
+<p>Tout d’abord, lorsque Veeam est lancé, cliquez sur <strong>Backup Infrastructure</strong> en bas à gauche de la page, cliquez sur <strong>Managed Servers</strong> puis sur <strong>Add Server</strong> en haut à gauche de la page.</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-backup-infr.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-backup-infr.png" />
+<p>A la suite de ces étapes, le logiciel vous demandera de choisir le serveur que vous souhaitez joindre à votre infrastructure de backup.</p>
+<p>Ici, nous choisissons VMWare vSphere, puis vSphere.</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver.png" />
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-vsphere.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-vsphere.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Comme il est précisé dans le menu d’ajout de serveur, il est préférable d’ajouter vCenter Server si votre ESXi est géré via cette instance.
+Cela facilitera notamment la gestion des permissions de VEEAM sur les VMs de l’ESXi.</p>
+</div>
+<p>Rentrer l’IP ou le nom DNS du serveur vCenter.</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-ip.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-ip.png" />
+<p>Rentrer les credentials de votre SSO vSphere.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Il est important de renseigner les login de la manière suivante :</p>
+<p><strong>&lt;vsphere-sso.domain&gt; &lt;username&gt;</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Si le port https n’est pas le 443 sur votre serveur, il est nécessaire de le renseigner dans la fenêtre.</p>
+</div>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-id.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-id.png" />
+</section>
+</section>
+<section id="tools">
+<h2>Tools<a class="headerlink" href="#tools" title="Link to this heading">#</a></h2>
+<section id="copy-paste-to-vm">
+<h3>Copy/Paste to VM<a class="headerlink" href="#copy-paste-to-vm" title="Link to this heading">#</a></h3>
+<p>Si vous souhaitez pouvoir utiliser le copier-coller entre votre machine et une VM, vous devez ajouter des arguements à la configuration avancée de votre VM.</p>
+<p>Dans ESXi v8.0, voici les éléments à ajouter :</p>
+<blockquote>
+<div><p>isolation.tools.setGUIOptions.enable</p>
+</div></blockquote>
+<p>TRUE</p>
+<blockquote>
+<div><p>isolation.tools.paste.disable</p>
+</div></blockquote>
+<p>FALSE</p>
+<blockquote>
+<div><p>isolation.tools.copy.disable</p>
+</div></blockquote>
+<p>FALSE</p>
+<img alt="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/cp.png" src="https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/cp.png" />
+</section>
+</section>
+<section id="hpe-ilo">
+<h2>HPE iLO<a class="headerlink" href="#hpe-ilo" title="Link to this heading">#</a></h2>
+<p>L’iLO HPE offre une interface de gestion pour votre serveur HPE, accessible hors-ligne ou en-ligne.</p>
+<p>Vous pouvez y gérer les disques, les volumes logiques, exécuter des diagnostics…</p>
+<p>Elle peut s’avérer très utile pour de la maintenance ou du dépannage.</p>
+<p>L’iLO peut être atteint en réseau via l’interface RJ45 “iLO”, vous pouvez y attribuer une adresse IP fixe ou bien par DHCP.</p>
+</section>
+<section id="iscsi">
+<h2>iSCSI<a class="headerlink" href="#iscsi" title="Link to this heading">#</a></h2>
+<section id="ajouter-un-adaptateur-iscsi-dans-vsphere-8-0">
+<h3>Ajouter un adaptateur iSCSI dans vSphere 8.0<a class="headerlink" href="#ajouter-un-adaptateur-iscsi-dans-vsphere-8-0" title="Link to this heading">#</a></h3>
+<p>Dans vSphere 8.0, vous pouvez ajouter un adaptateur virtuel iSCSI depuis le menu de configuration de l’hôte (ici dl380).</p>
+</section>
+<section id="ajouter-un-lun-a-un-datastore">
+<h3>Ajouter un LUN à un datastore<a class="headerlink" href="#ajouter-un-lun-a-un-datastore" title="Link to this heading">#</a></h3>
+<p>Un LUN (Logical Unit Number) est une tranche ou une partie d’un ensemble configuré de disques qui est présentable à un hôte et monté en tant que volume dans le système d’exploitation.</p>
+<p>Afin de ne pas perdre de performances, le LUN devrait être lié à l’hôte ESXi via une connexion 10Gbit/s voire 25Gbit/s.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>N’ajoutez un LUN que si vous êtes certain de le garder. Le démonter du datastore demande un temps de maintenance important !</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ne pas ajouter plus d’1 seul LUN sur un datastore. Cela peut causer des problèmes de performance.</p>
+</div>
+</section>
+<section id="detacher-un-lun-d-un-datastore">
+<h3>Détacher un LUN d’un datastore<a class="headerlink" href="#detacher-un-lun-d-un-datastore" title="Link to this heading">#</a></h3>
+<p>Détacher un LUN d’un datastore est une procédure compliquée qui nécessite d’être effectuée minutieusement pour ne pas perdre ou corrompre quelconque donnée / VM.</p>
+<section id="demonter-le-datastore">
+<h4>Démonter le datastore<a class="headerlink" href="#demonter-le-datastore" title="Link to this heading">#</a></h4>
+<p>La première étape à effectuer est de démonter le datastore.
+Pour cela, migrez toutes les VM stockées sur le datastore en question ainsi que les dossiers, fichiers présents dessus.</p>
+<p>Démontez désormais le datastore.</p>
+</section>
+<section id="detacher-le-lun">
+<h4>Détacher le LUN<a class="headerlink" href="#detacher-le-lun" title="Link to this heading">#</a></h4>
+<p>Dans les Storage Devices, vous pouvez maintenant détacher le LUN du datastore.</p>
+</section>
+<section id="supprimer-le-lun">
+<h4>Supprimer le LUN<a class="headerlink" href="#supprimer-le-lun" title="Link to this heading">#</a></h4>
+<p>Vous pouvez désromais supprimer le LUN que vous avez créé sur le périphérique distant (NAS etc…).</p>
+</section>
+</section>
+</section>
+<section id="nerworking">
+<h2>Nerworking<a class="headerlink" href="#nerworking" title="Link to this heading">#</a></h2>
+<section id="vswitch">
+<h3>vSwitch<a class="headerlink" href="#vswitch" title="Link to this heading">#</a></h3>
+<p>Le vSwitch agit tel un switch virtuel.
+Il peut être attribué à un ou plusieurs groupes de ports (“groupes de NIC”) dans l’interface de configuration ESXi web ou vSphere client.</p>
+<p>Plusieurs paramètres sont disponibles dans le menu de paramétrage</p>
+<section id="parametres-de-securite">
+<h4>Paramètres de sécurité<a class="headerlink" href="#parametres-de-securite" title="Link to this heading">#</a></h4>
+<p>Vous povuez activer ou désactiver plusieurs modes :</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Promiscuous mode</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>Activer cela permettra à chaque port (interface) des VM connectées au vSwitch de voir tout le trafic passant sur ce dernier.
+C’est une sorte de mode “hub”.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Si vous comptez paramétrer un cluster de pares-feu PFSense, il est nécessaire d’activer le Promiscuous mode sur chaque vSwitch où une VIP CARP est configurée.</p>
+</div>
+</div></div>
+</section>
+</section>
+<section id="groupe-de-ports">
+<h3>Groupe de ports<a class="headerlink" href="#groupe-de-ports" title="Link to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Documentation Administration Système &amp; Cybersécurité</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Documentation-MSCerts.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Documentation Certifications Microsoft</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upgrade-6-7-8-0-2b-sur-dl380-gen9">Upgrade 6.7 -&gt; 8.0.2B (sur DL380 Gen9)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-preparation">Phase 1 : Préparation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-mise-a-jour">Phase 2 : Mise à jour</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-updates-on-legacy-esxi-hosts">Simple updates on legacy ESXi hosts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-iso-download">Custom ISO download</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#veeam-backup-replication">VEEAM BACKUP &amp; REPLICATION</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sauvegardes">Sauvegardes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sauvegarde-complete">Sauvegarde complète</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#avantages">Avantages :</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#inconvenients">Inconvénients :</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sauvegarde-incrementielle">Sauvegarde incrémentielle</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Avantages :</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Inconvénients :</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sauvegarde-differentielle">Sauvegarde différentielle</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Avantages :</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Inconvénients :</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sauvegarde-miroir">Sauvegarde miroir</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#snapshots">Snapshots</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#choix-du-type-de-sauvegarde">Choix du type de sauvegarde</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">Tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-paste-to-vm">Copy/Paste to VM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hpe-ilo">HPE iLO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iscsi">iSCSI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ajouter-un-adaptateur-iscsi-dans-vsphere-8-0">Ajouter un adaptateur iSCSI dans vSphere 8.0</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ajouter-un-lun-a-un-datastore">Ajouter un LUN à un datastore</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detacher-un-lun-d-un-datastore">Détacher un LUN d’un datastore</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demonter-le-datastore">Démonter le datastore</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#detacher-le-lun">Détacher le LUN</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#supprimer-le-lun">Supprimer le LUN</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nerworking">Nerworking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vswitch">vSwitch</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parametres-de-securite">Paramètres de sécurité</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupe-de-ports">Groupe de ports</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Arthur LE GUENNEC
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Arthur LE GUENNEC.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
