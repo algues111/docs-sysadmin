@@ -413,6 +413,21 @@ Elle peut s'avérer très utile pour de la maintenance ou du dépannage.
 L'iLO peut être atteint en réseau via l'interface RJ45 "iLO", vous pouvez y attribuer une adresse IP fixe ou bien par DHCP.
 
 
+
+Update HPE iLO
+-----------------------
+
+L'iLO d'HP est un composant essentiel pour la gestion de serveurs HPE, qu'elle soit à distance ou locale.
+
+
+Ici, nous allons couvrir comment mettre à jour le firmware de l'iLO à travers le shell ESXi.
+
+Activer SSH
+---------------------
+
+
+
+
 iSCSI
 ==========================================
 
@@ -507,3 +522,27 @@ Vous povuez activer ou désactiver plusieurs modes :
 
 Groupe de ports
 --------------------
+
+
+vCenter Server
+===================
+
+
+Updates
+----------------
+
+Afin de patcher les failles et les bugs d'une instance vCenter Server, il est nécessaire de la mettre à jour.
+
+
+Pour cela, nous pouvons nous rendre sur la page de management de vCenter.
+
+https://vcenter.lan:5480
+
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vcenter-mgmt1.png
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vcenter-mgmt2.png
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vcenter-mgmt3.png
+
