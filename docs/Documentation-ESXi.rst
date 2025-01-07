@@ -413,6 +413,21 @@ Elle peut s'avérer très utile pour de la maintenance ou du dépannage.
 L'iLO peut être atteint en réseau via l'interface RJ45 "iLO", vous pouvez y attribuer une adresse IP fixe ou bien par DHCP.
 
 
+
+Update HPE iLO
+-----------------------
+
+L'iLO d'HP est un composant essentiel pour la gestion de serveurs HPE, qu'elle soit à distance ou locale.
+
+
+Ici, nous allons couvrir comment mettre à jour le firmware de l'iLO à travers le shell ESXi.
+
+Activer SSH
+---------------------
+
+
+
+
 iSCSI
 ==========================================
 
@@ -507,3 +522,140 @@ Vous povuez activer ou désactiver plusieurs modes :
 
 Groupe de ports
 --------------------
+
+
+vCenter Server
+===================
+
+
+Updates
+----------------
+
+vCenter Server
+^^^^^^^^^^^^^^^^^^^
+
+Afin de patcher les failles et les bugs d'une instance vCenter Server, il est nécessaire de la mettre à jour.
+
+
+Pour cela, nous pouvons nous rendre sur la page de management de vCenter.
+
+https://vcenter.lan:5480
+
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vcenter-mgmt1.png
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vcenter-mgmt2.png
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vcenter-mgmt3.png
+
+
+ESXi (Standalone)
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Ayant un seul hôte dl380p Gen9 dans mon cluster vCenter, il m'est impossible de mettre à jour ce dernier via vCenter Lifecycle Manager.
+
+Cela est dû au fait que vCenter nécessite que TOUTES les VM aient le statut "turned off" sur l'hôte en question, ce qui n'est pas possible puisque ce dernier héberge la VM de vCenter qui est censé effectuer l'update !
+
+
+
+Pour remédier à cela, il est donc nécessaire de télécharger l'offline bundle officiel d'HPE (dans mon cas) via le site de Broadcom, et de procéder à l'installation via SSH !
+
+Téléchargement
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. admonition:: Liens
+
+    `Broadcom custom bundles & ISOs<https://support.broadcom.com/group/ecx/productfiles?subFamily=VMware%20vSphere&displayGroup=VMware%20vSphere%20-%20Enterprise%20Plus&release=8.0&os=&servicePk=202628&language=EN>`_
+
+.. note::
+
+    Veillez à bien sélectionner l'offline bundle pour le fichier .zip    
+
+
+A la suite de cela, uploadez le fichier dans le datastore de votre ESXi. Ici, on utilisera "datastore1".
+
+Vous devriez maintenant le voir apparaître :
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/esxi-vib-upload.png
+
+
+.. tip::
+    Mettez de côté le chemin d'accès absolu du dépôt zip !
+
+Accès SSH
+~~~~~~~~~~~~~~~~~~~~~~
+
+Bien évidemment, activez le service ssh de votre hôte pour pouvoir y accéder ;)
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/esxi-ssh-activate.png
+
+
+Installation de l'update
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. warning::
+
+    Avant de commencer, prenez en compte que les commandes esxcli software vib install/update sont dépréciées. Tout tuto utilisant ces commandes est donc caduc...
+    Nous utilisons ici les commandes basées sur esxcli software profile.
+
+
+Tout d'abord, nous allons devoir trouver le nom du profil que notre dépôt utilise pour l'update.
+
+Pour déterminer cela, nous pouvons effectuer la commande suivante :
+
+
+.. code-block:: console
+
+    [root@dl380:~] esxcli software sources profile list -d /vmfs/volumes/58186ae8-12781af6-b630-ecb1d7b19420/ISO/vibupdate/VMware-ESXi-8.0.3-24280767-HPE-803.0.0.11.8.0.6-Oct2024-depot.zip
+
+.. note::
+
+    58186ae8-12781af6-b630-ecb1d7b19420 est l'UUID de mon "datastore1"
+
+Ce qui nous retournera normalement : 
+
+Name                               Vendor                      Acceptance Level  Creation Time        Modification Time
+---------------------------------  --------------------------  ----------------  -------------------  -----------------
+HPE-Custom-AddOn_803.0.0.11.8.0-6  Hewlett Packard Enterprise  PartnerSupported  2024-09-16T06:00:58  2024-09-16T06:00:58
+
+
+Maintenant que nous savons que **HPE-Custom-AddOn_803.0.0.11.8.0-6** est le nom de notre profil, nous allons pouvoir installer le VIB.
+
+
+.. code-block:: console
+
+    [root@dl380:~] esxcli software profile update --depot=/vmfs/volumes/58186ae8-12781af6-b630-ecb1d7b19420/ISO/vibupdate/VMware-ESXi-8.0.3-24280767-HPE-803.0.0.11.8.0.6-Oct2024-depot.zip --profile=HPE-Custom-AddOn_803.0.0.11.8.0-6
+
+
+Si votre CPU n'est plus "officiellement" supporté, l'erreur suivante apparaîtra : 
+
+[HardwareError]
+ Hardware precheck of profile HPE-Custom-AddOn_803.0.0.11.8.0-6 failed with warnings: <CPU_SUPPORT OVERRIDEWARNING: The CPUs on this host are not supported by ESXi 8.0.3. You can override and force install, but it is not officially supported nor recommended. Please refer to KB 82794 for more details.> Apply --no-hardware-warning option to ignore the warnings and proceed with the transaction.
+
+ Mais pas de panique, il suffit, comme indiqué, de rajouter l'option --no-hardware-warning pour outrepasser l'avertissement.
+
+
+.. code-block:: console
+
+    [root@dl380:~] esxcli software profile update --depot=/vmfs/volumes/58186ae8-12781af6-b630-ecb1d7b19420/ISO/vibupdate/VMware-ESXi-8.0.3-24280767-HPE-803.0.0.11.8.0.6-Oct2024-depot.zip --profile=HPE-Custom-AddOn_803.0.0.11.8.0-6 --no-hardware-warning
+
+
+Après un petit moment, le terminal vous retournera ceci :
+
+.. spoiler:: 
+
+    Update Result
+   Message: The update completed successfully, but the system needs to be rebooted for the changes to be effective.
+   VIBs Installed: BCM_bootbank_bnxtnet_230.0.136.0-1OEM.800.1.0.20613240, BCM_bootbank_bnxtroce_230.0.136.0-1OEM.800.1.0.20613240, HPE_bootbank_amsdv_701.11.7.0.2-1OEM.701.0.0.16850804, HPE_bootbank_ilorest_800.5.2.0.0.18-21495797, HPE_bootbank_sut_800.5.2.0.5-1OEM.800.1.0.20613240, INT_bootbank_i40en_2.8.4.0-1OEM.800.1.0.20613240, INT_bootbank_iavmd_9.0.0.1012-1OEM.800.1.0.20613240, INT_bootbank_icen_1.14.2.0-1OEM.800.1.0.20613240, MEL_bootbank_mft-oem_4.28.0.881-0, MEL_bootbank_mft_4.28.0.881-0, MIS_bootbank_ssacli2_6.40.6.0-8.0.0.20613240.oem, MVL_bootbank_qlnativefc_5.4.83.1-1OEM.803.0.0.23710970, QLC_bootbank_qcnic_2.0.67.0-1OEM.700.1.0.15843807, QLC_bootbank_qedentv_3.71.63.0-1OEM.800.1.0.20613240, QLC_bootbank_qedrntv_3.71.62.0-1OEM.800.1.0.20613240, QLC_bootbank_qfle3_1.4.51.0-1OEM.700.1.0.15843807, QLC_bootbank_qfle3f_2.1.34.0-1OEM.700.1.0.15843807, VMW_bootbank_mlnx-bfbootctl-esxio_0.1-7vmw.803.0.35.24280767, VMW_bootbank_nvmetcp-esxio_1.0.1.29-1vmw.803.0.35.24280767, VMW_bootbank_nvmetcp_1.0.1.29-1vmw.803.0.35.24280767, VMW_bootbank_rshim-net_0.1.0-1vmw.803.0.35.24280767, VMW_bootbank_rshim_0.1-12vmw.803.0.35.24280767, VMware_bootbank_bmcal-esxio_8.0.3-0.35.24280767, VMware_bootbank_bmcal_8.0.3-0.35.24280767, VMware_bootbank_clusterstore_8.0.3-0.35.24280767, VMware_bootbank_cpu-microcode_8.0.3-0.35.24280767, VMware_bootbank_crx_8.0.3-0.35.24280767, VMware_bootbank_drivervm-gpu-base_8.0.3-0.35.24280767, VMware_bootbank_esx-base_8.0.3-0.35.24280767, VMware_bootbank_esx-dvfilter-generic-fastpath_8.0.3-0.35.24280767, VMware_bootbank_esx-update_8.0.3-0.35.24280767, VMware_bootbank_esx-xserver_8.0.3-0.35.24280767, VMware_bootbank_esxio-base_8.0.3-0.35.24280767, VMware_bootbank_esxio-combiner-esxio_8.0.3-0.35.24280767, VMware_bootbank_esxio-combiner_8.0.3-0.35.24280767, VMware_bootbank_esxio-dvfilter-generic-fastpath_8.0.3-0.35.24280767, VMware_bootbank_esxio-update_8.0.3-0.35.24280767, VMware_bootbank_esxio_8.0.3-0.35.24280767, VMware_bootbank_gc-esxio_8.0.3-0.35.24280767, VMware_bootbank_gc_8.0.3-0.35.24280767, VMware_bootbank_infravisor_8.0.3-0.35.24280767, VMware_bootbank_loadesx_8.0.3-0.35.24280767, VMware_bootbank_loadesxio_8.0.3-0.35.24280767, VMware_bootbank_native-misc-drivers-esxio_8.0.3-0.35.24280767, VMware_bootbank_native-misc-drivers_8.0.3-0.35.24280767, VMware_bootbank_trx_8.0.3-0.35.24280767, VMware_bootbank_vcls-pod-crx_8.0.3-0.35.24280767, VMware_bootbank_vdfs_8.0.3-0.35.24280767, VMware_bootbank_vds-vsip_8.0.3-0.35.24280767, VMware_bootbank_vsan_8.0.3-0.35.24280767, VMware_bootbank_vsanhealth_8.0.3-0.35.24280767, VMware_locker_tools-light_12.4.5.23787635-24262298
+   VIBs Removed: BCM_bootbank_bnxtnet_228.0.116.0-1OEM.800.1.0.20613240, BCM_bootbank_bnxtroce_228.0.116.0-1OEM.800.1.0.20613240, HPE_bootbank_amsdv_701.11.6.0.3-1OEM.701.0.0.16850804, HPE_bootbank_ilorest_800.5.0.0.0.2-21495797, HPE_bootbank_sut_800.5.0.0.11-1OEM.800.1.0.20613240, INT_bootbank_i40en_2.7.2.0-1OEM.800.1.0.20613240, INT_bootbank_iavmd_3.5.1.1002-1OEM.800.1.0.20613240, INT_bootbank_icen_1.13.2.0-1OEM.800.1.0.20613240, MEL_bootbank_mft-oem_4.25.0.802-0, MEL_bootbank_mft_4.25.0.802-0, MIS_bootbank_ssacli2_6.30.8.0-8.0.0.20143090.oem, MVL_bootbank_qlnativefc_5.4.82.0-1OEM.800.1.0.20613240, QLC_bootbank_qcnic_2.0.66.0-1OEM.700.1.0.15843807, QLC_bootbank_qedentv_3.71.52.0-1OEM.800.1.0.20613240, QLC_bootbank_qedrntv_3.71.50.0-1OEM.800.1.0.20613240, QLC_bootbank_qfle3_1.4.46.0-1OEM.700.1.0.15843807, QLC_bootbank_qfle3f_2.1.33.0-1OEM.700.1.0.15843807, VMW_bootbank_mlnx-bfbootctl-esxio_0.1-6vmw.803.0.0.24022510, VMW_bootbank_nvmetcp-esxio_1.0.1.28-1vmw.803.0.0.24022510, VMW_bootbank_nvmetcp_1.0.1.28-1vmw.803.0.0.24022510, VMware_bootbank_bmcal-esxio_8.0.3-0.0.24022510, VMware_bootbank_bmcal_8.0.3-0.0.24022510, VMware_bootbank_clusterstore_8.0.3-0.0.24022510, VMware_bootbank_cpu-microcode_8.0.3-0.0.24022510, VMware_bootbank_crx_8.0.3-0.0.24022510, VMware_bootbank_drivervm-gpu-base_8.0.3-0.0.24022510, VMware_bootbank_esx-base_8.0.3-0.0.24022510, VMware_bootbank_esx-dvfilter-generic-fastpath_8.0.3-0.0.24022510, VMware_bootbank_esx-update_8.0.3-0.0.24022510, VMware_bootbank_esx-xserver_8.0.3-0.0.24022510, VMware_bootbank_esxio-base_8.0.3-0.0.24022510, VMware_bootbank_esxio-combiner-esxio_8.0.3-0.0.24022510, VMware_bootbank_esxio-combiner_8.0.3-0.0.24022510, VMware_bootbank_esxio-dvfilter-generic-fastpath_8.0.3-0.0.24022510, VMware_bootbank_esxio-update_8.0.3-0.0.24022510, VMware_bootbank_esxio_8.0.3-0.0.24022510, VMware_bootbank_gc-esxio_8.0.3-0.0.24022510, VMware_bootbank_gc_8.0.3-0.0.24022510, VMware_bootbank_infravisor_8.0.3-0.0.24022510, VMware_bootbank_loadesx_8.0.3-0.0.24022510, VMware_bootbank_loadesxio_8.0.3-0.0.24022510, VMware_bootbank_native-misc-drivers-esxio_8.0.3-0.0.24022510, VMware_bootbank_native-misc-drivers_8.0.3-0.0.24022510, VMware_bootbank_trx_8.0.3-0.0.24022510, VMware_bootbank_vcls-pod-crx_8.0.3-0.0.24022510, VMware_bootbank_vdfs_8.0.3-0.0.24022510, VMware_bootbank_vds-vsip_8.0.3-0.0.24022510, VMware_bootbank_vsan_8.0.3-0.0.24022510, VMware_bootbank_vsanhealth_8.0.3-0.0.24022510, VMware_locker_tools-light_12.4.0.23259341-24022510
+   VIBs Skipped: HPE_bootbank_amsd_701.11.10.0.4-1OEM.701.0.0.16850804, HPE_bootbank_fc-enablement_800.3.9.0.30-1OEM.800.1.0.20172892, HPE_bootbank_hpe-upgrade_901.2.0.5-1OEM.800.0.0.20172892, HPE_bootbank_ilo_700.10.8.2.2-1OEM.700.1.0.15843807, INT_bootbank_igbn_1.12.0.0-1OEM.800.1.0.20613240, INT_bootbank_ixgben_1.18.2.0-1OEM.800.1.0.20613240, MEL_bootbank_nmst_4.25.0.802-1OEM.802.0.0.21974771, QLC_bootbank_qedf_2.74.1.0-1OEM.800.1.0.20613240, QLC_bootbank_qedi_2.74.1.0-1OEM.800.1.0.20613240, QLC_bootbank_qfle3i_2.1.14.0-1OEM.700.1.0.15843807, VMW_bootbank_atlantic_1.0.3.0-13vmw.803.0.0.24022510, VMW_bootbank_bcm-mpi3_8.8.1.0.0.0-1vmw.803.0.0.24022510, VMW_bootbank_bfedac-esxio_0.1-1vmw.803.0.0.24022510, VMW_bootbank_brcmfcoe_12.0.1500.3-4vmw.803.0.0.24022510, VMW_bootbank_cndi-igc_1.2.10.0-1vmw.803.0.0.24022510, VMW_bootbank_dwi2c-esxio_0.1-7vmw.803.0.0.24022510, VMW_bootbank_dwi2c_0.1-7vmw.803.0.0.24022510, VMW_bootbank_elxiscsi_12.0.1200.0-11vmw.803.0.0.24022510, VMW_bootbank_elxnet_12.0.1250.0-8vmw.803.0.0.24022510, VMW_bootbank_intelgpio_0.1-1vmw.803.0.0.24022510, VMW_bootbank_ionic-cloud_20.0.0-48vmw.803.0.0.24022510, VMW_bootbank_ionic-en-esxio_20.0.0-56vmw.803.0.0.24022510, VMW_bootbank_ionic-en_20.0.0-56vmw.803.0.0.24022510, VMW_bootbank_irdman_1.4.0.1-1vmw.803.0.0.24022510, VMW_bootbank_iser_1.1.0.2-1vmw.803.0.0.24022510, VMW_bootbank_lpfc_14.4.0.39-35vmw.803.0.0.24022510, VMW_bootbank_lpnic_11.4.62.0-1vmw.803.0.0.24022510, VMW_bootbank_lsi-mr3_7.728.02.00-1vmw.803.0.0.24022510, VMW_bootbank_lsi-msgpt2_20.00.06.00-4vmw.803.0.0.24022510, VMW_bootbank_lsi-msgpt35_29.00.00.00-1vmw.803.0.0.24022510, VMW_bootbank_lsi-msgpt3_17.00.13.00-3vmw.803.0.0.24022510, VMW_bootbank_mnet-esxio_0.1-1vmw.803.0.0.24022510, VMW_bootbank_mtip32xx-native_3.9.8-1vmw.803.0.0.24022510, VMW_bootbank_ne1000_0.9.2-1vmw.803.0.0.24022510, VMW_bootbank_nenic_1.0.35.0-7vmw.803.0.0.24022510, VMW_bootbank_nfnic_5.0.0.42-1vmw.803.0.0.24022510, VMW_bootbank_nhpsa_70.0051.0.100-5vmw.803.0.0.24022510, VMW_bootbank_nipmi_1.0-1vmw.803.0.0.24022510, VMW_bootbank_nmlx5-cc-esxio_4.23.6.2-7vmw.803.0.0.24022510, VMW_bootbank_nmlx5-cc_4.23.6.2-7vmw.803.0.0.24022510, VMW_bootbank_nmlx5-core-esxio_4.23.6.2-7vmw.803.0.0.24022510, VMW_bootbank_nmlx5-core_4.23.6.2-7vmw.803.0.0.24022510, VMW_bootbank_nmlx5-rdma-esxio_4.23.6.2-7vmw.803.0.0.24022510, VMW_bootbank_nmlx5-rdma_4.23.6.2-7vmw.803.0.0.24022510, VMW_bootbank_nmlxbf-gige-esxio_2.2-1vmw.803.0.0.24022510, VMW_bootbank_nmlxbf-pmc-esxio_0.1-6vmw.803.0.0.24022510, VMW_bootbank_ntg3_4.1.14.0-4vmw.803.0.0.24022510, VMW_bootbank_nvme-pcie-esxio_1.2.4.15-1vmw.803.0.0.24022510, VMW_bootbank_nvme-pcie_1.2.4.15-1vmw.803.0.0.24022510, VMW_bootbank_nvmerdma_1.0.3.9-1vmw.803.0.0.24022510, VMW_bootbank_nvmxnet3-ens-esxio_2.0.0.23-6vmw.803.0.0.24022510, VMW_bootbank_nvmxnet3-ens_2.0.0.23-6vmw.803.0.0.24022510, VMW_bootbank_nvmxnet3-esxio_2.0.0.31-12vmw.803.0.0.24022510, VMW_bootbank_nvmxnet3_2.0.0.31-12vmw.803.0.0.24022510, VMW_bootbank_penedac-esxio_0.1-1vmw.803.0.0.24022510, VMW_bootbank_pengpio-esxio_0.1-1vmw.803.0.0.24022510, VMW_bootbank_pensandoatlas_1.46.0.E.41.1.326-2vmw.803.0.0.0.23797590, VMW_bootbank_penspi-esxio_0.1-1vmw.803.0.0.24022510, VMW_bootbank_pvscsi-esxio_0.1-7vmw.803.0.0.24022510, VMW_bootbank_pvscsi_0.1-7vmw.803.0.0.24022510, VMW_bootbank_qflge_1.1.0.11-2vmw.803.0.0.24022510, VMW_bootbank_rd1173-esxio_0.1-1vmw.803.0.0.24022510, VMW_bootbank_rdmahl_1.0.0-1vmw.803.0.0.24022510, VMW_bootbank_rste_2.0.2.0088-7vmw.803.0.0.24022510, VMW_bootbank_sfvmk_2.4.0.2010-18vmw.803.0.0.24022510, VMW_bootbank_smartpqi_80.4700.0.5000-2vmw.803.0.0.24022510, VMW_bootbank_spidev-esxio_0.1-1vmw.803.0.0.24022510, VMW_bootbank_vmkata_0.1-1vmw.803.0.0.24022510, VMW_bootbank_vmksdhci-esxio_1.0.3-3vmw.803.0.0.24022510, VMW_bootbank_vmksdhci_1.0.3-3vmw.803.0.0.24022510, VMW_bootbank_vmkusb-esxio_0.1-22vmw.803.0.0.24022510, VMW_bootbank_vmkusb_0.1-22vmw.803.0.0.24022510, VMW_bootbank_vmw-ahci_2.0.17-1vmw.803.0.0.24022510, VMware_bootbank_elx-esx-libelxima.so_12.0.1200.0-6vmw.803.0.0.24022510, VMware_bootbank_esx-ui_2.18.0-23593406, VMware_bootbank_lsuv2-hpv2-hpsa-plugin_1.0.0-4vmw.803.0.0.24022510, VMware_bootbank_lsuv2-intelv2-nvme-vmd-plugin_2.7.2173-2vmw.803.0.0.24022510, VMware_bootbank_lsuv2-lsiv2-drivers-plugin_1.0.3-1vmw.803.0.0.24022510, VMware_bootbank_lsuv2-nvme-pcie-plugin_1.0.0-1vmw.803.0.0.24022510, VMware_bootbank_lsuv2-oem-dell-plugin_1.1.0-2vmw.803.0.0.24022510, VMware_bootbank_lsuv2-oem-lenovo-plugin_1.0.0-2vmw.803.0.0.24022510, VMware_bootbank_lsuv2-smartpqiv2-plugin_1.0.0-11vmw.803.0.0.24022510, VMware_bootbank_vmware-esx-esxcli-nvme-plugin-esxio_1.2.0.56-1vmw.803.0.0.24022510, VMware_bootbank_vmware-esx-esxcli-nvme-plugin_1.2.0.56-1vmw.803.0.0.24022510, VMware_bootbank_vmware-hbrsrv_8.0.3-0.0.24022510
+   Reboot Required: true
+   DPU Results:
+
+Il ne manque plus que rebooter l'ESXi désormais !!!!
+
+.. code-block:: console
+
+    [root@dl380:~] reboot
