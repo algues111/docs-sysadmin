@@ -135,6 +135,16 @@ Si Windows Defender SmartScreen bloque l'éxecution d'un .exe, vous pouvez le d�
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/unblock.png
 
 
+Partage réseau
+----------------------------
+
+Si le partage réseau du PC est activé, il est possible d'accéder au répertoire C: de ce dernier de la manière suivante :abbr:
+
+.. code-block:: console
+
+    \\<HOSTNAME>\c$
+
+
 
 Softwares utiles
 ====================
@@ -214,7 +224,7 @@ Check if the LAPS tool to handle the native local admnistrator passwords is inst
 
 Le but est d'être certain qu'une politique de mots de passe est définie pour le compte administrateur local. 
 
-Il est donc nécessaire d'installer ce package depuis le `site officiel de Microsoft.<https://www.it-connect.fr/chapitres/installation-de-laps-sur-un-controleur-de-domaine/>`_ 
+Il est donc nécessaire d'installer ce package depuis le `site officiel de Microsoft. <https://www.it-connect.fr/chapitres/installation-de-laps-sur-un-controleur-de-domaine/>`_ 
 
 
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/laps-install.png
@@ -260,7 +270,8 @@ J'en suis à B. Attribuer les droits d'écriture aux machines dans l'article
 
 
 .. seealso::
-    `L'article d'IT-Connect.fr sur LAPS.<https://www.it-connect.fr/chapitres/installation-de-laps-sur-un-controleur-de-domaine/>`_
+    
+    `L'article d'IT-Connect.fr sur LAPS.<https://www.it-connect.fr/chapitres/installation-de-laps-sur-un-controleur-de-domaine>`_
 
 
 Empêcher la délégation de compte pour les utilisateurs admin
@@ -389,3 +400,33 @@ Si vous rencontrez une erreur contenant "Creation of connector ********.onmicros
 https://answers.microsoft.com/en-us/msoffice/forum/all/creation-of-connector-onmicrosoftcom-aad-failed/0c1aaba0-a034-4e96-bd68-de602a39a5b5
 
 https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/reference-connect-tls-enforcement
+
+
+Exchange Online
+======================
+
+Désactiver l'automapping
+----------------------------------
+
+
+.. code-block:: console
+
+    Add-MailboxPermission -Identity <MailboxIdentity> -User <UserIdentity> -AccessRights FullAccess -AutoMapping $false
+
+
+.. note::
+
+    https://learn.microsoft.com/en-us/outlook/troubleshoot/profiles-and-accounts/remove-automapping-for-shared-mailbox
+
+
+
+Send as permissions
+-------------------------
+
+.. code-block:: console
+    
+    Add-RecipientPermission | Remove-RecipientPermission> -Identity <MailboxOrGroupIdentity> -Trustee <DelegateIdentity> -AccessRights SendAs
+
+.. note::
+
+    https://learn.microsoft.com/en-us/exchange/recipients-in-exchange-online/manage-permissions-for-recipients
