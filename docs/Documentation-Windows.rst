@@ -145,6 +145,80 @@ Si le partage réseau du PC est activé, il est possible d'accéder au répertoi
     \\<HOSTNAME>\c$
 
 
+SYSPREP
+------------------
+
+Cette section est basée sur l'article d'IT-Connect.fr sur ce sujet.
+
+
+.. admonition:: Lien vers l'article
+
+    `SYSPREP par IT-Connect.fr <https://www.it-connect.fr/effectuer-sysprep-windows-11-24h2/>`_
+
+
+Généralités
+^^^^^^^^^^^^^^^^^^^^
+
+Le SYSPREP est une fonctionnalité inclue nativement dans Windows 10 & 11. Elle permet de préparer une machine Windows avant de la dupliquer ou de la déployer sur d'autres ordinateurs.
+
+Grâce à cette fonctionnalité, nous n'avons pas à nous soucier de quelconque conflit de nom, SID ou paramètre spécifique à un user car le SYSPREP va donc effectuer plusieurs actions importantes, dont :
+
+- Réinitialisation du SID : il génère un nouvel identifiant de sécurité pour éviter des conflits entre machines.
+- Activation du mode OOBE (Out-Of-Box Experience) : ce mode fait en sorte que, lors du premier démarrage de la machine clonée, Windows affiche un assistant pour personnaliser les paramètres (langue, fuseau horaire, etc.).
+- Généralisation de l’image : SYSPREP rend l’image Windows générique pour qu’elle puisse être utilisée sur différents matériels.
+
+Étapes
+^^^^^^^^^^^^^^^^
+
+Voici les étapes pour préparer Windows avec SYSPREP.
+
+
+Disable Bitlocker
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. code-block:: console
+
+    Disable-BitLocker -MountPoint "C:"
+
+Pour suivre la progression de la tâche, la commande ci-dessous est disponible :abbr:
+
+.. code-block:: console
+
+    Get-BitLockerVolume | Select MountPoint, VolumeStatus
+
+
+Lorsque le processus sera terminé, le retour de commande indiquera la colonne "VolumeStatus" en "FullyDecrypted".
+
+
+
+Lancement de SYSPREP
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+1. Depuis l'Explorateur de fichiers de Windows, accédez à l'emplacement suivant : C:\Windows\System32\Sysprep.
+
+2. Lancez l'application "sysprep"
+
+3. Choisissez le mode "Entrer en mode OOBE (Out-of-Box Experience)" et cochez l'option "Généraliser" juste en dessous. Ce mode prépare le système pour avoir la première expérience de démarrage, tandis que l'option cochée va permettre de générer un SID et "supprimer" les dépendances liées au matériel.
+
+4. Choisissez "Arrêter le système" comme option d'extinction.
+
+5. Cliquez sur "OK" pour lancer l'opération. Vous devez patienter. Cette opération peut être assez longue, au moins une dizaine de minutes. Quand ce sera terminé, vous le saurez, car la machine sera éteinte.
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/Executer-un-SYSPREP-sur-Windows-11-24H2.png
+
+
+
+Suite
+~~~~~~~~~~~~~~~~~~~~~~
+
+- Extraire l'image au format WIN pour la déployer avec WDS
+
+OU
+
+- Dupliquer le fichier de disque dur VHDX si c'est une VM
 
 Softwares utiles
 ====================
