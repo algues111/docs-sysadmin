@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Notes personnelles Administration Système'
+project = 'Sys&NetAdmin Doc'
 copyright = '2024, Arthur LE GUENNEC'
 author = 'Arthur LE GUENNEC'
 release = '0.1'
