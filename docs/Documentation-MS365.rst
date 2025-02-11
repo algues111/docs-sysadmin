@@ -65,50 +65,39 @@ Pour en créer une nouvelle, cliquer sur "+ Nouvelle stratégie d'alerte".
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/alerts.png
 
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/create1.png
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/create2.png
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/create3.png
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/create4.png
 
 
 
 .. tabs::
 
-   .. tab:: SquareX
+   .. tab:: Etape 1
 
-      SquareX est une extension s'ajoutant à votre navigateur vous permettant de sandboxer un site que vous visitez, un fichier ou même un mail que vous pouvez recevoir sur une adresse temporaire.
-      Rendez-vous sur https://sqrx.com/ pour la télécharger !
+      - Creer un nom de règle
+      - Ajouter une description (optionnelle mais best practice)
+      - Gravité
+      - Catégorie
 
-      .. image:: https://raw.githubusercontent.com/algues111/docs-cfc/main/docs/source/images/M233/sqrx.png
+        .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/create1.png
 
 
-   .. tab:: VirusTotal
+   .. tab:: Etape 2
 
-      `VirusTotal <https://www.virustotal.com/gui/home/upload>`_ est un outil 100% gratuit permettant de scanner des URL, des fichiers, des hashs/checksums, des domaines et adresses IP.
-      Ses analyses sont basés sur plus de 70 anti-virus connus du marché de la cybersécurité et vous offre en plus de cela un score de communauté.
+      - Choisir le déclencheur de l'alerte. Ici "Autorisation de boître aux lettres octroyée"
+      - Comment l'alerte se déclenche-t-elle ? (déclenchement avec volume, dès que l'activité correspond etc...). Ici "dès que l'activité correspond".
 
-      Accueil du site :
+        .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/create2.png
 
-      .. image:: https://raw.githubusercontent.com/algues111/docs-cfc/main/docs/source/images/M233/virustotal.png
 
-      Regroupant toutes ces informations, il est bien plus facile de savoir si tel site ou tel fichier est malveillant.
+   .. tab:: Etape 3
 
-      L'entreprise offre aussi des applications de bureau pour Mac, Linux et Windows ainsi que des services payant pour du threat hunting et des graphs !
+      - Choisir quel est le destinataire de l'alerte et si l'on veut qu'elle soit envoyée par mail.
+      - Nombre de notifications maximum par jour.
 
-      Ci-dessous une démonstration d'un scan de site malveillant (ici phishing).
-
-       .. image:: https://raw.githubusercontent.com/algues111/docs-cfc/main/docs/source/images/M233/virustotal-malurl.png
+        .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/create3.png
      
+    .. tab:: Etape 4
 
+      - Vérification de la configuration de l'alerte
+      - Choisir de l'activer dès maintenant ou plus tard. (Ici, choisir maintenant).
 
-   .. tab:: iBarry
-
-     `iBarry <https://www.ibarry.ch/fr/controles-de-securite/>`_ centralise des fonctionnalités similaires et complémentaires à VirusTotal, il permet de :
-
-         - Vérifier un site web
-         - Vérifier si une adresse mail a été compromis via des fuites de données (vérification faite par Have I Been Powned)
-         - Vérifier si son IP publique est potentiellement sujette à des attaques (iBarry effectue des tests de ports)
-
-     Le site propose aussi dvers logiciels de sécurité dont l'antivirus de Sophos ainsi que Qualys pour la veille des logiciels.
-
-     .. image:: https://raw.githubusercontent.com/algues111/docs-cfc/main/docs/source/images/M233/ibarry.png
+        .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/create2.png
