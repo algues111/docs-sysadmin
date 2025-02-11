@@ -100,4 +100,4 @@ Pour en créer une nouvelle, cliquer sur "+ Nouvelle stratégie d'alerte".
       - Vérification de la configuration de l'alerte
       - Choisir de l'activer dès maintenant ou plus tard. (Ici, choisir maintenant).
 
-        .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/create2.png
+        .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/create4.png
