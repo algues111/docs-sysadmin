@@ -1,5 +1,5 @@
 ======================
-Documentation MSAzure
+Documentation MS365
 ======================
 
 Création de tenant

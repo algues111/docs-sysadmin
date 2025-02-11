@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Sys&NetAdmin Doc'
+project = 'Sys&NetAdmin'
 copyright = '2024, Arthur LE GUENNEC'
 author = 'Arthur LE GUENNEC'
 release = '0.1'
@@ -48,5 +48,5 @@ language = 'fr'
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'pydata_sphinx_theme'
+html_theme = 'sphinx_book_theme'
 #html_static_path = ['source/_static']
