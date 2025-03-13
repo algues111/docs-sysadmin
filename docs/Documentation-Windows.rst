@@ -148,6 +148,13 @@ Si le partage réseau du PC est activé, il est possible d'accéder au répertoi
 Office 365
 -------------------
 
+Command-line switches
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. tip::
+    Toutes les command-line switches pour Office sont disponibles `ici <https://support.microsoft.com/en-us/office/command-line-switches-for-microsoft-office-products-079164cd-4ef5-4178-b235-441737deb3a6#Category=Outlook>`_
+
+
 Outlook
 ^^^^^^^^^^^^
 
