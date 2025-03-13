@@ -659,3 +659,14 @@ Il ne manque plus que rebooter l'ESXi désormais !!!!
 .. code-block:: console
 
     [root@dl380:~] reboot
+
+
+
+vSphere Licensing
+======================
+
+Tableau comparatif des licences vSphere 2025
+-------------------------------------------------
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/licensing.png
