@@ -25,14 +25,14 @@ Telecharger l'iso complet de esxi 8.0.2 via le lien donné (soit le ALL soit cus
 Phase 2 : Mise à jour
 ------------------------
 
-Créer une clé bootable de l'iso
-Insérer la clé dans l'esxi
-F11 au boot
-Selectionner Generic USB
-Attendre le boot
-Accepter l'installation d'ESXi 8
-Choisir le bon support de stockage
-Selectionner Upgrade OU installer ESXI8 si vous voulez réinstaller le tout
+- Créer une clé bootable de l'iso
+- Insérer la clé dans l'esxi
+- F11 au boot
+- Selectionner la clé bootable
+- Attendre le boot
+- Accepter l'installation d'ESXi 8
+- Choisir le bon support de stockage pour l'installation
+- Selectionner Upgrade OU installer ESXI8 si vous voulez réinstaller le tout
 
 Erreur : conflits de VIBs ou checksum invalide etc...
 Désinstaller les VIBs conflicutels et invalides de la manière suivante :

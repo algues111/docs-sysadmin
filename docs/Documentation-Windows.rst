@@ -36,7 +36,7 @@ Windows Server 2022
 Installer fonctionnalités 
 ----------------------------
 
-Active Directory
+Active Directory DS
 ^^^^^^^^^^^^^^^^^^^^
 
 
@@ -143,6 +143,41 @@ Si le partage réseau du PC est activé, il est possible d'accéder au répertoi
 .. code-block:: console
 
     \\<HOSTNAME>\c$
+
+
+Office 365
+-------------------
+
+Outlook
+^^^^^^^^^^^^
+
+Troubleshooting
+~~~~~~~~~~~~~~~~~~
+
+
+**Liste de commandes pour débugger Outlook**
+
+.. tabs::
+
+   .. tab:: Safemode
+
+      Windows + R (outlook.exe /safe) -> Lance Outlook en safemode sans configuration personnalisée
+
+      .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/execute-outlook-safemode.png
+
+
+   .. tab:: Cleanviews
+
+      Windows + R (outlook.exe /cleanviews) -> Lance Outlook en rétablissant les réglages d'affichage par défaut. Attention, cette action supprime les profils d'affichage personnalisés.
+
+       .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/execute-outlook-cleanviews.png
+
+       .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/outlook-display-settings.png
+
+     
+
+
+
 
 
 SYSPREP
