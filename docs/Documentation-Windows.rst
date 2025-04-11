@@ -59,6 +59,23 @@ Au sein du profil de l'utilisateur, il est possible de créer un dossier personn
 
 Cela créera le dossier automatiquement avec les autorisations propres à l'utilisateur en question.
 
+GPMC
+~~~~~~~~~~
+
+La GPMC (Group Policy Management Console), vient de paire avec l'installation du rôle AD DS.
+
+Avec cette console, vous pouvez configurer des stratégies de groupe (GPO) pour faciliter la gestion du parc informatique et des utilisateurs en fonction de vos besoins.
+
+Par exemple grâce à celles-ci, il est possible de configurer le mappage de lecteurs réseau pour une OU spécifique, de limiter certains protocoles réseau (désactiver IPv6 par exemple), forcer le DNSSEC...
+
+
+Il existe 2 types de GPO :
+
+- GPO utilisateur 
+- GPO ordinateur
+
+
+
 
 NPS (Network Policy Server / Microsoft RADIUS)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -66,15 +83,28 @@ NPS (Network Policy Server / Microsoft RADIUS)
 Le rôle NPS est un serveur fournissant des services d'AAA sur le réseau. C'est l'implémentation Microsoft du service RADIUS.
 
 
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/nps-home.png
+
+
 
 .. warning::
     Il faut être attentif quant aux protocoles utilisés par les périphériques pour l'authentification sur le réseau.
-    Typiquement, si votre appareil établit une communication RADIUS via le protocole MS-CHAPv2, il est important d'acitver les réponses NTLMv1 sur le DC.
+    Typiquement, si votre appareil établit une communication RADIUS via le protocole MS-CHAPv2 (dans sa version non EAP), il est important d'acitver les réponses NTLMv1 sur le DC.
     Sans cela, la communication se terminera avec une erreur MS-CHAPv2 (visible via Wireshark).
 
     "*One of my colleagues was at a Microsoft conference having various discussions when it dawned on him that MSCHAPv2 relies on NTLM to generate the password challenges and responses. Now plain old MSCHAP and MSCHAPv2 (i.e. not EAP-MSCHAPv2 or PEAP) when used in Windows RAS services will use NTLMv1 by default.*"
 
     https://serverfault.com/questions/608227/authentication-via-radius-mschapv2-error-691
+
+Ci-dessous, nous pouvons remarquer les contraintes imposées par le serveur NPS auprès des clients.
+
+Lors de premiers tests, nous avions décidé d'activer tous les protocoles , des plus sécurisés au moins sécurisés et de restreindre par la suite granulairement ceux autorisés.
+Cette méthode est utile lorsqu'il est impossible de connaître les protocoles utilisés par les clients et lorsqu'il n'est pas possible d'écouter sur le réseau (avec un port mirroring, hub...)
+
+Dans cette configuration, MSCHAPv2 uniquement est autorisé car l'atp200 de Zyxel ne fonctionne qu'avec cela pour le RADIUS.
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/nps-home.png
+
 
 
 
