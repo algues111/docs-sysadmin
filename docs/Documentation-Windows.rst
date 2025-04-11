@@ -103,7 +103,7 @@ Cette méthode est utile lorsqu'il est impossible de connaître les protocoles u
 
 Dans cette configuration, MSCHAPv2 uniquement est autorisé car l'atp200 de Zyxel ne fonctionne qu'avec cela pour le RADIUS.
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/nps-home.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/nps-authentication-protocols.png
 
 
 
