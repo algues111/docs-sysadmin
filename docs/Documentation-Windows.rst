@@ -33,7 +33,7 @@ Windows Server 2022
 =========================
 
 
-Installer fonctionnalités 
+Rôles et Fonctionnalités 
 ----------------------------
 
 Active Directory DS
@@ -45,50 +45,102 @@ Active Directory DS
 
     Du moment que votre domaine Active Directory est créé, vous ne pouvez plus changer le nom de votre DC (domain controller).
     
+Utilisateurs
+~~~~~~~~~~~~~~
+
+
+Profil
+~~~~~~~~~~~~
+
+
+Au sein du profil de l'utilisateur, il est possible de créer un dossier personnel sur un partage de fichiers grâce à un chemin de ce type :
+
+\\labo.local\Shared\Employes\Personnel\%username%
+
+Cela créera le dossier automatiquement avec les autorisations propres à l'utilisateur en question.
+
+
+NPS (Network Policy Server / Microsoft RADIUS)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Le rôle NPS est un serveur fournissant des services d'AAA sur le réseau. C'est l'implémentation Microsoft du service RADIUS.
+
+
+
+.. warning::
+    Il faut être attentif quant aux protocoles utilisés par les périphériques pour l'authentification sur le réseau.
+    Typiquement, si votre appareil établit une communication RADIUS via le protocole MS-CHAPv2, il est important d'acitver les réponses NTLMv1 sur le DC.
+    Sans cela, la communication se terminera avec une erreur MS-CHAPv2 (visible via Wireshark).
+
+    "*One of my colleagues was at a Microsoft conference having various discussions when it dawned on him that MSCHAPv2 relies on NTLM to generate the password challenges and responses. Now plain old MSCHAP and MSCHAPv2 (i.e. not EAP-MSCHAPv2 or PEAP) when used in Windows RAS services will use NTLMv1 by default.*"
+
+    https://serverfault.com/questions/608227/authentication-via-radius-mschapv2-error-691
 
 
 
 Déplacer partition de récupération
------------------------------------
+======================================
+
+Après l'extension du stockage d'une VM Windows, il est nécessaire de passer par quelques étapes avant de pouvoir étendre le volume C:.
+Cela est dû à la présence de la partition de récupération Windows, cette dernière se situant dans les derniers blocs du système de fichiers.
 
 
 
+.. note:: 
+    Cette section est basée sur ce tutoriel.
+    https://thedxt.ca/2023/06/moving-windows-recovery-partition-correctly/
 
-I just had this problem, and I followed this guide to resize the drive:
 
-https://thedxt.ca/2023/06/moving-windows-recovery-partition-correctly/
 
-Basically, here are the steps:
+En premier lieu, il est nécessaire de désactiver la partition de récupération Windows existante en éxecutant la commande reagentc /disable
 
-Disable the existing Windows Recovery Partition by running reagentc /disable
+Pour les étapes suivantes, nous utiliserons DISKPART pour supprimer la partition.
 
-Use diskpart to remove the recovery partition
+.. code-block::console
 
-list disk
+    list disk
 
-select disk # where # is the disk needing the recovery partition removed
+    select disk x # where x is the disk needing the recovery partition removed
 
-list partition
+    list partition
 
-select partition # where # is the recovery partition
+    select partition x #where x is the recovery partition
 
-delete partition override to force deletion of the recovery partition
+    delete partition override # to force deletion of the recovery partition
 
-Expand the disk using Disk Management, leaving ~1024 MB at the end of the drive for recreating the recovery partition
+Étendre le disque en utilisant le gestionnaire de disques (Disk Management), en laissant ~1024 Mo à la fin pour pouvoir recréer la partition de récupération.
 
-Create New Simple Volume for Recovery, NTFS, no drive letter
+Créer un nouveau volume NTFS sans y attribuer de lettre.
 
-use diskpart to set the recovery partition attributes
+Utiliser de nouveau DISKPART pour configurer les attributs de la nouvelle partition.
 
-list partition
+.. code-block::console
 
-select partition # where # is the new recovery partition
+    list partition
 
-For GPT disks run set id=de94bba4-06d1-4d40-a16a-bfd50179d6ac & gpt attributes=0x8000000000000001
+    select partition x #where x is the new recovery partition
 
-For MBR disks, run set id=27
+Pour les disques GPT : 
 
-Re-enable the recovery partition by running reagentc /enable
+.. code-block::console
+
+    set id=de94bba4-06d1-4d40-a16a-bfd50179d6ac 
+
+    gpt attributes=0x8000000000000001
+
+Pour les diques MBR :
+
+.. code-block::console
+
+    set id=27
+
+Après avoir attribué l'id à la partition, réactivez la récupérartion avec cette commande :
+
+.. code-block::console
+
+    reagentc /enable
+
+
 
 Tools & Composants Windows
 ============================
@@ -133,6 +185,60 @@ Cependant il peut s'avérer qu'il bloque des logiciels, téléchargements de pil
 Si Windows Defender SmartScreen bloque l'éxecution d'un .exe, vous pouvez le débloquer facilement depuis "Propriétés" en faisant clique-droit sur le fichier concerné, et "Débloquer".
 
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/unblock.png
+
+Windows Event Logs
+--------------------
+
+Les logs d'évènement Windows sont une partie essentielle de Windows, stockant les logs des différents composants du système en incluant le système lui-même, les applications en cours d'éxecution, les ETW providers, services et autres...
+
+
+Catégories
+^^^^^^^^^^^^^^^^
+
+Les logs sont classés en 4 catégories :
+
+- Application
+- Système
+- Sécurité
+- et autres...
+
+
+WEL utiles
+^^^^^^^^^^^^^^^^^^^^
+
+
+1. Windows System Logs
+
+    - Event ID 1074 (System Shutdown/Restart): This event log indicates when and why the system was shut down or restarted. By monitoring these events, you can determine if there are unexpected shutdowns or restarts, potentially revealing malicious activity such as malware infection or unauthorized user access.
+    - Event ID 6005 (The Event log service was started): This event log marks the time when the Event Log Service was started. This is an important record, as it can signify a system boot-up, providing a starting point for investigating system performance or potential security incidents around that period. It can also be used to detect unauthorized system reboots.
+    - Event ID 6006 (The Event log service was stopped): This event log signifies the moment when the Event Log Service was stopped. It is typically seen when the system is shutting down. Abnormal or unexpected occurrences of this event could point to intentional service disruption for covering illicit activities.
+    - Event ID 6013 (Windows uptime): This event occurs once a day and shows the uptime of the system in seconds. A shorter than expected uptime could mean the system has been rebooted, which could signify a potential intrusion or unauthorized activities on the system.
+    - Event ID 7040 (Service status change): This event indicates a change in service startup type, which could be from manual to automatic or vice versa. If a crucial service's startup type is changed, it could be a sign of system tampering.
+
+2. Windows Security Logs
+    - Event ID 1102 (The audit log was cleared): Clearing the audit log is often a sign of an attempt to remove evidence of an intrusion or malicious activity.
+    - Event ID 1116 (Antivirus malware detection): This event is particularly important because it logs when Defender detects a malware. A surge in these events could indicate a targeted attack or widespread malware infection.
+    - Event ID 1118 (Antivirus remediation activity has started): This event signifies that Defender has begun the process of removing or quarantining detected malware. It's important to monitor these events to ensure that remediation activities are successful.
+    - Event ID 1119 (Antivirus remediation activity has succeeded): This event signifies that the remediation process for detected malware has been successful. Regular monitoring of these events will help ensure that identified threats are effectively neutralized.
+    - Event ID 1120 (Antivirus remediation activity has failed): This event is the counterpart to 1119 and indicates that the remediation process has failed. These events should be closely monitored and addressed immediately to ensure threats are effectively neutralized.
+    - Event ID 4624 (Successful Logon): This event records successful logon events. This information is vital for establishing normal user behavior. Abnormal behavior, such as logon attempts at odd hours or from different locations, could signify a potential security threat.
+    - Event ID 4625 (Failed Logon): This event logs failed logon attempts. Multiple failed logon attempts could signify a brute-force attack in progress.
+    - Event ID 4648 (A logon was attempted using explicit credentials): This event is triggered when a user logs on with explicit credentials to run a program. Anomalies in these logon events could indicate lateral movement within a network, which is a common technique used by attackers.
+    - Event ID 4656 (A handle to an object was requested): This event is triggered when a handle to an object (like a file, registry key, or process) is requested. This can be a useful event for detecting attempts to access sensitive resources.
+    - Event ID 4672 (Special Privileges Assigned to a New Logon): This event is logged whenever an account logs on with super user privileges. Tracking these events helps to ensure that super user privileges are not being abused or used maliciously.
+    - Event ID 4698 (A scheduled task was created): This event is triggered when a scheduled task is created. Monitoring this event can help you detect persistence mechanisms, as attackers often use scheduled tasks to maintain access and run malicious code.
+    - Event ID 4700 & Event ID 4701 (A scheduled task was enabled/disabled): This records the enabling or disabling of a scheduled task. Scheduled tasks are often manipulated by attackers for persistence or to run malicious code, thus these logs can provide valuable insight into suspicious activities.
+    - Event ID 4702 (A scheduled task was updated): Similar to 4698, this event is triggered when a scheduled task is updated. Monitoring these updates can help detect changes that may signify malicious intent.
+    - Event ID 4719 (System audit policy was changed): This event records changes to the audit policy on a computer. It could be a sign that someone is trying to cover their tracks by turning off auditing or changing what events get audited.
+    - Event ID 4738 (A user account was changed): This event records any changes made to user accounts, including changes to privileges, group memberships, and account settings. Unexpected account changes can be a sign of account takeover or insider threats.
+    - Event ID 4771 (Kerberos pre-authentication failed): This event is similar to 4625 (failed logon) but specifically for Kerberos authentication. An unusual amount of these logs could indicate an attacker attempting to brute force your Kerberos service.
+    - Event ID 4776 (The domain controller attempted to validate the credentials for an account): This event helps track both successful and failed attempts at credential validation by the domain controller. Multiple failures could suggest a brute-force attack.
+    - Event ID 5001 (Antivirus real-time protection configuration has changed): This event indicates that the real-time protection settings of Defender have been modified. Unauthorized changes could indicate an attempt to disable or undermine the functionality of Defender.
+    - Event ID 5140 (A network share object was accessed): This event is logged whenever a network share is accessed. This can be critical in identifying unauthorized access to network shares.
+    - Event ID 5142 (A network share object was added): This event signifies the creation of a new network share. Unauthorized network shares could be used to exfiltrate data or spread malware across a network.
+    - Event ID 5145 (A network share object was checked to see whether client can be granted desired access): This event indicates that someone attempted to access a network share. Frequent checks of this sort might indicate a user or a malware trying to map out the network shares for future exploits.
+    - Event ID 5157 (The Windows Filtering Platform has blocked a connection): This is logged when the Windows Filtering Platform blocks a connection attempt. This can be helpful for identifying malicious traffic on your network.
+    - Event ID 7045 (A service was installed in the system): A sudden appearance of unknown services might suggest malware installation, as many types of malware install themselves as services.
 
 
 Partage réseau

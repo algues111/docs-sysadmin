@@ -85,6 +85,27 @@ PFSense
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Networking/pfsense-logo.png
 
 
+Fortigate
+-------------------
+
+
+NAT-PAT
+^^^^^^^^^
+
+Dans FortiOS, il est possible de créer des IP Virtuelles pour configurer le DNAT sur des services se trouvant derrière notre FortiGate.
+
+
+.. note::
+    Par exemple, si vous hébergez un service atteignable avec l'IP publique 10.54.66.81:55313 mais qui possède en réalité l'IP locale 172.16.10.10, il est nécessaire de créer une IP virtuelle qui convertira le port 
+
+
+
+
+
+VIP
+~~~~~~
+
+
 
 Téléphonie SIP
 =====================
