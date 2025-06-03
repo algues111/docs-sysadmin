@@ -16,6 +16,42 @@ Microsoft 365
 Gestion des utilisateurs et groupes
 --------------------------------------
 
+Différents types de groupes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/microsoft-365-groups.png
+
+
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+-------------------------------------------+
+| Group Type                | Description                                                                                                                                                                                                                                                | When to use?                                                                                   | Where to create it?                       |
++===========================+============================================================================================================================================================================================================================================================+===============================================================================================+===========================================+
+| Microsoft 365 group       | A Microsoft 365 group is the recommended group type. It includes a group email and shared workspaces, making it ideal for collaboration. It's similar to distribution groups because it has its own mailbox, and its members receive email... | When you want to provide distribution list capabilities and other collaboration features. The best option for team work. | - Microsoft 365 admin center |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+-------------------------------------------+
+| Distribution group        | In Microsoft 365, a distribution group is also known as a distribution list. Organizations primarily use it for sending notifications to a group of people. You do so by associating a single email address with the distribution group. | When you want to distribute messages using the group only. | - Microsoft 365 admin center |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+-------------------------------------------+
+| Mail-enabled security group | When you mail-enable a security group, it means the group has an associated email address, and members of the group can send and receive emails using that address. This design enables the group to function as a mailing list or distribution group. | When you want to use the group for both permissions and mail distribution. | - Microsoft 365 admin center |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+-------------------------------------------+
+| Security group | A security group provides a convenient way to manage and assign permissions to multiple users simultaneously. A security group can grant access permissions to resources such as OneDrive and SharePoint. | When you only require a group to grant permissions. | - Microsoft 365 admin center |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+-------------------------------------------+
+| Dynamic distribution group | A dynamic distribution group automatically manages its membership based on predefined criteria or filters. In a traditional distribution group, users manually manage membership. | When you want to have a flexible distribution list that changes membership automatically. | - Exchange admin center |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+-------------------------------------------+
+| Shared mailbox | Shared mailboxes are used when multiple people need access to the same mailbox, such as a company information or support email address, reception desk, or other function that might be shared by multiple people. | When multiple people need to access the same mailbox, such as a support email address. | - Microsoft 365 admin center |
++---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+-------------------------------------------+
+
+
+Export des dernières connexions des utilisateurs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Via MSGraph
+~~~~~~~~~~~~
+
+
+.. code-block:: console
+
+   Connect-MgGraph -Scopes Directory.Read.All,AuditLog.Read.All
+   Get-MgUser -All -Property 'UserPrincipalName', 'SignInActivity' | Select-Object UserPrincipalName, @{N='LastSignInDate';E={$_.SignInActivity.LastSignInDateTime}} | Export-Csv -Path C:\\Windows\\temp\\LastLogininfo.csv -NoTypeInformation
+
 
 Achat de licences
 ------------------------
@@ -27,6 +63,8 @@ Sharepoint
 
 PowerAutomate
 -------------------
+
+
 
 Exchange
 --------------------

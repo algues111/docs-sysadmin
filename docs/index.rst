@@ -10,7 +10,7 @@ Documentation Administration Système, Réseau et Sécurité
    :maxdepth: 2
    :caption: Contents:
 
-   Documentation-ESXi.rst
+   Documentation-vSphere.rst
    Documentation-Docker.rst
    Documentation-MacOS.rst
    Documentation-Windows.rst

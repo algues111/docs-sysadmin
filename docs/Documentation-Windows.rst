@@ -201,7 +201,22 @@ Avec l'interface ci-dessous, vous serez en mesure d'intégrer les outils désir�
 
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/mmc-tool.png
 
+Windows Hello
+---------------
 
+
+Pour supprimer un code PIN Windows 10 / 11 oublié, il sera necessaire d'effectuer les commandes suivantes avec des privilèges élevés :
+
+.. code-block:: console
+
+    certutil.exe -DeleteHelloContainer
+    logoff.exe
+
+A la prochaine connexion de l'utilisateur en question, le code PIN aura été effacé des options de connexion.
+
+.. note::
+
+    https://learn.microsoft.com/en-us/answers/questions/1466604/how-do-i-remove-pin-(windows-hello)-option-if-it-i
 
 Windows Defender
 ---------------------

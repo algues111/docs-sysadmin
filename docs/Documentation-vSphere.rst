@@ -1,6 +1,6 @@
-====================
-Documentation ESXi
-====================
+======================
+Documentation vSphere
+======================
 
 
 Upgrade 6.7 -> 8.0.2B (sur DL380 Gen9)
@@ -16,7 +16,7 @@ Préparer des backups des différentes VMs tournant sur l'esxi au préalable.
 
 Accéder à l'ESXi, activer le mode maintenance et SSH
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/1-entrer-en-mode-de-maintenance.webp
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/1-entrer-en-mode-de-maintenance.webp
 
 
 Télécharger dans le datastore votre nouveau bundle de VIBs pour ESXi 8.0.2B (ici HPE)
@@ -90,7 +90,7 @@ Télécharger iso correspondant à la version de l'ESXi (ici 8)
 
 Interface ESXi 8.0 :
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/customize-esxi-host-client-theme-0.webp 
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/customize-esxi-host-client-theme-0.webp 
 *Source : williamlam.com*
 
 
@@ -132,18 +132,18 @@ Si vous possédez un serveur HPE, DELL, ou provenant de tout autre fabricant dis
 My Downloads --> VMWare VSphere --> VMware vSphere - Standard 8.0 --> Custom ISOs
 
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/broadcom-dl.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/broadcom-dl.png
 
 
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/vsphere-dl.png
 
 
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl1.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/vsphere-dl1.png
 
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vsphere-dl2.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/vsphere-dl2.png
 
 
 
@@ -200,7 +200,7 @@ VEEAM BACKUP & REPLICATION
 
 Veeam Backup & Replication est une solution de sauvegardes / backups
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-website.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/veeam-website.png
 
 
 
@@ -302,24 +302,24 @@ Pour installer Veeam Backup & Replication, il est tout d'abord nécessaire d'ins
 
 Après avoir téléchargé l'iso de 11Go environ, vous pourrez l'ouvrir et cliquer sur "setup".
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/iso-veeam.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/iso-veeam.png
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/setupexeveeam.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/setupexeveeam.png
    
 
 Après l'éxecution du setup, vous aurez plusieurs options d'installation.
 
 Dans notre cas, nous installons Veeam Backup and Replication.
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-install-options.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/veeam-install-options.png
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-installationpng
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/veeam-installationpng
 
 
 Après que l'installation soit terminée, vous pourrez lancer la console Veeam qui affichera une fenêtre de connexion.
 
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-connection.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/veeam-connection.png
 
 
 
@@ -333,16 +333,16 @@ Afin de pouvoir créer des backups et les restaurer, il est nécessaire de confi
 
 Tout d'abord, lorsque Veeam est lancé, cliquez sur **Backup Infrastructure** en bas à gauche de la page, cliquez sur **Managed Servers** puis sur **Add Server** en haut à gauche de la page.
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-backup-infr.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/veeam-backup-infr.png
 
 
 A la suite de ces étapes, le logiciel vous demandera de choisir le serveur que vous souhaitez joindre à votre infrastructure de backup.
 
 Ici, nous choisissons VMWare vSphere, puis vSphere.
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/veeam-addserver.png
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-vsphere.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/veeam-addserver-vsphere.png
 
 
 .. note::
@@ -352,7 +352,7 @@ Ici, nous choisissons VMWare vSphere, puis vSphere.
 
 Rentrer l'IP ou le nom DNS du serveur vCenter.
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-ip.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/veeam-addserver-ip.png
 
 
 Rentrer les credentials de votre SSO vSphere.
@@ -367,7 +367,7 @@ Rentrer les credentials de votre SSO vSphere.
     Si le port https n'est pas le 443 sur votre serveur, il est nécessaire de le renseigner dans la fenêtre.
 
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/veeam-addserver-id.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/veeam-addserver-id.png
 
 
 
@@ -393,7 +393,7 @@ FALSE
 
 
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/cp.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/cp.png
 
 
 
@@ -543,11 +543,11 @@ https://vcenter.lan:5480
 
 
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vcenter-mgmt1.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/vcenter-mgmt1.png
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vcenter-mgmt2.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/vcenter-mgmt2.png
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/vcenter-mgmt3.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/vcenter-mgmt3.png
 
 
 ESXi (Standalone)
@@ -578,7 +578,7 @@ A la suite de cela, uploadez le fichier dans le datastore de votre ESXi. Ici, on
 
 Vous devriez maintenant le voir apparaître :
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/esxi-vib-upload.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/esxi-vib-upload.png
 
 
 .. tip::
@@ -589,7 +589,7 @@ Accès SSH
 
 Bien évidemment, activez le service ssh de votre hôte pour pouvoir y accéder ;)
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/esxi-ssh-activate.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/esxi-ssh-activate.png
 
 
 Installation de l'update
@@ -669,4 +669,30 @@ Tableau comparatif des licences vSphere 2025
 -------------------------------------------------
 
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/ESXi/licensing.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/licensing.png
+
+
+VMKernel Services
+=======================
+
+
+vMotion
+=========
+
+vMotion est une partie intégrante des services disponibles dans un adaptateur VMKernel.
+Il permet de migrer une machine virtuelle active d'un hôte à un autre sans coupure via vCenter Server.
+
+.. warning::
+
+    Il y a toutefois quelques mesures à prendre afin de rendre ces migrations possibles.
+    Typiquement, si des Standard vSwitches sont utilisés à la place de Distributed vSwitches il est nécessaire d'avoir exactement les mêmes groupes de ports incluant les mêmes paramètres de sécurité afin d'éviter toute erreur.
+
+
+
+Étapes
+--------
+
+Choisir le type de migration choisie
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/vm-migration1.png
