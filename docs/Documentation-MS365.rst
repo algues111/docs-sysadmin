@@ -76,6 +76,33 @@ Achat de licences
 Sharepoint
 ---------------------
 
+Teams
+----------
+
+Importation utilisateurs (bulk)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Canal privé
+~~~~~~~~~~~~~~~~~~
+
+Pour importer des utilisateurs dans un canal privé en mode bulk, il ets nécessaire de posséder un fichier csv formaté de la sorte :
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/csv-private-channel.png
+
+
+.. code-block:: console
+
+   Install-Module -Name MicrosoftTeams
+
+   Connect-MicrosoftTeams
+
+   Import-Csv -Path "C:\Users\Aleg\Downloads\asasas.csv" | foreach{Add-TeamChannelUser -GroupId 449f4444-4444-4444-b4d5-5b1f08aff324 -DisplayName "Terrain" -user $_.email}
+
+
+
+
+
 PowerAutomate
 -------------------
 
@@ -93,13 +120,13 @@ Defender
 -------------------
 
 Alerts & Rules
-------------------
+^^^^^^^^^^^^^^^^
 
 Depuis Microsoft Defender, il ets possible de créer des alertes suivant certaines conditions.
 
 
 Permissions de boîte aux lettres ajoutées 
----------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Plusieurs étapes sont nécessaires pour configurer une alerte sur Microsoft Defender.
 
@@ -116,6 +143,8 @@ Toutes les règles déjà créées et activées par Microsoft sont désormais af
 Pour en créer une nouvelle, cliquer sur "+ Nouvelle stratégie d'alerte".
 
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/alerts.png
+
+
 
 
 
@@ -155,3 +184,15 @@ Pour en créer une nouvelle, cliquer sur "+ Nouvelle stratégie d'alerte".
       - Choisir de l'activer dès maintenant ou plus tard. (Ici, choisir maintenant).
 
         .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/create4.png
+
+
+
+Purview
+---------
+
+Purview regroupe un ensemble de services permettant la protection, sécurisation, l'audit, et la récupération des données présentes dans 365 mais aussi dans les connecteurs externes.
+
+
+Insider Risk Management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+

@@ -100,7 +100,7 @@ Interface ESXi 8.0 :
 
 
 
-Simple updates on legacy ESXi hosts
+Offline / Online updates on legacy ESXi hosts
 ======================================
 
 Si votre ESXi est hébergé sur un hôte avec des caractéristiques hardwares non officiellement supportées par VMWare, notamment pour le CPU, il faudra effectuer quelques manipulations pour remédier à la problématique.
@@ -116,8 +116,8 @@ Prérequis :
 - Compte Broadcom pour accéder aux ressources
 
 
-Custom ISO download
----------------------
+Custom ISO download (Offline)
+------------------------------
 
 Si vous possédez un serveur HPE, DELL, ou provenant de tout autre fabricant disposant d'iso ESXi personnalisé, vous ne les trouverez plus sur leurs propres sites, mais sur celui de Broadcom, étant donné que les licences gratuites de VMWare ESXi ont été abandonnées par ces derniers.
 
@@ -177,10 +177,6 @@ Pour vérifier que l'ESXi a bien été mis à jour, vous pouvez vérifier sa ver
 
     vmware -v
 
-
-
-
-Lorsque toutes ces étapes ont été effectuées une fois, les prochaines alertes de legacy CPU pourront être remédiées directement depuis l'interface vSphere.
 
 
 
@@ -688,6 +684,40 @@ Il permet de migrer une machine virtuelle active d'un hôte à un autre sans cou
     Typiquement, si des Standard vSwitches sont utilisés à la place de Distributed vSwitches il est nécessaire d'avoir exactement les mêmes groupes de ports incluant les mêmes paramètres de sécurité afin d'éviter toute erreur.
 
 
+Multi-NICs
+--------------
+
+Il est possible d'utiliser vMotion dans une configuration multi-nics afin de garantir un failover et même d'améliorer les performances grâce à du load-balancing !
+Néanmoins, il est nécessaire d'effectuer une configuration précise pour arriver à cette fin. 
+
+L'article de Broadcom ci-dessous explique le processus en détails !
+
+.. note::
+    https://knowledge.broadcom.com/external/article/318899/multiplenic-vmotion-in-vsphere.html
+
+
+
+Configuration vSwitch
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/vswitch-vmotion.png
+
+
+
+Les uplinks souhaités doivent être configurés en mode actifs sur le vSwitch en question. 
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/vswitch-vmotion-physical-adapters.png
+
+Configuration groupe de ports vMotion-VMKernel
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/vmkernel-vmotion-nicteaming.png
+
+Configuration groupe de ports vMotion2-VMKernel
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/vmkernel2-vmotion-nicteaming.png
 
 Étapes
 --------
