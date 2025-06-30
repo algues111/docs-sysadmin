@@ -128,11 +128,11 @@ Pour les étapes suivantes, nous utiliserons DISKPART pour supprimer la partitio
 
 .. code-block:: console 
 
-    list disk
-    select disk x # where x is the disk needing the recovery partition removed
-    list partition
-    select partition x #where x is the recovery partition
-    delete partition override # to force deletion of the recovery partition
+    DISKPART>list disk
+    DISKPART>select disk x # where x is the disk needing the recovery partition removed
+    DISKPART>list partition
+    DISKPART>select partition x #where x is the recovery partition
+    DISKPART>delete partition override # to force deletion of the recovery partition
 
 
 Étendre le disque en utilisant le gestionnaire de disques (Disk Management), en laissant ~1024 Mo à la fin pour pouvoir recréer la partition de récupération.
@@ -143,21 +143,21 @@ Utiliser de nouveau DISKPART pour configurer les attributs de la nouvelle partit
 
 .. code-block:: console 
 
-    list partition
-    select partition x #where x is the new recovery partition
+    DISKPART>list partition
+    DISKPART>select partition x #where x is the new recovery partition
 
 Pour les disques GPT : 
 
 .. code-block:: console 
 
-    set id=de94bba4-06d1-4d40-a16a-bfd50179d6ac 
-    gpt attributes=0x8000000000000001
+    DISKPART>set id=de94bba4-06d1-4d40-a16a-bfd50179d6ac 
+    DISKPART>gpt attributes=0x8000000000000001
 
 Pour les diques MBR :
 
 .. code-block:: console 
 
-    set id=27
+    DISKPART>set id=27
 
 Après avoir attribué l'id à la partition, réactivez la récupérartion avec cette commande :
 
