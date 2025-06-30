@@ -126,7 +126,7 @@ En premier lieu, il est nécessaire de désactiver la partition de récupératio
 
 Pour les étapes suivantes, nous utiliserons DISKPART pour supprimer la partition.
 
-.. code-block::console
+.. code-block:: console
 
     list disk
 
@@ -144,7 +144,7 @@ Créer un nouveau volume NTFS sans y attribuer de lettre.
 
 Utiliser de nouveau DISKPART pour configurer les attributs de la nouvelle partition.
 
-.. code-block::console
+.. code-block:: console
 
     list partition
 
@@ -152,7 +152,7 @@ Utiliser de nouveau DISKPART pour configurer les attributs de la nouvelle partit
 
 Pour les disques GPT : 
 
-.. code-block::console
+.. code-block:: console
 
     set id=de94bba4-06d1-4d40-a16a-bfd50179d6ac 
 
@@ -160,13 +160,13 @@ Pour les disques GPT :
 
 Pour les diques MBR :
 
-.. code-block::console
+.. code-block:: console
 
     set id=27
 
 Après avoir attribué l'id à la partition, réactivez la récupérartion avec cette commande :
 
-.. code-block::console
+.. code-block:: console
 
     reagentc /enable
 
@@ -295,9 +295,11 @@ Si le partage réseau du PC est activé, il est possible d'accéder au répertoi
 
     \\<HOSTNAME>\c$
 
+DISM
+----------------
 
-Office 365
--------------------
+SFC
+------------
 
 Command-line switches
 ^^^^^^^^^^^^^^^^^^^^^^^^
