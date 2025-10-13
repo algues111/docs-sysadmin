@@ -40,6 +40,15 @@ Active Directory DS
 ^^^^^^^^^^^^^^^^^^^^
 
 
+Rôles FSMO
+~~~~~~~~~~~~~~~~~~~~
+
+- Schema Master :  contrôle toutes les mises à jour et les modifications apportées au schéma. Pour mettre à jour le schéma d’une forêt, vous devez avoir accès au contrôleur de schéma. Il ne peut y avoir qu’un seul contrôleur de schéma dans toute la forêt.
+- Domain Naming Master : contrôle l’ajout ou la suppression de domaines dans la forêt. Il ne peut y avoir qu’un seul maître d’opérations des noms de domaine dans toute la forêt.
+- Infrastructure Master :  l’infrastructure est responsable de la mise à jour des références des objets de son domaine vers des objets d’autres domaines. À tout moment, il ne peut y avoir qu’un seul contrôleur de domaine agissant en tant que maître d’infrastructure dans chaque domaine.
+- RID Master : responsable du traitement des demandes de pool RID provenant de tous les contrôleurs de domaine d’un domaine particulier. À tout moment, il ne peut y avoir qu’un seul contrôleur de domaine agissant en tant que maître RID dans le domaine.
+- PDC Emulator : l’émulateur PDC est un contrôleur de domaine qui se présente comme le contrôleur de domaine principal (PDC) pour les stations de travail, les serveurs membres et les contrôleurs de domaine qui exécutent des versions antérieures de Windows. 
+
 
 .. danger::
 
@@ -104,6 +113,13 @@ Cette méthode est utile lorsqu'il est impossible de connaître les protocoles u
 Dans cette configuration, MSCHAPv2 uniquement est autorisé car l'atp200 de Zyxel ne fonctionne qu'avec cela pour le RADIUS.
 
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/nps-authentication-protocols.png
+
+
+Rôles
+
+Migration de rôles FSMO
+-----------------------------
+
 
 
 
@@ -694,3 +710,6 @@ Send as permissions
 .. note::
 
     https://learn.microsoft.com/en-us/exchange/recipients-in-exchange-online/manage-permissions-for-recipients
+
+
+

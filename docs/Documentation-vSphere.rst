@@ -190,6 +190,25 @@ Pour vérifier que l'ESXi a bien été mis à jour, vous pouvez vérifier sa ver
     https://williamlam.com/2020/04/quick-tip-allow-unsupported-cpus-when-upgrading-to-esxi-7-0.html
 
 
+Online updates
+-------------------------------
+
+
+.. warning::
+    
+    Aujourd'hui, Broadcom demande la génération et l'utilisation de tokens afin d'initier des online updates sur vos instances vSphere ESXi ou vCenter.
+
+
+Dans votre datacenter vCenter, choir l'hôte à mettre à jour. 
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/datacenter.png
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/vSphere/vi1.png
+
+
+Aller dans l'onglet "Mises à jour"
+
 
 VEEAM BACKUP & REPLICATION
 ==============================

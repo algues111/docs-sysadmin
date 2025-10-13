@@ -13,6 +13,12 @@ CLI
 uname
 ^^^^^^^^^^
 
+.. code-block:: bash
+
+    ubuntu@ubuntu:~$ uname
+    Linux
+
+
 uname -a
 ~~~~~~~~~
 
@@ -38,6 +44,18 @@ df
 Liste l'espace utilisé et libre de chaque partition des volumes.
 
 
+.. code-block:: bash
+
+    ubuntu@ubuntu5:~$ df
+    Filesystem     1K-blocks     Used Available Use% Mounted on
+    tmpfs             391100     2572    388528   1% /run
+    /dev/sda1       81145268 38910108  42218776  48% /
+    tmpfs            1955488        0   1955488   0% /dev/shm
+    tmpfs               5120        0      5120   0% /run/lock
+    /dev/sda15        106858     6250    100609   6% /boot/efi
+    tmpfs             391096       12    391084   1% /run/user/1002
+
+
 df -h
 ~~~~~~
 
@@ -56,15 +74,30 @@ df -h
 ps
 ^^^^^^
 
+.. code-block:: bash
+
+    ubuntu@ubuntu:~$ ps
+        PID TTY          TIME CMD
+    1312260 pts/0    00:00:00 bash
+    1312485 pts/0    00:00:00 ps
+
 ps -ef 
 ~~~~~~~
 uptime
 ^^^^^^^^^^^^
 
+.. code-block:: bash
+
+    ubuntu@ubuntu:~$ uptime
+    09:44:56 up 2 days, 19:11,  1 user,  load average: 0.28, 0.19, 0.12
 
 groups
 ^^^^^^^^^
 
+.. code-block:: bash
+
+    ubuntu@ubuntu:~$ groups
+    ubuntu sudo users docker
 
 Permissions
 ============
