@@ -84,6 +84,14 @@ Il existe 2 types de GPO :
 - GPO ordinateur
 
 
+Active Directory CS
+^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+    `Documentation Microsoft officielle AD CS <https://learn.microsoft.com/en-us/windows-server/identity/ad-cs/active-directory-certificate-services-overview>`_
+
+Active Directory Certificate Services est un rôle Windows Server permettant de délivrer des certificats et gérer une PKI.
+
 
 
 NPS (Network Policy Server / Microsoft RADIUS)
