@@ -2,22 +2,47 @@
 Documentation Zabbix
 =====================
 
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Zabbix/logo.png
+
+
+
 .. warning::
 
     Cette documentation a été rédigée pour un serveur Zabbix 7.x avec la configuration suivante :
-    Ubuntu 24.04LTS
-    PostgreSQL
-    Nginx 
+    - Ubuntu 24.04LTS
+    - PostgreSQL
+    - Nginx 
 
 
 Backup 
 ============
 
+DB
+------
+
+Avant d'initier une backup sur la DB postgres, il est préférable de stopper le service du serveur Zabbix afin d'éviter une surcharge des transactions sur la DB.
+
 .. code-block:: bash
 
     systemctl stop zabbix-server
 
-    sudo pg_dump -U zabbix -h localhost -F c -f zabbix_backup.sql zabbix
+
+Par la suite, il est possible de faire une backup complète de la base de données (Option 1), ou bien de faire une backup excluant les plus grosses tables (Option 2).
+Ce choix dépend de l'objectif et de votre RTO.
+
+
+Option 1 :
+
+.. code-block:: bash
+
+    sudo -u zabbix pg_dump zabbix -h localhost -F c -f zabbix_backup.sql zabbix
+
+Option 2 :
+
+ .. code-block:: bash
+
+    sudo -u zabbix pg_dump --exclude-table-data=history* --exclude-table-data=trends* zabbix   
+
 
     mkdir /opt/zabbix-backup/
     cp /etc/zabbix/zabbix_server.conf /opt/zabbix-backup/
@@ -31,6 +56,8 @@ Restore
 
 DB
 ----
+
+
 
 .. note::
 
@@ -77,9 +104,9 @@ Installation and Configuration of TimescaleDB
 
 .. admonition:: Sources
 
-     `Tiger Data Docs <https://www.tigerdata.com/docs/docs/self-hosted/latest/install/installation-linux#add-the-timescaledb-extension-to-your-database>`_
-     `Tillnet.se <https://tillnet.se/index.php/2025/03/19/timescaledb-add-to-existing-postgresql-zabbix-7-0-lts-and-ubuntu-24-04-lts/>`_
-     `Zabbix Docs <https://www.zabbix.com/documentation/current/en/manual/appendix/install/timescaledb>`_
+     - `Tiger Data Docs <https://www.tigerdata.com/docs/docs/self-hosted/latest/install/installation-linux#add-the-timescaledb-extension-to-your-database>`_
+     - `Tillnet.se <https://tillnet.se/index.php/2025/03/19/timescaledb-add-to-existing-postgresql-zabbix-7-0-lts-and-ubuntu-24-04-lts/>`_
+     - `Zabbix Docs <https://www.zabbix.com/documentation/current/en/manual/appendix/install/timescaledb>`_
 
 
 TimescaleDB agit comme un plug-in s'ajoutant à une base de données Zabbix déjà existante.
@@ -135,5 +162,66 @@ Configuration
 
 
 .. code-block:: bash
-    
+
     timescaledb-tune --max-conns=125
+
+L'option "--max-conns=125" permet d'augmenter les connexions simultanéées à la base de données. (Par défaut à 100)
+
+
+Lors du setup, il est recommandé de répondre "Yes" à toutes les questions.
+Le tuning permet l'optimisation de postgres pour l'utilisation de l'extension TimescaleDB.
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Zabbix/timescaledb-tuning.png
+
+
+Après l'exécution du setup avec succès, le service postgres nécessite d'être redémarré.
+
+.. code-block:: bash
+
+    sudo systemctl restart postgresql
+
+
+Activation de l'extension
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Activer TimescaleDB pour la base de données "zabbix".
+
+.. code-block:: bash
+
+    echo "CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;" | sudo -u postgres psql --dbname=zabbix
+
+
+
+Migration des tables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. warning::
+
+    Selon la taille de la base de données, la migration des tables peut prendre beaucoup de temps !
+
+
+.. code-block::
+
+    cat /usr/share/zabbix/sql-scripts/postgresql/timescaledb/schema.sql | sudo -u zabbix psql zabbix
+
+
+Le script "schema.sql" paramètre le housekeeping comme suit :
+
+- Override item history period
+- Override item trend period
+
+Ces paramètres doivent impérativement être activés pour utiliser le partitionnement TimescaleDB des tables "history" et "trends"
+Il est cependant possible de l'activer seulement pour l'un ou pour l'autre individuellement.
+
+2 autres paramètres sont aussi configurés grâce au script :
+
+- Enable compression
+- Compress records older than 7 days
+
+
+Ces paramètres sont trouvables dans la web GUI via Administration > Housekeeping
+
+
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Zabbix/housekeeping-gui.png
