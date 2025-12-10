@@ -2,25 +2,35 @@
 Documentation Zabbix
 =====================
 
+.. warning::
 
+    Cette documentation a été rédigée pour un serveur Zabbix 7.x avec la configuration suivante :
+    Ubuntu 24.04LTS
+    PostgreSQL
+    Nginx 
 
 
 Backup 
 ============
 
-systemctl stop zabbix-server
+.. code-block:: bash
 
-sudo pg_dump -U zabbix -h localhost -F c -f zabbix_backup.sql zabbix
+    systemctl stop zabbix-server
 
-mkdir /opt/zabbix-backup/
-cp /etc/zabbix/zabbix_server.conf /opt/zabbix-backup/
-cp /etc/apache2/conf-enabled/zabbix.conf /opt/zabbix-backup/ #pas nécessaire si pas d'installation Apache2
+    sudo pg_dump -U zabbix -h localhost -F c -f zabbix_backup.sql zabbix
 
-cp -R /usr/share/zabbix/ /opt/zabbix-backup/
-cp -R /usr/share/zabbix-* /opt/zabbix-backup/
+    mkdir /opt/zabbix-backup/
+    cp /etc/zabbix/zabbix_server.conf /opt/zabbix-backup/
+    cp /etc/apache2/conf-enabled/zabbix.conf /opt/zabbix-backup/ #pas nécessaire si pas d'installation Apache2
+
+    cp -R /usr/share/zabbix/ /opt/zabbix-backup/
+    cp -R /usr/share/zabbix-* /opt/zabbix-backup/
 
 Restore
 =============
+
+DB
+----
 
 .. note::
 
@@ -61,6 +71,69 @@ Ensuite, il suffit seulement de mettre le serveur à jour aussi avec apt :
 Installation and Configuration of TimescaleDB
 =================================================
 
+.. note::
+
+    PostgreSQL version 16.11
+
+.. admonition:: Sources
+
+     `Tiger Data Docs <https://www.tigerdata.com/docs/docs/self-hosted/latest/install/installation-linux#add-the-timescaledb-extension-to-your-database>`_
+     `Tillnet.se <https://tillnet.se/index.php/2025/03/19/timescaledb-add-to-existing-postgresql-zabbix-7-0-lts-and-ubuntu-24-04-lts/>`_
+     `Zabbix Docs <https://www.zabbix.com/documentation/current/en/manual/appendix/install/timescaledb>`_
+
+
 TimescaleDB agit comme un plug-in s'ajoutant à une base de données Zabbix déjà existante.
 
-Ce plug-in permet à la fois d'améliorer les performances du serveur en question tout en limitant l'espace de stockage utilisé (grâce notamment à la compression ).
+Ce plug-in permet à la fois d'améliorer les performances de housekeeping du serveur en question tout en limitant l'espace de stockage utilisé (grâce notamment à la compression ).
+
+Installation
+--------------------
+
+Afin d'installer l'extension TimescaleDB sur la base de données postgres existante, il est nécessaire de se connecter à l'interface shell du serveur.
+
+
+Ajout du repository et de la GPG
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+    echo "deb https://packagecloud.io/timescale/timescaledb/ubuntu/ $(lsb_release -c -s) main" | sudo tee /etc/apt/sources.list.d/timescaledb.list
+
+    wget --quiet -O - https://packagecloud.io/timescale/timescaledb/gpgkey | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/timescaledb.gpg
+
+    sudo apt update
+
+
+Installation du paquet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Il est possible d'installer le paquet TimescaleDB pour Zabbix de 2 manières différentes :
+
+- Option 1 : Installer la dernière version de TimescaleDB mais en changeant la configuration de Zabbix
+- Option 2 : Installer la dernière version de TimescaleDB supportée par Zabbix
+
+
+
+Option 1
+~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+    sudo apt install timescaledb-2-postgresql-16 timescaledb-2-loader-postgresql-16 postgresql-client-16 -y
+
+Option 2
+~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+    sudo apt install timescaledb-2-postgresql-16='2.18.0*' timescaledb-2-loader-postgresql-16='2.18.0*' postgresql-client-16
+
+
+
+Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+.. code-block:: bash
+    
+    timescaledb-tune --max-conns=125
