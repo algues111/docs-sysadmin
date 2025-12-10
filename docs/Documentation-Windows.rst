@@ -95,7 +95,7 @@ Active Directory Certificate Services est un rôle Windows Server permettant de 
 
 
 NPS (Network Policy Server / Microsoft RADIUS)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le rôle NPS est un serveur fournissant des services d'AAA sur le réseau. C'est l'implémentation Microsoft du service RADIUS.
 
@@ -669,6 +669,9 @@ Console Active Directory Domains and Trusts
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/upn-add.png
 
 
+Configuration d'Entra Connect
+-------------------------------
+
 
 Après avoir rajouter notre nouveau domaine routable (utilisé pour le tenant MS365), nous pouvons désormais lancer l'agent.
 
@@ -688,6 +691,41 @@ Si vous rencontrez une erreur contenant "Creation of connector ********.onmicros
 https://answers.microsoft.com/en-us/msoffice/forum/all/creation-of-connector-onmicrosoftcom-aad-failed/0c1aaba0-a034-4e96-bd68-de602a39a5b5
 
 https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/reference-connect-tls-enforcement
+
+
+Par la suite, il est possible de modifier la configuration de l'agent Entra Connect.
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/aad-menu.png 
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/aad-config.png 
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/aad-options.png 
+
+
+
+Configuration du SSO
+--------------------------
+
+Grâce à Entra Connect Sync, il est possible de configurer du SSO pour les utilisateurs du domaine synchronisés dans Entra ID.
+
+Pour ce faire, quelques étapes sont toutefois nécessaires.
+
+.. note::
+
+    Cette section est basée sur `cet article Microsot Learn.<https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-sso>`_
+    
+
+Modifications agent Entra Connect
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/aad-options.png 
+
+
+A cette étape, il est nécessaire de renseigner un compte ??? d'Entra ID.
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/entra-sso1.png 
+
+
 
 
 Exchange Online

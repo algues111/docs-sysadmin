@@ -12,12 +12,23 @@ Création de tenant
 Microsoft 365
 ================
 
+Entra ID
+---------------
 
 Gestion des utilisateurs et groupes
---------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Utilisateurs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
 
 Différents types de groupes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/microsoft-365-groups.png
 
@@ -54,6 +65,22 @@ Différents types de groupes
 
 
 
+Conditional Access Policies
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. important::
+   
+   Afin de pouvoir utiliser les Conditional Access Policies, il est d'abord nécessaire de désactiver les Security Defaults du tenant.
+
+   Entra ID > Overview > Properties > Security Defaults
+
+   .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/MS365/security-defaults.png
+
+
+
+
+
+
 Export des dernières connexions des utilisateurs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -68,6 +95,9 @@ Via MSGraph
    Get-MgUser -All -Property 'UserPrincipalName', 'SignInActivity' | Select-Object UserPrincipalName, @{N='LastSignInDate';E={$_.SignInActivity.LastSignInDateTime}} | Export-Csv -Path C:\\Windows\\temp\\LastLogininfo.csv -NoTypeInformation
 
 
+
+
+
 Achat de licences
 ------------------------
 
@@ -75,6 +105,14 @@ Achat de licences
 
 Sharepoint
 ---------------------
+
+
+Limitations
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
 
 Teams
 ----------
