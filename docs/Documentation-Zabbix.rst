@@ -9,9 +9,9 @@ Documentation Zabbix
 .. warning::
 
     Cette documentation a été rédigée pour un serveur Zabbix 7.x avec la configuration suivante :
-    - Ubuntu 24.04LTS
-    - PostgreSQL
-    - Nginx 
+    | Ubuntu 24.04LTS
+    | PostgreSQL
+    | Nginx 
 
 
 Backup 
