@@ -21,12 +21,12 @@ Backup
 DB
 ------
 
-:raw-m2r:`<br>`
+|br|
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Zabbix/logo.png
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Zabbix/logo-psql.png
     :width: 300
 
-:raw-m2r:`<br>`
+|br|
 
 
 Avant d'initier une backup sur la DB postgres, il est préférable de stopper le service du serveur Zabbix afin d'éviter une surcharge des transactions sur la DB.
@@ -52,7 +52,11 @@ Option 2 :
 
     sudo -u zabbix pg_dump --exclude-table-data=history* --exclude-table-data=trends* zabbix   
 
-Backup configuration web et Zabiix
+
+Configuration web et Zabbix
+------------------------------
+
+|br|
 
  .. code-block:: bash
 
@@ -69,10 +73,7 @@ Restore
 DB
 ----
 
-.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Zabbix/logo.png
-    :width: 300
-
-
+|br|
 
 .. note::
 
@@ -95,6 +96,8 @@ Update
 ===========
 
 Upgrade between minor versions
+----------------------------------
+
 Il est possible de mettre Zabbix à jour entre des versions 7.4.x mineures (for example, from 7.4.1 to 7.4.3).
 
 Il est d'abord nécessaire de mettre à jour les infos du repository :
@@ -173,7 +176,7 @@ Option 2
 
 
 Configuration
-^^^^^^^^^^^^^^^^^^^^^^^^
+------------------
 
 
 .. code-block:: bash
@@ -240,3 +243,9 @@ Ces paramètres sont trouvables dans la web GUI via Administration > Housekeepin
 
 
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Zabbix/housekeeping-gui.png
+
+
+
+.. |br| raw:: html
+
+      <br>
