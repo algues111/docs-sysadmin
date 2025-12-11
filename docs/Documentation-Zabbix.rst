@@ -17,8 +17,17 @@ Documentation Zabbix
 Backup 
 ============
 
+
 DB
 ------
+
+:raw-m2r:`<br>`
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Zabbix/logo.png
+    :width: 300
+
+:raw-m2r:`<br>`
+
 
 Avant d'initier une backup sur la DB postgres, il est préférable de stopper le service du serveur Zabbix afin d'éviter une surcharge des transactions sur la DB.
 
@@ -43,6 +52,9 @@ Option 2 :
 
     sudo -u zabbix pg_dump --exclude-table-data=history* --exclude-table-data=trends* zabbix   
 
+Backup configuration web et Zabiix
+
+ .. code-block:: bash
 
     mkdir /opt/zabbix-backup/
     cp /etc/zabbix/zabbix_server.conf /opt/zabbix-backup/
@@ -56,6 +68,9 @@ Restore
 
 DB
 ----
+
+.. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Zabbix/logo.png
+    :width: 300
 
 
 
