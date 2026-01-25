@@ -50,7 +50,7 @@ Option 2 :
 
  .. code-block:: bash
 
-    sudo -u zabbix pg_dump --exclude-table-data=history* --exclude-table-data=trends* zabbix   
+    sudo -u zabbix pg_dump --schema==public --exclude-table-data=history* --exclude-table-data=trends* zabbix   
 
 
 Configuration web et Zabbix
