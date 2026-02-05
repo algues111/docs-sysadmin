@@ -14,6 +14,7 @@ Documentation Administration Système, Réseau et Sécurité
    Documentation-Docker.rst
    Documentation-MacOS.rst
    Documentation-Windows.rst
+      windows/ad
    Documentation-MS365.rst
    Documentation-MSCerts.rst
    Documentation-SOC.rst

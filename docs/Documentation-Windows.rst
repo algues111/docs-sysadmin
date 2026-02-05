@@ -759,3 +759,7 @@ Send as permissions
 
 
 
+.. toctree::
+   :maxdepth: 2
+
+   windows/ad.rst

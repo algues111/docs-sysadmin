@@ -205,6 +205,13 @@ Migration 2016 vers 2019
 
 
 
+Configuration relais SMTP Exchange 2016 (et versions ultérieures)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+   Ce chapitre sera basé principalement sur `cet article <https://www.samuraj-cz.com/en/article/exchange-server-2016-mail-flow-mail-routing-and-connectors/>`_ de Samuraj-cz.com.
+
+
 
 
 
