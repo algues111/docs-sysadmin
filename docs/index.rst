@@ -13,8 +13,8 @@ Documentation Administration Système, Réseau et Sécurité
    Documentation-vSphere.rst
    Documentation-Docker.rst
    Documentation-MacOS.rst
-   Documentation-Windows.rst
-      windows/ad
+   Documentation-Microsoft.rst
+      Microsoft/ms365.rst
    Documentation-MS365.rst
    Documentation-MSCerts.rst
    Documentation-SOC.rst
