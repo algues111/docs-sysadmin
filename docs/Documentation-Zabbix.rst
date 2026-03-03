@@ -249,3 +249,32 @@ Ces paramètres sont trouvables dans la web GUI via Administration > Housekeepin
 .. |br| raw:: html
 
       <br>
+
+
+Configuration Tips
+==========================
+
+zabbix_server.conf
+----------------------
+
+ValueCacheSize
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Le paramètre ValueCacheSize définit la mémoire allouée pour le calcul des triggers en fonction de l'historique d'un item.
+Par défaut, 8Mo sont alloués, ce qui peut vite être limitant suivant le nombre d'items monitorés.
+
+Cette valeur peut être augmenté jusqu'à 64Go
+
+Ci-dessous ma configuration pour un serveur Zabbix surveillant 11 hôtes :
+
+.. code-block:: console
+
+    ### Option: ValueCacheSize
+    #       Size of history value cache, in bytes.
+    #       Shared memory size for caching item history data requests.
+    #       Setting to 0 disables value cache.
+    #
+    # Mandatory: no
+    # Range: 0,128K-64G
+    # Default: 8M
+    ValueCacheSize=256M

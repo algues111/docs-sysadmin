@@ -14,6 +14,8 @@ Exchange Online
 Désactiver l'automapping
 ----------------------------------
 
+La désactivation de l'automapping permet notamment de réduire la taille de l'ost de l'utilisateur principal.
+En effet si l'automapping est actif, l'ost contient à la fois la boîte mail de l'utilisateur + toutes les autres boîtes auxquelles il a un accès total. 
 
 .. code-block:: console
 
