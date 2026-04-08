@@ -113,6 +113,135 @@ Ensuite, il suffit seulement de mettre le serveur à jour aussi avec apt :
     sudo apt install --only-upgrade 'zabbix*'
 
 
+Packages update
+----------------------
+
+Les vérifications suivantes doivent être effectuées lors de la mise à jour des paquets Ubuntu (ici version 24lts) sur un serveur hébergeant Zabbix (ici 7.4.8).
+
+Pre-Update Checks
+~~~~~~~~~~~~~~~~~
+
+Avant d'effectuer les mises à jour, s'assurer des points suivants :
+
+.. code-block:: bash
+
+   # Verify Zabbix services are running
+   systemctl status zabbix-server
+   systemctl status zabbix-agent
+
+   # Backup the Zabbix database (PostgreSQL)
+   pg_dump -U zabbix zabbix > /backup/zabbix_db_$(date +%F).sql
+
+   # Backup Zabbix configuration files
+   cp -r /etc/zabbix /backup/zabbix_config_$(date +%F)
+
+.. note::
+
+   Prendre un snapshot du système avant d'appliquer les mises à jour si l'infrastructure le permet.
+
+Reviewing Available Updates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Avant de mettre à jour, examiner la liste des paquets concernés :
+
+.. code-block:: bash
+
+   sudo apt update
+   apt list --upgradable
+
+Porter une attention particulière aux paquets suivants car ils ont un impact direct sur Zabbix :
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 20 50
+
+   * - Package
+     - Risk Level
+     - Impact on Zabbix
+   * - ``php8.3-*``
+     - Medium
+     - Zabbix web frontend may break
+   * - ``libldap``
+     - Low
+     - LDAP authentication may be affected
+   * - ``systemd``
+     - Low
+     - Service restart behavior may change
+   * - ``timescaledb-*``
+     - Medium
+     - Database compression jobs may be affected
+   * - ``postgresql-*``
+     - High
+     - Database connectivity and performance
+
+Applying Updates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+   sudo apt upgrade -y
+
+Post-Update Checks
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Après la mise à jour, vérifier que tous les services liés à Zabbix fonctionnent correctement.
+
+**Statut des services :**
+
+.. code-block:: bash
+
+   systemctl status zabbix-server
+   systemctl status zabbix-agent
+   systemctl status php8.3-fpm
+   systemctl status nginx
+
+**Logs du serveur Zabbix :**
+
+.. code-block:: bash
+
+   tail -50 /var/log/zabbix/zabbix_server.log | grep -i error
+
+**Interface web Zabbix :**
+
+.. code-block:: bash
+
+   # Check the frontend is reachable
+   curl -I http://localhost/zabbix
+
+Se connecter manuellement à l'interface web Zabbix pour confirmer que celle-ci se charge correctement.
+Si l'authentification LDAP est configurée, vérifier qu'une connexion via LDAP fonctionne.
+
+**Jobs de compression TimescaleDB** (si TimescaleDB a été mis à jour) :
+
+.. code-block:: sql
+
+   SELECT job_id, last_run_started_at, last_run_status, last_run_duration
+   FROM timescaledb_information.job_stats
+   WHERE job_id IN (1003, 1004);
+
+Résultat attendu : ``last_run_status`` doit retourner ``Success``.
+
+Reboot Check
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Certaines mises à jour (ex. ``systemd``, ``initramfs``, noyau) peuvent nécessiter un redémarrage :
+
+.. code-block:: bash
+
+   cat /var/run/reboot-required 2>/dev/null && echo "Reboot needed" || echo "No reboot needed"
+
+Si un redémarrage est nécessaire, planifier une fenêtre de maintenance et vérifier que Zabbix démarre automatiquement après le redémarrage :
+
+.. code-block:: bash
+
+   sudo reboot
+
+   # After reboot
+   systemctl status zabbix-server
+   systemctl status zabbix-agent
+
+
+
 Installation and Configuration of TimescaleDB
 =================================================
 
