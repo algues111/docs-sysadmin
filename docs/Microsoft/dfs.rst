@@ -1,5 +1,5 @@
 =========================================
-Service DFS Namespace sous Windows Server
+Service DFS Namespace
 =========================================
 
 .. contents:: Table des matières

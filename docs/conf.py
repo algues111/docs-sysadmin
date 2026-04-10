@@ -6,10 +6,10 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Sys&NetAdmin'
-copyright = '2024, Arthur LE GUENNEC'
+project = 'Administration Système, Réseau et Sécurité'
+copyright = '2026, Arthur LE GUENNEC'
 author = 'Arthur LE GUENNEC'
-release = '0.1'
+release = ''
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
