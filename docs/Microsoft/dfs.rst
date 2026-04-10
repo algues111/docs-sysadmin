@@ -2,12 +2,6 @@
 Service DFS Namespace
 =========================
 
-.. contents:: Table des matières
-   :depth: 3
-   :local:
-
-.. sectnum::
-
 
 Vue d'ensemble
 ==============
@@ -36,17 +30,6 @@ disponibilité et du coût de site.
    (DFS-R), qui synchronise les données entre serveurs, est un service de rôle
    distinct et **n'est pas abordée ici**.
 
-Avantages principaux
---------------------
-
-- **Accès simplifié** — Les utilisateurs utilisent un chemin UNC unique et
-  stable, quelle que soit la localisation physique du serveur.
-- **Transparence de localisation** — Les serveurs peuvent être déplacés ou
-  renommés sans impacter le chemin d'accès des utilisateurs.
-- **Haute disponibilité** — Plusieurs serveurs de namespace peuvent servir le
-  même espace de noms, éliminant ainsi le point de défaillance unique.
-- **Scalabilité** — Des centaines de cibles de dossiers peuvent être agrégées
-  sous un seul namespace.
 
 Types de namespaces
 -------------------
@@ -61,6 +44,7 @@ Namespace basé sur le domaine
 - Supporte plusieurs serveurs de namespace pour la redondance.
 - Requiert AD DS et un serveur joint au domaine.
 - Supporte jusqu'à **50 000 dossiers avec cibles** en mode Windows Server 2008.
+- Configuration stockée dans la **partition de domaine (Domain NC)** d'Active Directory accessible via ADSI edit. 
 
 ************************************
 Namespace autonome (Stand-Alone)
@@ -189,19 +173,47 @@ Création via la console de gestion DFS
 ---------------------------------------
 
 #. Ouvrez **Gestion du système de fichiers distribués** (``dfsmgmt.msc``).
+
+.. spoiler:: Screenshot
+
+    .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/dfs-console.png
+
 #. Dans le volet gauche, faites un clic droit sur **Espaces de noms** et
    sélectionnez **Nouvel espace de noms…**
+
+.. spoiler:: Screenshot
+
+    .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/dfs-console-new-space.png
+
 #. Saisissez le **nom du serveur** qui hébergera la racine du namespace, puis
    cliquez sur **Suivant**.
+
+.. spoiler:: Screenshot
+
+    .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/dfs-console-new-space2.png
+
 #. Saisissez un **nom** pour le namespace (ex. : ``Partage``). Ce nom fait
    partie du chemin UNC. Cliquez sur **Modifier les paramètres…** pour
    configurer les permissions du partage, puis cliquez sur **Suivant**.
+
+.. spoiler:: Screenshot
+
+    .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/dfs-console-new-space3.png
+
 #. Choisissez le type de namespace :
 
    - **Espace de noms basé sur le domaine** *(recommandé)*
    - **Espace de noms autonome**
 
+.. spoiler:: Screenshot
+
+    .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/dfs-console-new-space4.png
+
 #. Vérifiez le résumé et cliquez sur **Créer**.
+
+.. spoiler:: Screenshot
+
+    .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/dfs-console-new-space5.png
 
 Le namespace ``\\contoso.com\Partage`` est maintenant disponible.
 
