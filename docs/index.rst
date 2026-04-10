@@ -15,6 +15,10 @@ Documentation Administration Système, Réseau et Sécurité
    Documentation-MacOS.rst
    Documentation-Microsoft.rst
       Microsoft/ms365.rst
+      Microsoft/exchange.rst
+      Microsoft/ad.rst
+      Microsoft/dfs.rst
+      Microsoft/partage.rst
    Documentation-MS365.rst
    Documentation-MSCerts.rst
    Documentation-SOC.rst
