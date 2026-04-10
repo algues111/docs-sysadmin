@@ -1,6 +1,5 @@
-==========
 Microsoft
-==========
+=========
 
 .. raw:: html
 
@@ -83,12 +82,9 @@ Microsoft
        margin-bottom: 16px;
    }
 
-   .icon-ad { background: rgba(0, 120, 212, 0.1); color: #0078d4; }
-   .icon-exchange { background: rgba(0, 120, 212, 0.1); color: #0078d4; }
-   .icon-azure { background: rgba(0, 120, 212, 0.1); color: #0078d4; }
-   .icon-powershell { background: rgba(1, 36, 86, 0.1); color: #012456; }
    .icon-server { background: rgba(0, 120, 212, 0.1); color: #0078d4; }
-   .icon-intune { background: rgba(0, 120, 212, 0.1); color: #0078d4; }
+   .icon-exchange { background: rgba(0, 120, 212, 0.1); color: #0078d4; }
+   .icon-ms365 { background: rgba(0, 120, 212, 0.1); color: #0078d4; }
 
    .ms-card-title {
        font-size: 1.3em;
@@ -133,6 +129,106 @@ Microsoft
        opacity: 1;
    }
 
+   /* ===== CARTE WINDOWS SERVER (LARGE) ===== */
+   .ms-card-large {
+       grid-column: 1 / -1;
+       background: var(--pst-color-background);
+       border: 1px solid var(--pst-color-border);
+       border-radius: 12px;
+       padding: 28px;
+       position: relative;
+       overflow: hidden;
+   }
+
+   .ms-card-large::before {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       height: 4px;
+       background: linear-gradient(90deg, #0078d4, #00bcf2);
+   }
+
+   .ms-card-large-header {
+       display: flex;
+       align-items: center;
+       gap: 16px;
+       margin-bottom: 24px;
+   }
+
+   .ms-card-large-header .ms-card-icon {
+       margin-bottom: 0;
+   }
+
+   .ms-card-large-title {
+       font-size: 1.4em;
+       font-weight: 700;
+       color: var(--pst-color-text-base);
+   }
+
+   .ms-card-large-desc {
+       font-size: 0.95em;
+       color: var(--pst-color-text-muted);
+   }
+
+   /* Sous-grille dans la carte Windows Server */
+   .ms-subgrid {
+       display: grid;
+       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+       gap: 16px;
+   }
+
+   .ms-subcard {
+       background: var(--pst-color-surface);
+       border: 1px solid var(--pst-color-border);
+       border-radius: 10px;
+       padding: 20px;
+       transition: all 0.3s ease;
+       text-decoration: none !important;
+       color: inherit !important;
+       display: flex;
+       flex-direction: column;
+   }
+
+   .ms-subcard:hover {
+       transform: translateY(-4px);
+       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+       border-color: #0078d4;
+   }
+
+   .ms-subcard-icon {
+       font-size: 24px;
+       margin-bottom: 10px;
+   }
+
+   .ms-subcard-title {
+       font-size: 1.05em;
+       font-weight: 700;
+       margin-bottom: 6px;
+       color: var(--pst-color-text-base);
+   }
+
+   .ms-subcard-desc {
+       font-size: 0.85em;
+       color: var(--pst-color-text-muted);
+       line-height: 1.5;
+       flex-grow: 1;
+   }
+
+   .ms-subcard-arrow {
+       margin-top: 12px;
+       color: #0078d4;
+       font-weight: 600;
+       font-size: 0.85em;
+       opacity: 0;
+       transition: opacity 0.3s ease;
+   }
+
+   .ms-subcard:hover .ms-subcard-arrow {
+       opacity: 1;
+   }
+
    /* ===== STATS BAR ===== */
    .ms-stats {
        display: flex;
@@ -167,6 +263,7 @@ Microsoft
        .ms-hero { padding: 24px; }
        .ms-hero h2 { font-size: 1.6em; }
        .ms-grid { grid-template-columns: 1fr; }
+       .ms-subgrid { grid-template-columns: 1fr; }
        .ms-stats { flex-direction: column; gap: 16px; }
    }
    </style>
@@ -180,7 +277,7 @@ Microsoft
    <!-- ===== STATS BAR ===== -->
    <div class="ms-stats">
        <div class="ms-stat">
-           <div class="ms-stat-number">6</div>
+           <div class="ms-stat-number">3</div>
            <div class="ms-stat-label">Technologies</div>
        </div>
        <div class="ms-stat">
@@ -196,24 +293,51 @@ Microsoft
    <!-- ===== GRILLE DE CARTES ===== -->
    <div class="ms-grid">
 
-       <!-- Active Directory -->
-       <a href="Microsoft/ad.html" class="ms-card">
-           <div class="ms-card-icon icon-ad">🛡️</div>
-           <div class="ms-card-title">Active Directory</div>
-           <div class="ms-card-desc">
-               Gestion des domaines, GPO, DNS intégré, réplication,
-               et administration des utilisateurs et groupes.
+       <!-- ===== WINDOWS SERVER (CARTE LARGE AVEC SOUS-CARTES) ===== -->
+       <div class="ms-card-large">
+           <div class="ms-card-large-header">
+               <div class="ms-card-icon icon-server">🖥️</div>
+               <div>
+                   <div class="ms-card-large-title">Windows Server</div>
+                   <div class="ms-card-large-desc">Installation, rôles serveur, et services d'infrastructure</div>
+               </div>
            </div>
-           <div class="ms-card-tags">
-               <span class="ms-tag">GPO</span>
-               <span class="ms-tag">DNS</span>
-               <span class="ms-tag">LDAP</span>
-               <span class="ms-tag">Kerberos</span>
-           </div>
-           <div class="ms-card-arrow">Explorer →</div>
-       </a>
+           <div class="ms-subgrid">
 
-       <!-- Exchange -->
+               <!-- Active Directory -->
+               <a href="Microsoft/ad.html" class="ms-subcard">
+                   <div class="ms-subcard-icon">🛡️</div>
+                   <div class="ms-subcard-title">Active Directory</div>
+                   <div class="ms-subcard-desc">
+                       Gestion des domaines, GPO, DNS intégré, réplication et administration des utilisateurs.
+                   </div>
+                   <div class="ms-subcard-arrow">Explorer →</div>
+               </a>
+
+               <!-- DFS -->
+               <a href="Microsoft/dfs.html" class="ms-subcard">
+                   <div class="ms-subcard-icon">📂</div>
+                   <div class="ms-subcard-title">DFS</div>
+                   <div class="ms-subcard-desc">
+                       Système de fichiers distribués, espaces de noms et réplication DFS-R.
+                   </div>
+                   <div class="ms-subcard-arrow">Explorer →</div>
+               </a>
+
+               <!-- Partage -->
+               <a href="Microsoft/partage.html" class="ms-subcard">
+                   <div class="ms-subcard-icon">🔗</div>
+                   <div class="ms-subcard-title">Partage réseau</div>
+                   <div class="ms-subcard-desc">
+                       Partages SMB, permissions NTFS, quotas et gestion des accès.
+                   </div>
+                   <div class="ms-subcard-arrow">Explorer →</div>
+               </a>
+
+           </div>
+       </div>
+
+       <!-- ===== EXCHANGE ===== -->
        <a href="Microsoft/exchange.html" class="ms-card">
            <div class="ms-card-icon icon-exchange">📧</div>
            <div class="ms-card-title">Exchange Server</div>
@@ -229,66 +353,18 @@ Microsoft
            <div class="ms-card-arrow">Explorer →</div>
        </a>
 
-       <!-- Azure -->
-       <a href="Microsoft/azure.html" class="ms-card">
-           <div class="ms-card-icon icon-azure">☁️</div>
-           <div class="ms-card-title">Microsoft Azure</div>
+       <!-- ===== MICROSOFT 365 ===== -->
+       <a href="Microsoft/ms365.html" class="ms-card">
+           <div class="ms-card-icon icon-ms365">☁️</div>
+           <div class="ms-card-title">Microsoft 365</div>
            <div class="ms-card-desc">
-               Services cloud, Azure AD, machines virtuelles,
-               réseau virtuel et gestion des ressources.
+               Administration du tenant M365, gestion des licences,
+               Exchange Online, SharePoint et Teams.
            </div>
            <div class="ms-card-tags">
-               <span class="ms-tag">Azure AD</span>
-               <span class="ms-tag">VNet</span>
-               <span class="ms-tag">ARM</span>
-           </div>
-           <div class="ms-card-arrow">Explorer →</div>
-       </a>
-
-       <!-- PowerShell -->
-       <a href="Microsoft/powershell.html" class="ms-card">
-           <div class="ms-card-icon icon-powershell">⚡</div>
-           <div class="ms-card-title">PowerShell</div>
-           <div class="ms-card-desc">
-               Scripting, automatisation, modules,
-               gestion à distance et administration système.
-           </div>
-           <div class="ms-card-tags">
-               <span class="ms-tag">Scripts</span>
-               <span class="ms-tag">Modules</span>
-               <span class="ms-tag">DSC</span>
-           </div>
-           <div class="ms-card-arrow">Explorer →</div>
-       </a>
-
-       <!-- Windows Server -->
-       <a href="Microsoft/windows-server.html" class="ms-card">
-           <div class="ms-card-icon icon-server">🖥️</div>
-           <div class="ms-card-title">Windows Server</div>
-           <div class="ms-card-desc">
-               Installation, rôles serveur, Hyper-V,
-               clustering et gestion des certificats.
-           </div>
-           <div class="ms-card-tags">
-               <span class="ms-tag">Hyper-V</span>
-               <span class="ms-tag">IIS</span>
-               <span class="ms-tag">WSUS</span>
-           </div>
-           <div class="ms-card-arrow">Explorer →</div>
-       </a>
-
-       <!-- Intune -->
-       <a href="Microsoft/intune.html" class="ms-card">
-           <div class="ms-card-icon icon-intune">📱</div>
-           <div class="ms-card-title">Microsoft Intune</div>
-           <div class="ms-card-desc">
-               Gestion des appareils mobiles (MDM), déploiement
-               d'applications et politiques de conformité.
-           </div>
-           <div class="ms-card-tags">
-               <span class="ms-tag">MDM</span>
-               <span class="ms-tag">MAM</span>
-               <span class="ms-tag">Autopilot</span>
+               <span class="ms-tag">Teams</span>
+               <span class="ms-tag">SharePoint</span>
+               <span class="ms-tag">Exchange Online</span>
            </div>
            <div class="ms-card-arrow">Explorer →</div>
        </a>
@@ -301,7 +377,6 @@ Microsoft
 
    Microsoft/ad
    Microsoft/exchange
-   Microsoft/azure
-   Microsoft/powershell
-   Microsoft/windows-server
-   Microsoft/intune
+   Microsoft/dfs
+   Microsoft/partage
+   Microsoft/ms365
