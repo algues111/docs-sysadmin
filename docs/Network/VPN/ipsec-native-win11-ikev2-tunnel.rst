@@ -1,15 +1,7 @@
-Je vais vous préparer la documentation technique au format RST.
-
-```rst
-.. _vpn-ipsec-ikev2-eap:
-
 ================================================
 VPN IPSec IKEv2 EAP - FortiGate & Windows 11
 ================================================
 
-.. contents:: Table des matières
-   :depth: 3
-   :local:
 
 Présentation
 ============
@@ -22,6 +14,7 @@ L'authentification des utilisateurs est gérée en local sur le FortiGate via un
 d'utilisateurs dédié (``Local-group``). Le FortiGate présente un certificat au client lors
 de la négociation IKEv2, tandis que le client s'authentifie via EAP (identifiants
 utilisateur/mot de passe).
+
 
 Schéma fonctionnel
 ------------------
@@ -151,9 +144,10 @@ La phase 2 définit les paramètres de chiffrement du trafic encapsulé dans le 
        edit "IKEV2_EAP_VPN_P2"
            set phase1name "IKEV2_EAP_VPN"
            set proposal aes256gcm aes128-sha256
-           set pfs disable
+           set dhgrp 19
            set keepalive enable
            set keylifeseconds 3600
+           set src-subnet 192.168.20.0 255.255.255.0
        next
    end
 
@@ -167,15 +161,24 @@ La phase 2 définit les paramètres de chiffrement du trafic encapsulé dans le 
      - Référence à la phase 1 associée
    * - ``proposal aes256gcm aes128-sha256``
      - Algorithmes de chiffrement phase 2 (AES-256-GCM privilégié)
-   * - ``pfs disable``
-     - Perfect Forward Secrecy désactivé (cohérent avec le client Windows natif)
+   * - ``dhgrp 19``
+     - Perfect Forward Secrecy activé avec DH19
    * - ``keepalive enable``
      - Envoi de messages de maintien de session IPSec
    * - ``keylifeseconds 3600``
      - Durée de vie des clés de session : 1 heure
+   * - ``src-subnet 192.168.20.0 255.255.255.0``
+     - Définit le subnet locale accessbile par le client
 
 Configuration Windows 11
 =========================
+
+
+.. warning::
+
+  Windows ne supporte pas la configuration d'un "remote-id" sur le tunnel. 
+  C'est à dire que si un autre tunnel configuré sur votre pare-feu utilise la même local gateway ET le même groupe DH en phase 1, cela pausera souci !
+  Il est donc recommandé de choisir un groupe différent de tous les autres tunnels utilisant la même local gateway.
 
 Création du profil VPN (PowerShell)
 -------------------------------------
@@ -193,7 +196,7 @@ d'aligner les algorithmes cryptographiques avec ceux du FortiGate.
        -AuthenticationMethod Eap `
        -EncryptionLevel Custom `
        -RememberCredential $true `
-       -SplitTunneling $false `
+       -SplitTunneling $true `
        -PassThru
 
    # Application de la politique IPSec personnalisée
@@ -201,11 +204,16 @@ d'aligner les algorithmes cryptographiques avec ceux du FortiGate.
        -ConnectionName "Corporate VPN" `
        -AuthenticationTransformConstants GCMAES256 `
        -CipherTransformConstants GCMAES256 `
-       -DHGroup Group14 `
+       -DHGroup Group19 `
        -IntegrityCheckMethod SHA256 `
-       -PfsGroup None `
+       -PfsGroup ECP256 `
        -EncryptionMethod AES256 `
        -Force
+
+   # Ajout de la route pour le split SplitTunneling
+   Add-VpnConnectionRoute -ConnectionName "Corporate VPN" -DestinationPrefix "192.168.20.0/24"
+  
+  
 
 Vérification de la configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -232,7 +240,7 @@ Résultat attendu (``Get-VpnConnection``)
    UseWinlogonCredential : False
    ConnectionStatus      : Disconnected
    RememberCredential    : True
-   SplitTunneling        : False
+   SplitTunneling        : True
 
 Résultat attendu (``IPsecCustomPolicy``)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -241,9 +249,9 @@ Résultat attendu (``IPsecCustomPolicy``)
 
    AuthenticationTransformConstants : GCMAES256
    CipherTransformConstants         : GCMAES256
-   DHGroup                          : Group14
+   DHGroup                          : Group19
    IntegrityCheckMethod             : SHA256
-   PfsGroup                         : None
+   PfsGroup                         : ECP256
    EncryptionMethod                 : AES256
 
 Correspondance des algorithmes cryptographiques
@@ -262,8 +270,8 @@ Le tableau suivant présente l'alignement des algorithmes entre les deux équipe
      - ``aes256-sha256`` / ``aes128-sha256``
      - ``AES256`` + ``SHA256``
    * - **Phase 1 - DH Group**
-     - Implicite (Group 14 / 2048 bits)
-     - ``Group14``
+     - Implicite (Group 19 / 256 bits elliptique)
+     - ``Group19``
    * - **Phase 2 - Chiffrement**
      - ``aes256gcm``
      - ``GCMAES256``
@@ -271,8 +279,8 @@ Le tableau suivant présente l'alignement des algorithmes entre les deux équipe
      - Intégré GCM (AEAD)
      - ``GCMAES256``
    * - **PFS**
-     - ``disable``
-     - ``None``
+     - ``Groupe19``
+     - ``ECP256``
    * - **Durée de vie clés**
      - 3600 secondes
      - Par défaut Windows
@@ -354,7 +362,7 @@ Dépannage
      - Vérifier la correspondance des proposals (AES256/SHA256/Group14) des deux côtés
    * - Certificat rejeté par le client
      - S'assurer que le certificat du FortiGate est signé par une CA de confiance
-       installée dans le magasin Windows (``Trusted Root CA``)
+       installée dans le magasin Windows (``Trusted Root CA``). Ici, certificat délivré par SwissSign
    * - Authentification EAP échouée
      - Vérifier que l'utilisateur est bien membre du groupe ``Local-group``
        et que le mot de passe est correct
@@ -374,7 +382,7 @@ Dépannage
 
 .. note::
 
-   Le tunnel étant configuré en **Full Tunnel** (``SplitTunneling : False``),
-   l'intégralité du trafic client transite par le VPN, y compris la navigation Internet.
+   Le tunnel étant configuré en **Split Tunnel** (``SplitTunneling : True``),
+   seulement le trafic client destiné au réseau 192.168.20.0/24 transite par le VPN.
    Adapter les règles de pare-feu FortiGate en conséquence.
 ```
