@@ -24,7 +24,7 @@ Schéma fonctionnel
    ┌─────────────────────┐                        ┌──────────────────────────┐
    │    Windows 11       │                        │     FortiGate 70G        │
    │  Client VPN natif   │◄──── IKEv2 / EAP ─────►│  Interface : wan1        │
-   │                     │      (UDP 500/4500)     │  IP Pool : 10.10.11.x    │
+   │                     │      (UDP 500/4500)    │  IP Pool : 10.10.11.x    │
    └─────────────────────┘                        └──────────────────────────┘
          IP attribuée :                                 LAN : 192.168.20.0/24
          10.10.11.10 → .20
