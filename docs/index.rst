@@ -20,6 +20,7 @@ Documentation Administration Système, Réseau et Sécurité
       Microsoft/dfs.rst
       Microsoft/partage.rst
    Documentation-Réseau.rst
+      Network/vpn.rst
       Network/VPN/ipsec-native-win11-ikev2-tunnel.rst
    Documentation-MS365.rst
    Documentation-MSCerts.rst
