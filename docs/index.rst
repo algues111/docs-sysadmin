@@ -16,16 +16,17 @@ Documentation Administration Système, Réseau et Sécurité
    Documentation-Microsoft.rst
       Microsoft/ms365.rst
       Microsoft/exchange.rst
-      Microsoft/ad.rst
-      Microsoft/dfs.rst
-      Microsoft/partage.rst
+      Microsoft/winserv.rst
+         Microsoft/winserv/ad.rst
+         Microsoft/winserv/dfs.rst
+         Microsoft/winserv/partage.rst
    Documentation-Réseau.rst
       Network/vpn.rst
-      Network/VPN/ipsec-native-win11-ikev2-tunnel.rst
+         Network/VPN/ipsec-native-win11-ikev2-tunnel.rst
    Documentation-MS365.rst
    Documentation-MSCerts.rst
    Documentation-SOC.rst
-   Documentation-Linux.rst
+   Documentation-Linux.rst§
    Documentation-RedTeam.rst
    Documentation-Zabbix.rst
 

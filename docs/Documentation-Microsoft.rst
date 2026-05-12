@@ -305,7 +305,7 @@ Microsoft
            <div class="ms-subgrid">
 
                <!-- Active Directory -->
-               <a href="Microsoft/ad.html" class="ms-subcard">
+               <a href="Microsoft/winserv/ad.html" class="ms-subcard">
                    <div class="ms-subcard-icon">🛡️</div>
                    <div class="ms-subcard-title">Active Directory</div>
                    <div class="ms-subcard-desc">
@@ -315,11 +315,55 @@ Microsoft
                </a>
 
                <!-- DFS -->
-               <a href="Microsoft/dfs.html" class="ms-subcard">
+               <a href="Microsoft/winserv/dfs.html" class="ms-subcard">
                    <div class="ms-subcard-icon">📂</div>
                    <div class="ms-subcard-title">DFS</div>
                    <div class="ms-subcard-desc">
                        Système de fichiers distribués, espaces de noms et réplication DFS-R.
+                   </div>
+                   <div class="ms-subcard-arrow">Explorer →</div>
+               </a>
+
+               <!-- Partage -->
+               <a href="Microsoft/winserv/partage.html" class="ms-subcard">
+                   <div class="ms-subcard-icon">🔗</div>
+                   <div class="ms-subcard-title">Partage réseau</div>
+                   <div class="ms-subcard-desc">
+                       Partages SMB, permissions NTFS, quotas et gestion des accès.
+                   </div>
+                   <div class="ms-subcard-arrow">Explorer →</div>
+               </a>
+
+           </div>
+       </div>
+
+       <!-- ===== WINDOWS 11 (CARTE LARGE AVEC SOUS-CARTES) ===== -->
+       <div class="ms-card-large">
+           <div class="ms-card-large-header">
+               <div class="ms-card-icon icon-server">💻</div>
+               <div>
+                   <div class="ms-card-large-title">Windows 11</div>
+                   <div class="ms-card-large-desc">Installation, Configuration, Troubleshooting...</div>
+               </div>
+           </div>
+           <div class="ms-subgrid">
+
+               <!-- Active Directory -->
+               <a href="Microsoft/install-win11.html" class="ms-subcard">
+                   <div class="ms-subcard-icon">🏗️</div>
+                   <div class="ms-subcard-title">Installation</div>
+                   <div class="ms-subcard-desc">
+                       lorem ipsum
+                   </div>
+                   <div class="ms-subcard-arrow">Explorer →</div>
+               </a>
+
+               <!-- DFS -->
+               <a href="Microsoft/.html" class="ms-subcard">
+                   <div class="ms-subcard-icon">🔧</div>
+                   <div class="ms-subcard-title">Configuration</div>
+                   <div class="ms-subcard-desc">
+                       lorem, ipsum
                    </div>
                    <div class="ms-subcard-arrow">Explorer →</div>
                </a>
