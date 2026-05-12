@@ -10,25 +10,17 @@ Documentation Administration Système, Réseau et Sécurité
    :maxdepth: 3
    :caption: Contents:
 
-   Documentation-vSphere.rst
-   Documentation-Docker.rst
-   Documentation-MacOS.rst
-   Documentation-Microsoft.rst
-      Microsoft/ms365.rst
-      Microsoft/exchange.rst
-      Microsoft/winserv.rst
-         Microsoft/winserv/ad.rst
-         Microsoft/winserv/dfs.rst
-         Microsoft/winserv/partage.rst
-   Documentation-Réseau.rst
-      Network/vpn.rst
-         Network/VPN/ipsec-native-win11-ikev2-tunnel.rst
-   Documentation-MS365.rst
-   Documentation-MSCerts.rst
-   Documentation-SOC.rst
-   Documentation-Linux.rst§
-   Documentation-RedTeam.rst
-   Documentation-Zabbix.rst
+   Documentation-vSphere
+   Documentation-Docker
+   Documentation-MacOS
+   Documentation-Microsoft
+   Documentation-Réseau
+   Documentation-MS365
+   Documentation-MSCerts
+   Documentation-SOC
+   Documentation-Linux
+   Documentation-RedTeam
+   Documentation-Zabbix
 
   
  

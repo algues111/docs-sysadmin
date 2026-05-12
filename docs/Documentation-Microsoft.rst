@@ -419,8 +419,6 @@ Microsoft
    :maxdepth: 2
    :hidden:
 
-   Microsoft/ad
    Microsoft/exchange
-   Microsoft/dfs
-   Microsoft/partage
    Microsoft/ms365
+   Microsoft/winserv

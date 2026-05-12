@@ -8,4 +8,3 @@ Réseau
    :hidden:
 
    Network/vpn
-   Network/VPN/ipsec-native-win11-ikev2-tunnel
