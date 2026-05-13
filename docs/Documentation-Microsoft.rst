@@ -422,3 +422,4 @@ Microsoft
    Microsoft/exchange
    Microsoft/ms365
    Microsoft/winserv
+   Microsoft/win11
