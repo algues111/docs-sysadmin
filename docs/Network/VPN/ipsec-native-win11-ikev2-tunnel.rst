@@ -385,4 +385,3 @@ Dépannage
    Le tunnel étant configuré en **Split Tunnel** (``SplitTunneling : True``),
    seulement le trafic client destiné au réseau 192.168.20.0/24 transite par le VPN.
    Adapter les règles de pare-feu FortiGate en conséquence.
-```

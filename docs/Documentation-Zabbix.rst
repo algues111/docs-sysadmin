@@ -267,7 +267,7 @@ Afin d'installer l'extension TimescaleDB sur la base de données postgres exista
 
 
 Ajout du repository et de la GPG
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
@@ -279,7 +279,7 @@ Ajout du repository et de la GPG
 
 
 Installation du paquet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Il est possible d'installer le paquet TimescaleDB pour Zabbix de 2 manières différentes :
 
@@ -289,14 +289,14 @@ Il est possible d'installer le paquet TimescaleDB pour Zabbix de 2 manières dif
 
 
 Option 1
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
     sudo apt install timescaledb-2-postgresql-16 timescaledb-2-loader-postgresql-16 postgresql-client-16 -y
 
 Option 2
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
@@ -330,7 +330,7 @@ Après l'exécution du setup avec succès, le service postgres nécessite d'êtr
 
 
 Activation de l'extension
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Activer TimescaleDB pour la base de données "zabbix".
 
@@ -341,7 +341,7 @@ Activer TimescaleDB pour la base de données "zabbix".
 
 
 Migration des tables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. warning::
 
@@ -387,7 +387,7 @@ zabbix_server.conf
 ----------------------
 
 ValueCacheSize
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Le paramètre ValueCacheSize définit la mémoire allouée pour le calcul des triggers en fonction de l'historique d'un item.
 Par défaut, 8Mo sont alloués, ce qui peut vite être limitant suivant le nombre d'items monitorés.
