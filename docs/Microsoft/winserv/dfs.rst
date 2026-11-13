@@ -174,21 +174,21 @@ Création via la console de gestion DFS
 
 #. Ouvrez **Gestion du système de fichiers distribués** (``dfsmgmt.msc``).
 
-.. spoiler:: Screenshot
+.. dropdown:: Screenshot
 
     .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/dfs-console.png
 
 #. Dans le volet gauche, faites un clic droit sur **Espaces de noms** et
    sélectionnez **Nouvel espace de noms…**
 
-.. spoiler:: Screenshot
+.. dropdown:: Screenshot
 
     .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/dfs-console-new-space.png
 
 #. Saisissez le **nom du serveur** qui hébergera la racine du namespace, puis
    cliquez sur **Suivant**.
 
-.. spoiler:: Screenshot
+.. dropdown:: Screenshot
 
     .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/dfs-console-new-space2.png
 
@@ -196,7 +196,7 @@ Création via la console de gestion DFS
    partie du chemin UNC. Cliquez sur **Modifier les paramètres…** pour
    configurer les permissions du partage, puis cliquez sur **Suivant**.
 
-.. spoiler:: Screenshot
+.. dropdown:: Screenshot
 
     .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/dfs-console-new-space3.png
 
@@ -205,13 +205,13 @@ Création via la console de gestion DFS
    - **Espace de noms basé sur le domaine** *(recommandé)*
    - **Espace de noms autonome**
 
-.. spoiler:: Screenshot
+.. dropdown:: Screenshot
 
     .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/dfs-console-new-space4.png
 
 #. Vérifiez le résumé et cliquez sur **Créer**.
 
-.. spoiler:: Screenshot
+.. dropdown:: Screenshot
 
     .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Windows/dfs-console-new-space5.png
 
@@ -231,9 +231,9 @@ Namespace basé sur le domaine
                 -Type DomainV2 `
                 -Description "Namespace principal de l'entreprise"
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 Namespace autonome
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
 .. code-block:: powershell
 
@@ -359,9 +359,9 @@ Procédure de déplacement (source : Falcon IT Services)
 
 La procédure se déroule en trois étapes principales :
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Étape 1 — Installer DFS Namespace sur le nouveau serveur
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Installez le service de rôle **Espaces de noms DFS** sur le serveur de
 destination (voir section `Installation du service de rôle DFS Namespace`_).
@@ -372,9 +372,9 @@ Vérifiez que le service ``Dfs`` est bien démarré :
 
    Get-Service -Name Dfs
 
-*************************************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Étape 2 — Ajouter le nouveau serveur comme serveur de namespace
-*************************************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Ouvrez **Gestion du système de fichiers distribués** (``dfsmgmt.msc``).
 #. Faites un clic droit sur le namespace concerné.
@@ -391,9 +391,9 @@ Via PowerShell :
    New-DfsnRootTarget -Path "\\contoso.com\Partage" `
                       -TargetPath "\\NOUVEAU-SRV\Partage"
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Étape 3 — Supprimer l'ancien serveur de namespace
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Une fois le nouveau serveur de namespace confirmé comme opérationnel :
 
@@ -461,9 +461,9 @@ Créer un dossier simple
                   -TargetPath "\\SRV-FS01\Documents$" `
                   -Description "Dossier des documents d'entreprise"
 
-*************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Ajouter plusieurs cibles à un dossier
-*************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: powershell
 
@@ -499,9 +499,9 @@ Supprimer une cible de dossier
                            -TargetPath "\\SRV-FS01\Documents$" `
                            -Confirm:$false
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Supprimer un dossier entier
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: powershell
 
@@ -640,9 +640,9 @@ Le statut d'un serveur de namespace est « Hors ligne »
 Les utilisateurs sont redirigés vers une cible incorrecte
 ----------------------------------------------------------
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Vérification de la configuration des sites AD DS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Assurez-vous que les sous-réseaux IP des clients et des serveurs sont
 correctement associés aux sites AD DS dans **Sites et services Active

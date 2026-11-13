@@ -46,16 +46,16 @@ Exchange On-Premises
 
 
 Build number and release dates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 
 Disponibles sur le `site de Microsoft <https://learn.microsoft.com/en-us/exchange/new-features/build-numbers-and-release-dates>`_
 
 Commandes utiles
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 
 
 Scripts utiles
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 
 .. note::
    
@@ -65,7 +65,7 @@ Scripts utiles
 
 
 Limites globales de transport
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: powershell
 
@@ -78,7 +78,7 @@ Par défaut, cette limite est
 
 
 Migration 2016 vers 2019
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------
 
 .. note::
    Ce chapitre sera basé principalement sur le `KB 0001472 <https://www.petenetlive.com/kb/article/0001472/>`_ de Petenetlive.
@@ -86,7 +86,7 @@ Migration 2016 vers 2019
 
 
 Configuration relais SMTP Exchange 2016 (et versions ultérieures)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------------------------------------
 
 .. note::
    Ce chapitre sera basé principalement sur `cet article <https://www.samuraj-cz.com/en/article/exchange-server-2016-mail-flow-mail-routing-and-connectors/>`_ de Samuraj-cz.com.

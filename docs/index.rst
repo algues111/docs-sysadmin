@@ -15,7 +15,6 @@ Documentation Administration Système, Réseau et Sécurité
    Documentation-MacOS
    Documentation-Microsoft
    Documentation-Réseau
-   Documentation-MS365
    Documentation-MSCerts
    Documentation-SOC
    Documentation-Linux
