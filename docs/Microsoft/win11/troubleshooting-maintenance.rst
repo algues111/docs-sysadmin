@@ -468,6 +468,47 @@ Requêtes PowerShell sur les événements
 
 ---------------------------------------------
 
+Logs de mise à niveau Windows 11 (Panther)
+=============================================
+
+Pendant une mise à niveau (feature update, passage 23H2 → 24H2, etc.), le setup
+écrit sa progression dans les logs **Panther**. Utile quand la mise à niveau
+semble bloquée à un pourcentage.
+
+.. seealso::
+   - `Fichiers journaux de mise à niveau Windows <https://learn.microsoft.com/fr-fr/windows/deployment/upgrade/log-files>`_
+
+**Suivre la mise à niveau en temps réel :**
+
+.. code-block:: powershell
+
+   Get-Content 'C:\$WINDOWS.~BT\Sources\Panther\setupact.log' -Tail 50 -Wait
+
+**Erreurs uniquement :**
+
+.. code-block:: powershell
+
+   Get-Content 'C:\$WINDOWS.~BT\Sources\Panther\setuperr.log' -Tail 50
+
+.. list-table:: Emplacements des logs Panther
+   :widths: 50 50
+   :header-rows: 1
+
+   * - Chemin
+     - Phase
+   * - ``C:\$WINDOWS.~BT\Sources\Panther\``
+     - Pendant la mise à niveau (phases de préparation)
+   * - ``C:\Windows\Panther\``
+     - Après une mise à niveau réussie
+   * - ``C:\$WINDOWS.~BT\Sources\Rollback\``
+     - Après un échec et retour arrière
+
+.. note::
+   Utiliser des **guillemets simples** : avec des guillemets doubles, PowerShell
+   interprète ``$WINDOWS`` comme une variable et le chemin devient invalide.
+
+---------------------------------------------
+
 Tableau Récapitulatif — Commandes et Outils de Maintenance
 ============================================================
 
@@ -514,6 +555,9 @@ Tableau Récapitulatif — Commandes et Outils de Maintenance
    * - **Get-Content -Tail**
      - Lecture des N dernières lignes d'un fichier log
      - ``Get-Content <chemin_log> -Tail 10 -Wait``
+   * - **setupact.log (Panther)**
+     - Suivi d'une mise à niveau Windows 11 en cours
+     - ``Get-Content 'C:\$WINDOWS.~BT\Sources\Panther\setupact.log' -Tail 50 -Wait``
    * - **Optimize-Volume**
      - Optimisation PowerShell d'un volume
      - ``Optimize-Volume -DriveLetter C -ReTrim -Verbose``
