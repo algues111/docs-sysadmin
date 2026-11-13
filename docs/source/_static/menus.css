@@ -1,0 +1,135 @@
+/* =====================================================================
+   Menus de navigation (pages d'accueil de section)
+   - .dh-hero : bandeau titre en haut de page
+   - .dh-card : cartes sphinx-design (grid-item-card :class-card: dh-card)
+   Les variables --pst-* viennent du thème (gèrent le mode clair/sombre).
+   ===================================================================== */
+
+:root {
+    --dh-accent: #0078d4;
+    --dh-accent-2: #00bcf2;
+}
+
+/* ===== BANDEAU ===== */
+.dh-hero {
+    background: linear-gradient(135deg, var(--dh-accent) 0%, var(--dh-accent-2) 100%);
+    border-radius: 16px;
+    padding: 32px 40px;
+    margin-bottom: 32px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.dh-hero p {
+    color: #fff !important;
+    margin: 0;
+    font-size: 1.1em;
+    opacity: 0.92;
+}
+
+.dh-hero p:first-child {
+    font-size: 2em;
+    font-weight: 700;
+    opacity: 1;
+    margin-bottom: 8px;
+}
+
+/* Variantes de couleur par domaine */
+.dh-hero.dh-microsoft { --dh-accent: #0078d4; --dh-accent-2: #00bcf2; }
+.dh-hero.dh-network   { --dh-accent: #0f766e; --dh-accent-2: #14b8a6; }
+.dh-hero.dh-home      { --dh-accent: #1e3a5f; --dh-accent-2: #3b82f6; }
+.dh-hero.dh-archive   { --dh-accent: #57534e; --dh-accent-2: #a8a29e; }
+
+/* ===== TITRES DE GROUPE ===== */
+p.rubric.dh-group {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 28px 0 4px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--pst-color-border);
+}
+
+/* ===== CARTES ===== */
+.sd-card.dh-card {
+    border: 1px solid rgba(128, 128, 128, 0.3) !important;
+    border-radius: 12px;
+    background: var(--pst-color-background);
+    box-shadow: none !important;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.sd-card.dh-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--dh-accent), var(--dh-accent-2));
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.sd-card.dh-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12) !important;
+    border-color: var(--dh-accent) !important;
+}
+
+.sd-card.dh-card:hover::before {
+    opacity: 1;
+}
+
+.dh-card .sd-card-body {
+    padding: 22px 22px 14px 22px;
+}
+
+.dh-card .sd-card-title {
+    font-size: 1.15em;
+    font-weight: 700;
+    color: var(--pst-color-text-base);
+    margin-bottom: 8px;
+}
+
+.dh-card .sd-card-text,
+.dh-card .sd-card-body p {
+    font-size: 0.92em;
+    color: var(--pst-color-text-muted);
+    line-height: 1.55;
+}
+
+.dh-card .sd-card-footer {
+    background: transparent;
+    border-top: none !important;
+    padding: 0 22px 18px 22px;
+}
+
+.dh-card .sd-card-footer p {
+    margin: 0;
+}
+
+/* Tags (badges sphinx-design dans le pied de carte) */
+.dh-card .sd-badge {
+    font-weight: 600;
+    border-radius: 20px;
+    padding: 4px 10px;
+    margin: 2px 4px 2px 0;
+}
+
+/* Carte d'une page pas encore rédigée */
+.sd-card.dh-card.dh-todo {
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .dh-hero { padding: 24px 16px; }
+    .dh-hero p:first-child { font-size: 1.6em; }
+}
+
+/* Carte vers une page archivée */
+.sd-card.dh-card.dh-archived {
+    border-style: dashed !important;
+}

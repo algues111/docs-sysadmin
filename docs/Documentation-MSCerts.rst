@@ -1,6 +1,6 @@
-============================================================
-Documentation Certifications Microsoft
-============================================================
+============================
+Certifications Microsoft
+============================
 
 
 SC-300 : Identity and Access Administrator Associate

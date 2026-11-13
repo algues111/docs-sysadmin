@@ -1,6 +1,6 @@
-=====================
-Documentation Zabbix
-=====================
+====================
+Zabbix
+====================
 
 .. image:: https://raw.githubusercontent.com/algues111/docs-sysadmin/main/docs/source/images/Zabbix/logo.png
     :width: 300
