@@ -1,6 +1,11 @@
-======================
-Documentation vSphere
-======================
+===============================
+VMware vSphere 8 (archive)
+===============================
+
+.. note::
+
+   Page archivée : environnement VMware vSphere / ESXi 8 plus maintenu.
+   Le contenu est conservé tel quel pour référence.
 
 
 Upgrade 6.7 -> 8.0.2B (sur DL380 Gen9)
