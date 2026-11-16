@@ -35,6 +35,13 @@ Documentation Administration Système, Réseau et Sécurité
 
       Réinstallation, outils post-installation, annuaire LDAP.
 
+   .. grid-item-card:: 🧰 Softwares
+      :link: Documentation-Softwares
+      :link-type: doc
+      :class-card: dh-card
+
+      Logiciels tiers : Adobe Acrobat Pro 2020.
+
 .. rubric:: 🌐 Réseau et infrastructure
    :class: dh-group
 
@@ -110,6 +117,7 @@ Documentation Administration Système, Réseau et Sécurité
    Documentation-Microsoft
    Documentation-Linux
    Documentation-MacOS
+   Documentation-Softwares
 
 .. toctree::
    :hidden:

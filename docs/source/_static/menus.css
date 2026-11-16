@@ -40,6 +40,7 @@
 .dh-hero.dh-network   { --dh-accent: #0f766e; --dh-accent-2: #14b8a6; }
 .dh-hero.dh-home      { --dh-accent: #1e3a5f; --dh-accent-2: #3b82f6; }
 .dh-hero.dh-archive   { --dh-accent: #57534e; --dh-accent-2: #a8a29e; }
+.dh-hero.dh-software  { --dh-accent: #b91c1c; --dh-accent-2: #f97316; }
 
 /* ===== TITRES DE GROUPE ===== */
 p.rubric.dh-group {
